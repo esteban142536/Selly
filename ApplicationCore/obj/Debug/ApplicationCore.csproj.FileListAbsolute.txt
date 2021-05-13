@@ -1,0 +1,10 @@
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\obj\Debug\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\ApplicationCore\bin\Debug\Infraestructure.dll.config
