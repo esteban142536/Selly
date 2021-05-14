@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,11 +53,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\contextData.cs" />
+    <Compile Include="Models\databaseConect.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>databaseConect.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\databaseConect.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\databaseConect.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>databaseConect.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\factura.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\producto.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\productoFacturados.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tienda.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuario.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Models\databaseConect.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>databaseConect.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\databaseConect.edmx.diagram">
+      <DependentUpon>databaseConect.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\databaseConect.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>databaseConect.edmx</DependentUpon>
+      <LastGenOutput>databaseConect.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\databaseConect.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>databaseConect.edmx</DependentUpon>
+      <LastGenOutput>databaseConect.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
