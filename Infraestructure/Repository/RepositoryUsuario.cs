@@ -14,7 +14,7 @@ namespace Infraestructure.Repository
             usuario user = null;    
             using (contextData cdt = new contextData()) {
                 cdt.Configuration.LazyLoadingEnabled = false;
-                user = cdt.usuario.Where(u=>u.email==email).FirstOrDefault<usuario>();
+                user = cdt.usuario.Where(u=>u.email==email && u.clave==clave).FirstOrDefault<usuario>();
             }
 
 

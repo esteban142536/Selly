@@ -7,50 +7,59 @@
 <h2>Index</h2>
 
 <div>
-    <h4>usuario</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+    <form method="post">
+        <h4>usuario</h4>
+        <br />
+        <p>Email</p>
+        @Html.TextBoxFor(x => x.email)
+        <br />
+        <p>clave</p>
+        @Html.TextBoxFor(x=>x.clave)
+        <input type="submit" value="Submit" />
+    </form>
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.clave)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.clave)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.clave)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.esAdmin)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.clave)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.esAdmin)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.esAdmin)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.esProveedor)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.esAdmin)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.esProveedor)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.esProveedor)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.idUsuario)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.esProveedor)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.idUsuario)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.idUsuario)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.idUsuario)
+            </dd>
+
+        </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

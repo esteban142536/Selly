@@ -11,15 +11,26 @@ namespace proyecto.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult Index(String email, String clave)
         {
-            usuario user = null;
-            
+            usuario user;
+
             IServiceUsuario iserviseUsuario = new ServiceUsuario();
-            user = iserviseUsuario.logIn("admin","123");
+            user = iserviseUsuario.logIn(email, clave);
 
+            if (user==null)
+            {
+                return View(user);
+            }
 
-            return View(user);
+            return PrevalenceData(user);
+            //return RedirectToAction("PrevalenceData", "Usuario");
+        }
+
+        [HttpPost]
+        public ActionResult PrevalenceData(usuario usu)
+        {
+            return View(usu);
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model Infraestructure.Models.usuario
+
+@{
+    ViewBag.Title = "PrevalenceData";
+}
+
+<h2>PrevalenceData</h2>
+
+<div>
+    <h4>usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idUsuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
