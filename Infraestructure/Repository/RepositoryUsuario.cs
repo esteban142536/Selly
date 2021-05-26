@@ -20,5 +20,24 @@ namespace Infraestructure.Repository
 
             return user;
         }
+
+        public void SignIn(usuario usuario)
+        {
+            usuario user = null;
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+
+                    user = cdt.usuario.Add(usuario);
+                    cdt.SaveChanges(); //solo es nesesario para insert, delete y update
+                }
+                catch (Exception e) {
+                  Console.WriteLine(e.Message);
+                }
+            }
+        }
     }
 }

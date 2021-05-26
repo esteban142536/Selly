@@ -18,17 +18,20 @@ namespace Infraestructure.Models
         public producto()
         {
             this.productoFacturados = new HashSet<productoFacturados>();
+            this.proveedor = new HashSet<proveedor>();
         }
     
         public string nombre { get; set; }
         public int existencias { get; set; }
         public string categoria { get; set; }
         public int idProducto { get; set; }
-        public int idTienda { get; set; }
+        public int idBodega { get; set; }
         public double costo { get; set; }
     
-        public virtual tienda tienda { get; set; }
+        public virtual estante estante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<productoFacturados> productoFacturados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<proveedor> proveedor { get; set; }
     }
 }

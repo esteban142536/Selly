@@ -23,14 +23,27 @@ namespace proyecto.Controllers
                 return View(user);
             }
 
-            return PrevalenceData(user);
-            //return RedirectToAction("PrevalenceData", "Usuario");
+           // return PrevalenceData(user);
+            return RedirectToAction("PrevalenceData", "Usuario", user);
         }
 
-        [HttpPost]
+        
         public ActionResult PrevalenceData(usuario usu)
         {
             return View(usu);
         }
+
+
+        //insert hacia usuario
+        public ActionResult escritura(usuario usu) {
+            IServiceUsuario iserviseUsuario = new ServiceUsuario();
+
+           iserviseUsuario.SignIn(usu);
+
+           return View();
+        }
+
+
+  
     }
 }

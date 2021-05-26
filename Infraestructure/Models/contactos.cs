@@ -12,15 +12,14 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class productoFacturados
+    public partial class contactos
     {
-        public int idProducto { get; set; }
-        public int codigoFactura { get; set; }
-        public double precio { get; set; }
-        public int existenciasCompradas { get; set; }
-        public string categoria { get; set; }
+        public string nombre { get; set; }
+        public int numero { get; set; }
+        public string correo { get; set; }
+        public string cedula { get; set; }
+        public int proveedorAsociada { get; set; }
     
-        public virtual factura factura { get; set; }
-        public virtual producto producto { get; set; }
+        public virtual proveedor proveedor { get; set; }
     }
 }

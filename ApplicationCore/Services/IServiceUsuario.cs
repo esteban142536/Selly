@@ -10,5 +10,7 @@ namespace ApplicationCore.Services
    public interface IServiceUsuario
     {
         usuario logIn(String email, String clave);
+
+        void SignIn(usuario usuario);
     }
 }

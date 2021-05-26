@@ -12,27 +12,23 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuario()
+        public proveedor()
         {
-            this.factura = new HashSet<factura>();
-            this.tienda = new HashSet<tienda>();
+            this.contactos = new HashSet<contactos>();
+            this.producto = new HashSet<producto>();
         }
     
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string email { get; set; }
-        public string clave { get; set; }
-        public int idUsuario { get; set; }
-        public bool esAdmin { get; set; }
-        public bool esActivo { get; set; }
-        public bool esEmpleado { get; set; }
+        public string nombreEmpresa { get; set; }
+        public string direccion { get; set; }
+        public string pais { get; set; }
+        public int codigoProveedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> factura { get; set; }
+        public virtual ICollection<contactos> contactos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tienda> tienda { get; set; }
+        public virtual ICollection<producto> producto { get; set; }
     }
 }

@@ -23,6 +23,8 @@ namespace Infraestructure.Models
         public int codigoFactura { get; set; }
         public int idCliente { get; set; }
         public int idTienda { get; set; }
+        public string fecha { get; set; }
+        public double totalPagado { get; set; }
     
         public virtual tienda tienda { get; set; }
         public virtual usuario usuario { get; set; }
