@@ -12,22 +12,18 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class estante
+    public partial class tipoUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public estante()
+        public tipoUsuario()
         {
-            this.ingreso = new HashSet<ingreso>();
-            this.producto = new HashSet<producto>();
+            this.usuario = new HashSet<usuario>();
         }
     
         public int id { get; set; }
-        public int idTienda { get; set; }
+        public string tipoUsuario1 { get; set; }
     
-        public virtual tienda tienda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ingreso> ingreso { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<producto> producto { get; set; }
+        public virtual ICollection<usuario> usuario { get; set; }
     }
 }

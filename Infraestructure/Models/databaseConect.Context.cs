@@ -28,10 +28,15 @@ namespace Infraestructure.Models
         public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<estante> estante { get; set; }
         public virtual DbSet<factura> factura { get; set; }
+        public virtual DbSet<ingreso> ingreso { get; set; }
         public virtual DbSet<producto> producto { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tienda> tienda { get; set; }
+        public virtual DbSet<tipoIngreso> tipoIngreso { get; set; }
+        public virtual DbSet<tipoSalida> tipoSalida { get; set; }
+        public virtual DbSet<tipoUsuario> tipoUsuario { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
-        public virtual DbSet<productoFacturados> productoFacturados { get; set; }
+        public virtual DbSet<detalleFactura> detalleFactura { get; set; }
     }
 }

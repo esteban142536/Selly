@@ -72,29 +72,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>databaseConect.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\detalleFactura.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\estante.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\factura.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\producto.cs">
+    <Compile Include="Models\ingreso.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\productoFacturados.cs">
+    <Compile Include="Models\producto.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proveedor.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tienda.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipoIngreso.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipoSalida.cs">
+      <DependentUpon>databaseConect.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipoUsuario.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usuario.cs">
       <DependentUpon>databaseConect.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryTipoUsuario.cs" />
     <Compile Include="Repository\IRepositoryUsuario.cs" />
+    <Compile Include="Repository\RepositoryTipoUsuario.cs" />
     <Compile Include="Repository\RepositoryUsuario.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -18,7 +18,6 @@ namespace Infraestructure.Models
         public usuario()
         {
             this.factura = new HashSet<factura>();
-            this.tienda = new HashSet<tienda>();
         }
     
         public string nombre { get; set; }
@@ -26,13 +25,11 @@ namespace Infraestructure.Models
         public string email { get; set; }
         public string clave { get; set; }
         public int idUsuario { get; set; }
-        public bool esAdmin { get; set; }
         public bool esActivo { get; set; }
-        public bool esEmpleado { get; set; }
+        public int idTipoUsuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura> factura { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tienda> tienda { get; set; }
+        public virtual tipoUsuario tipoUsuario { get; set; }
     }
 }

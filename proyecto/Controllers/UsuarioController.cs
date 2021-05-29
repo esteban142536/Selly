@@ -1,9 +1,6 @@
 ﻿using ApplicationCore.Services;
 using Infraestructure.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace proyecto.Controllers
@@ -22,8 +19,9 @@ namespace proyecto.Controllers
             {
                 return View(user);
             }
+            Session.Add("User",user);
 
-           // return PrevalenceData(user);
+         
             return RedirectToAction("PrevalenceData", "Usuario", user);
         }
 
@@ -36,14 +34,20 @@ namespace proyecto.Controllers
 
         //insert hacia usuario
         public ActionResult escritura(usuario usu) {
-            IServiceUsuario iserviseUsuario = new ServiceUsuario();
 
-           iserviseUsuario.SignIn(usu);
+            if (usu.nombre == null) {
+                return View();
+            }
+
+            IServiceUsuario iserviseUsuario = new ServiceUsuario();
+            IServiceTipoUsuario iserviseTipoUsuario = new ServiceTipoUsuario();
+
+         tipoUsuario tu=  iserviseTipoUsuario.asignarPermisos(usu.idTipoUsuario);
+            usu.idTipoUsuario = tu.id;
+            iserviseUsuario.SignIn(usu);
 
            return View();
         }
 
-
-  
     }
 }

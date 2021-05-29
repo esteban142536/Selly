@@ -12,15 +12,18 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class productoFacturados
+    public partial class tipoIngreso
     {
-        public int idProducto { get; set; }
-        public int codigoFactura { get; set; }
-        public double precio { get; set; }
-        public int existenciasCompradas { get; set; }
-        public string categoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipoIngreso()
+        {
+            this.ingreso = new HashSet<ingreso>();
+        }
     
-        public virtual factura factura { get; set; }
-        public virtual producto producto { get; set; }
+        public int id { get; set; }
+        public string tipoIngreso1 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ingreso> ingreso { get; set; }
     }
 }

@@ -30,12 +30,11 @@ namespace Infraestructure.Repository
 
                 try
                 {
-
                     user = cdt.usuario.Add(usuario);
                     cdt.SaveChanges(); //solo es nesesario para insert, delete y update
                 }
                 catch (Exception e) {
-                  Console.WriteLine(e.Message);
+                  Console.WriteLine(e);
                 }
             }
         }
