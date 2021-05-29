@@ -10,5 +10,6 @@ namespace Infraestructure.Repository
    public interface IRepositoryTipoUsuario
     {
         tipoUsuario asignarPermisos(tipoUsuario tu);
+        int obtenerPermisos(int id);
     }
 }

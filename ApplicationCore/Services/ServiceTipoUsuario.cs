@@ -14,8 +14,14 @@ namespace ApplicationCore.Services
         {
             IRepositoryTipoUsuario reposi = new RepositoryTipoUsuario();
             tipoUsuario tius = new tipoUsuario();
-            tius.tipoUsuario1 = tu.ToString();
+            tius.permisoUsuario = tu;
             return reposi.asignarPermisos(tius);
+        }
+
+        public int obtenerPermisos(int id)
+        {
+            IRepositoryTipoUsuario reposi = new RepositoryTipoUsuario();
+            return reposi.obtenerPermisos(id);
         }
     }
 }

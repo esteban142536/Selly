@@ -119,7 +119,7 @@ advertencia 6002: La tabla o vista 'sully.dbo.detalleFactura' no tiene definida 
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tipoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="permisoUsuario" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="usuario">
     <Key>

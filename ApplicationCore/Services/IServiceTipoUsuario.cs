@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
    public interface IServiceTipoUsuario
     {
         tipoUsuario asignarPermisos(int tu);
+        int obtenerPermisos(int id);
     }
 }

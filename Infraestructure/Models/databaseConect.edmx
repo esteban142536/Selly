@@ -124,7 +124,7 @@ advertencia 6002: La tabla o vista 'sully.dbo.detalleFactura' no tiene definida 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tipoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="permisoUsuario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -526,7 +526,7 @@ advertencia 6002: La tabla o vista 'sully.dbo.detalleFactura' no tiene definida 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipoUsuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="permisoUsuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_tipoUsuario" FromRole="tipoUsuario" ToRole="usuario" />
         </EntityType>
         <EntityType Name="usuario">
@@ -900,7 +900,7 @@ advertencia 6002: La tabla o vista 'sully.dbo.detalleFactura' no tiene definida 
             <EntityTypeMapping TypeName="sullyModel.tipoUsuario">
               <MappingFragment StoreEntitySet="tipoUsuario">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tipoUsuario1" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="permisoUsuario" ColumnName="permisoUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

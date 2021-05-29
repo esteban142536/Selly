@@ -28,10 +28,20 @@
                         @Html.ActionLink("Prueba inicio sesion", "Index", "Usuario", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                       
-                        @if (Session["User"] != null)
-                        {
-                            <a class="nav-link" href="#">Pricing</a>
+
+                        <!-- aqui se valida si el usuario es administrador -->
+                        @{
+                            Object sesion = Session["UserType"];
+                            if (sesion != null)
+                            {
+                                int usua = int.Parse(sesion.ToString());
+                                if (usua == 1)
+                                {
+                                    <a class="nav-link" href="#">esto esta funcionando</a>
+                                }
+
+                            }
+
                         }
                     </li>
                     <li class="nav-item">

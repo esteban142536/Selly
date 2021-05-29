@@ -1,4 +1,6 @@
 ﻿using Infraestructure.Models;
+using System.Linq;
+using System;
 
 namespace Infraestructure.Repository
 {
@@ -11,6 +13,7 @@ namespace Infraestructure.Repository
 
             using (contextData cdt = new contextData())
             {
+
                 cdt.Configuration.LazyLoadingEnabled = false;
                 cdt.tipoUsuario.Add(tu);
                 cdt.SaveChanges();
@@ -18,5 +21,17 @@ namespace Infraestructure.Repository
             }
             return tu;
         }
+
+        public int obtenerPermisos(int id)
+        {
+            int permiso = 0;
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+                permiso = cdt.tipoUsuario.Where(x=>x.id==id).FirstOrDefault<tipoUsuario>().permisoUsuario;
+
+            }
+            return permiso;
+            }
     }
 }

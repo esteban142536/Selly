@@ -107,7 +107,7 @@
       <EntityTypeMapping TypeName="sullyModel.tipoUsuario">
         <MappingFragment StoreEntitySet="tipoUsuario">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="tipoUsuario1" ColumnName="tipoUsuario" />
+          <ScalarProperty Name="permisoUsuario" ColumnName="permisoUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
