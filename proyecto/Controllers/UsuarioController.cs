@@ -13,9 +13,6 @@ namespace proyecto.Controllers
         // GET: Usuario
         public ActionResult Index(String email, String clave)
         {
-            if (email==null||clave==null) {
-                return  View();
-            }
             usuario user;
 
             user = iserviseUsuario.logIn(email, clave);

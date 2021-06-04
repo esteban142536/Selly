@@ -1,0 +1,47 @@
+﻿body {
+    margin: 0
+}
+
+.barra {
+    position: relative;
+    padding: 15px;
+    background-color: #2596be;
+}
+
+.barra-texto {
+    position: absolute;
+    top: 3px;
+    right: 16px;
+    font-size: 16px;
+    color: white;
+}
+
+.encabezado {
+    text-align: center;
+}
+
+.imagen_Logo {
+    width: 150px;
+    height: 200px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right:2%;
+}
+
+.container-fluid {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.nav-item {
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.footer {
+    background-color: #2596be;
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin-top:5%;
+}

@@ -46,7 +46,6 @@
     <Compile Include="Services\IServiceUsuario.cs" />
     <Compile Include="Services\ServiceTipoUsuario.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
-    <Compile Include="Utils\Cryptography.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">
@@ -56,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
