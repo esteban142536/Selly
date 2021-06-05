@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Models
 {
-    class contextData: sullyEntities
+    class contextData: sellyEntities
     {
         public contextData() { }
     }

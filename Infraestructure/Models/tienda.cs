@@ -17,17 +17,14 @@ namespace Infraestructure.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tienda()
         {
-            this.estante = new HashSet<estante>();
-            this.factura = new HashSet<factura>();
+            this.inventario = new HashSet<inventario>();
         }
     
         public string nombre { get; set; }
         public string direccion { get; set; }
-        public int idTienda { get; set; }
+        public int id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<estante> estante { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> factura { get; set; }
+        public virtual ICollection<inventario> inventario { get; set; }
     }
 }

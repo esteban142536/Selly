@@ -12,18 +12,18 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tipoSalida
+    public partial class TipoCategoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tipoSalida()
+        public TipoCategoria()
         {
-            this.factura = new HashSet<factura>();
+            this.producto = new HashSet<producto>();
         }
     
         public int id { get; set; }
-        public string tipoSalida1 { get; set; }
+        public int Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> factura { get; set; }
+        public virtual ICollection<producto> producto { get; set; }
     }
 }

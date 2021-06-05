@@ -13,10 +13,10 @@ namespace Infraestructure.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class sullyEntities : DbContext
+    public partial class sellyEntities : DbContext
     {
-        public sullyEntities()
-            : base("name=sullyEntities")
+        public sellyEntities()
+            : base("name=sellyEntities")
         {
         }
     
@@ -25,18 +25,19 @@ namespace Infraestructure.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<estante> estante { get; set; }
-        public virtual DbSet<factura> factura { get; set; }
-        public virtual DbSet<ingreso> ingreso { get; set; }
+        public virtual DbSet<inventario> inventario { get; set; }
+        public virtual DbSet<pais> pais { get; set; }
         public virtual DbSet<producto> producto { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tienda> tienda { get; set; }
-        public virtual DbSet<tipoIngreso> tipoIngreso { get; set; }
-        public virtual DbSet<tipoSalida> tipoSalida { get; set; }
+        public virtual DbSet<TipoCategoria> TipoCategoria { get; set; }
+        public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
         public virtual DbSet<tipoUsuario> tipoUsuario { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<detalleFactura> detalleFactura { get; set; }
+        public virtual DbSet<productoEstante> productoEstante { get; set; }
     }
 }

@@ -15,11 +15,15 @@ namespace Infraestructure.Models
     public partial class detalleFactura
     {
         public int idProducto { get; set; }
-        public int idFactura { get; set; }
+        public int idInventario { get; set; }
         public double precio { get; set; }
         public int cantidadComprada { get; set; }
+        public string idEstante { get; set; }
+        public Nullable<int> idProveedor { get; set; }
     
-        public virtual factura factura { get; set; }
+        public virtual estante estante { get; set; }
+        public virtual inventario inventario { get; set; }
         public virtual producto producto { get; set; }
+        public virtual proveedor proveedor { get; set; }
     }
 }

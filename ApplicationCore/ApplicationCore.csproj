@@ -44,9 +44,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceTipoUsuario.cs" />
     <Compile Include="Services\IServiceUsuario.cs" />
+    <Compile Include="Services\IServiseProducto.cs" />
+    <Compile Include="Services\IServiseTipoCategoria.cs" />
     <Compile Include="Services\ServiceTipoUsuario.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
-    <Compile Include="Utils\Cryptography.cs" />
+    <Compile Include="Services\ServiseProducto.cs" />
+    <Compile Include="Services\ServiseTipoCategoria.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">

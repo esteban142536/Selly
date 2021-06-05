@@ -12,19 +12,18 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ingreso
+    public partial class pais
     {
-        public int id { get; set; }
-        public int idProveedor { get; set; }
-        public int idEstante { get; set; }
-        public int idTipoIngreso { get; set; }
-        public int idProducto { get; set; }
-        public int cantidadIngreso { get; set; }
-        public string comentario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public pais()
+        {
+            this.proveedor = new HashSet<proveedor>();
+        }
     
-        public virtual estante estante { get; set; }
-        public virtual producto producto { get; set; }
-        public virtual proveedor proveedor { get; set; }
-        public virtual tipoIngreso tipoIngreso { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<proveedor> proveedor { get; set; }
     }
 }

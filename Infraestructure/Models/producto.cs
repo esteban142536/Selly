@@ -17,24 +17,30 @@ namespace Infraestructure.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public producto()
         {
-            this.ingreso = new HashSet<ingreso>();
+            this.productoEstante = new HashSet<productoEstante>();
             this.detalleFactura = new HashSet<detalleFactura>();
             this.proveedor = new HashSet<proveedor>();
+            this.proveedor1 = new HashSet<proveedor>();
         }
     
         public string nombre { get; set; }
-        public int existencias { get; set; }
-        public string categoria { get; set; }
-        public int idProducto { get; set; }
-        public int idEstante { get; set; }
-        public double costo { get; set; }
+        public int totalStock { get; set; }
+        public int cantMaxima { get; set; }
+        public int cantMinima { get; set; }
+        public int idCategoria { get; set; }
+        public int id { get; set; }
+        public double costoUnitario { get; set; }
+        public string descripcion { get; set; }
+        public byte[] imagen { get; set; }
     
-        public virtual estante estante { get; set; }
+        public virtual TipoCategoria TipoCategoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ingreso> ingreso { get; set; }
+        public virtual ICollection<productoEstante> productoEstante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proveedor> proveedor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<proveedor> proveedor1 { get; set; }
     }
 }

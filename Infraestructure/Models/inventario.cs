@@ -12,25 +12,26 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class factura
+    public partial class inventario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public factura()
+        public inventario()
         {
             this.detalleFactura = new HashSet<detalleFactura>();
         }
     
-        public int idFactura { get; set; }
+        public int id { get; set; }
         public int idUsuario { get; set; }
         public int idTienda { get; set; }
         public string fecha { get; set; }
-        public double totalPagado { get; set; }
-        public int idTipoSalida { get; set; }
+        public Nullable<double> totalPagado { get; set; }
         public string comentario { get; set; }
+        public Nullable<double> iva { get; set; }
+        public int idTipoMovimiento { get; set; }
     
         public virtual tienda tienda { get; set; }
-        public virtual tipoSalida tipoSalida { get; set; }
         public virtual usuario usuario { get; set; }
+        public virtual TipoMovimiento TipoMovimiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
     }

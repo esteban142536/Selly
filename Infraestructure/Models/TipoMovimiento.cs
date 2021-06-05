@@ -12,24 +12,19 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class TipoMovimiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuario()
+        public TipoMovimiento()
         {
             this.inventario = new HashSet<inventario>();
         }
     
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string email { get; set; }
-        public string clave { get; set; }
         public int id { get; set; }
-        public bool esActivo { get; set; }
-        public int idTipoUsuario { get; set; }
+        public string tipoSalida { get; set; }
+        public string tipoEntrada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inventario> inventario { get; set; }
-        public virtual tipoUsuario tipoUsuario { get; set; }
     }
 }

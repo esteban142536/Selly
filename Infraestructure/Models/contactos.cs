@@ -17,8 +17,7 @@ namespace Infraestructure.Models
         public string nombre { get; set; }
         public int numero { get; set; }
         public string correo { get; set; }
-        public string cedula { get; set; }
-        public int proveedorAsociada { get; set; }
+        public int idProveedor { get; set; }
     
         public virtual proveedor proveedor { get; set; }
     }
