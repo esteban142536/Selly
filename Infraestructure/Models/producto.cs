@@ -17,10 +17,9 @@ namespace Infraestructure.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public producto()
         {
-            this.productoEstante = new HashSet<productoEstante>();
             this.detalleFactura = new HashSet<detalleFactura>();
+            this.estante = new HashSet<estante>();
             this.proveedor = new HashSet<proveedor>();
-            this.proveedor1 = new HashSet<proveedor>();
         }
     
         public string nombre { get; set; }
@@ -35,12 +34,10 @@ namespace Infraestructure.Models
     
         public virtual TipoCategoria TipoCategoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productoEstante> productoEstante { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<proveedor> proveedor { get; set; }
+        public virtual ICollection<estante> estante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<proveedor> proveedor1 { get; set; }
+        public virtual ICollection<proveedor> proveedor { get; set; }
     }
 }

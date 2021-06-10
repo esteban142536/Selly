@@ -5,15 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Infraestructure.Models;
+using Infraestructure.Repository;
 
 namespace ApplicationCore.Services
 {
     public class ServiseProducto : IServiseProducto
     {
+
+        IRepositoryProducto repo=new RepositoryProducto();
+
         public void guardarProducto(producto producto)
         {
-            IServiseProducto serviseProducto = new ServiseProducto();
-            serviseProducto.guardarProducto(producto);
+            repo.guardarProducto(producto);
+        }
+
+        public IEnumerable<producto> listadoProducto()
+        {
+            return repo.listadoProducto();
         }
     }
 }

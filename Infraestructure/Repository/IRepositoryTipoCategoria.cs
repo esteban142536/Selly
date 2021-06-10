@@ -10,5 +10,6 @@ namespace Infraestructure.Repository
    public interface IRepositoryTipoCategoria
     {
         void asignarCategoria(TipoCategoria tc);
+        TipoCategoria obtenerCategoriaPorID(int idProducto);
     }
 }

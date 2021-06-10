@@ -34,7 +34,9 @@ namespace Infraestructure.Repository
                     cdt.SaveChanges(); //solo es nesesario para insert, delete y update
                 }
                 catch (Exception e) {
-                  Console.WriteLine(e);
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
                 }
             }
         }

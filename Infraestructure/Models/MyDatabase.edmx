@@ -40,6 +40,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="cantidad" Type="nchar" MaxLength="10" />
           <Property Name="nombre" Type="varbinary" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="inventario">
@@ -74,7 +75,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="costoUnitario" Type="float" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="imagen" Type="varbinary(max)" Nullable="false" />
+          <Property Name="imagen" Type="varbinary(max)" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'selly.dbo.productoEstante' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -82,21 +83,18 @@ advertencia 6002: La tabla o vista 'selly.dbo.productoEstante' no tiene definida
           <Key>
             <PropertyRef Name="idProducto" />
             <PropertyRef Name="idEstante" />
-            <PropertyRef Name="cantidad" />
           </Key>
           <Property Name="idProducto" Type="int" Nullable="false" />
           <Property Name="idEstante" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="cantidad" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="nombreEmpresa" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="direccion" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idPais" Type="int" Nullable="false" />
-          <Property Name="idProducto" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -131,7 +129,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoMovimiento">
           <Key>
@@ -304,18 +302,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_proveedor_producto">
-          <End Role="producto" Type="Self.producto" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="producto">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="proveedor">
-              <PropertyRef Name="idProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_proveedorProducto_producto">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="proveedorProducto" Type="Self.proveedorProducto" Multiplicity="*" />
@@ -385,8 +371,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
           <EntitySet Name="productoEstante" EntityType="Self.productoEstante" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [productoEstante].[idProducto] AS [idProducto], 
-    [productoEstante].[idEstante] AS [idEstante], 
-    [productoEstante].[cantidad] AS [cantidad]
+    [productoEstante].[idEstante] AS [idEstante]
     FROM [dbo].[productoEstante] AS [productoEstante]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="proveedorProducto" EntityType="Self.proveedorProducto" store:Type="Tables" store:Schema="dbo">
@@ -443,10 +428,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <End Role="pais" EntitySet="pais" />
             <End Role="proveedor" EntitySet="proveedor" />
           </AssociationSet>
-          <AssociationSet Name="FK_proveedor_producto" Association="Self.FK_proveedor_producto">
-            <End Role="producto" EntitySet="producto" />
-            <End Role="proveedor" EntitySet="proveedor" />
-          </AssociationSet>
           <AssociationSet Name="FK_proveedorProducto_producto" Association="Self.FK_proveedorProducto_producto">
             <End Role="producto" EntitySet="producto" />
             <End Role="proveedorProducto" EntitySet="proveedorProducto" />
@@ -470,9 +451,10 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="nombre" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="detalleFactura" Relationship="Self.FK_detalleFactura_estante" FromRole="estante" ToRole="detalleFactura" />
-          <NavigationProperty Name="productoEstante" Relationship="Self.FK_productoEstante_estante" FromRole="estante" ToRole="productoEstante" />
+          <NavigationProperty Name="producto" Relationship="Self.productoEstante" FromRole="estante" ToRole="producto" />
         </EntityType>
         <EntityType Name="inventario">
           <Key>
@@ -511,27 +493,24 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="costoUnitario" Type="Double" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="TipoCategoria" Relationship="Self.FK_producto_TipoCategoria" FromRole="producto" ToRole="TipoCategoria" />
-          <NavigationProperty Name="productoEstante" Relationship="Self.FK_productoEstante_producto" FromRole="producto" ToRole="productoEstante" />
           <NavigationProperty Name="detalleFactura" Relationship="Self.FK_productoFacturados_producto" FromRole="producto" ToRole="detalleFactura" />
-          <NavigationProperty Name="proveedor" Relationship="Self.FK_proveedor_producto" FromRole="producto" ToRole="proveedor" />
-          <NavigationProperty Name="proveedor1" Relationship="Self.proveedorProducto" FromRole="producto" ToRole="proveedor" />
+          <NavigationProperty Name="estante" Relationship="Self.productoEstante" FromRole="producto" ToRole="estante" />
+          <NavigationProperty Name="proveedor" Relationship="Self.proveedorProducto" FromRole="producto" ToRole="proveedor" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="nombreEmpresa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="direccion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPais" Type="Int32" Nullable="false" />
-          <Property Name="idProducto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="pais" Relationship="Self.FK_proveedor_pais" FromRole="proveedor" ToRole="pais" />
-          <NavigationProperty Name="producto" Relationship="Self.FK_proveedor_producto" FromRole="proveedor" ToRole="producto" />
           <NavigationProperty Name="contactos" Relationship="Self.FK_contactos_proveedor1" FromRole="proveedor" ToRole="contactos" />
           <NavigationProperty Name="detalleFactura" Relationship="Self.FK_detalleFactura_proveedor" FromRole="proveedor" ToRole="detalleFactura" />
-          <NavigationProperty Name="producto1" Relationship="Self.proveedorProducto" FromRole="proveedor" ToRole="producto" />
+          <NavigationProperty Name="producto" Relationship="Self.proveedorProducto" FromRole="proveedor" ToRole="producto" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -557,7 +536,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="producto" Relationship="Self.FK_producto_TipoCategoria" FromRole="TipoCategoria" ToRole="producto" />
         </EntityType>
         <EntityType Name="TipoMovimiento">
@@ -622,18 +601,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
           <NavigationProperty Name="producto" Relationship="Self.FK_productoFacturados_producto" FromRole="detalleFactura" ToRole="producto" />
           <NavigationProperty Name="proveedor" Relationship="Self.FK_detalleFactura_proveedor" FromRole="detalleFactura" ToRole="proveedor" />
         </EntityType>
-        <EntityType Name="productoEstante">
-          <Key>
-            <PropertyRef Name="idProducto" />
-            <PropertyRef Name="idEstante" />
-            <PropertyRef Name="cantidad" />
-          </Key>
-          <Property Name="idProducto" Type="Int32" Nullable="false" />
-          <Property Name="idEstante" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="estante" Relationship="Self.FK_productoEstante_estante" FromRole="productoEstante" ToRole="estante" />
-          <NavigationProperty Name="producto" Relationship="Self.FK_productoEstante_producto" FromRole="productoEstante" ToRole="producto" />
-        </EntityType>
         <Association Name="FK_detalleFactura_estante">
           <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
           <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
@@ -642,18 +609,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="detalleFactura">
-              <PropertyRef Name="idEstante" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_productoEstante_estante">
-          <End Role="estante" Type="Self.estante" Multiplicity="1" />
-          <End Role="productoEstante" Type="Self.productoEstante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estante">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="productoEstante">
               <PropertyRef Name="idEstante" />
             </Dependent>
           </ReferentialConstraint>
@@ -730,18 +685,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_productoEstante_producto">
-          <End Role="producto" Type="Self.producto" Multiplicity="1" />
-          <End Role="productoEstante" Type="Self.productoEstante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="producto">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="productoEstante">
-              <PropertyRef Name="idProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_productoFacturados_producto">
           <End Role="producto" Type="Self.producto" Multiplicity="1" />
           <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
@@ -750,18 +693,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="detalleFactura">
-              <PropertyRef Name="idProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_proveedor_producto">
-          <End Role="producto" Type="Self.producto" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="producto">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="proveedor">
               <PropertyRef Name="idProducto" />
             </Dependent>
           </ReferentialConstraint>
@@ -802,6 +733,10 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="productoEstante">
+          <End Role="estante" Type="Self.estante" Multiplicity="*" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+        </Association>
         <Association Name="proveedorProducto">
           <End Role="producto" Type="Self.producto" Multiplicity="*" />
           <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
@@ -820,14 +755,9 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
           <EntitySet Name="usuario" EntityType="Self.usuario" />
           <EntitySet Name="contactos" EntityType="Self.contactos" />
           <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" />
-          <EntitySet Name="productoEstante" EntityType="Self.productoEstante" />
           <AssociationSet Name="FK_detalleFactura_estante" Association="Self.FK_detalleFactura_estante">
             <End Role="estante" EntitySet="estante" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_productoEstante_estante" Association="Self.FK_productoEstante_estante">
-            <End Role="estante" EntitySet="estante" />
-            <End Role="productoEstante" EntitySet="productoEstante" />
           </AssociationSet>
           <AssociationSet Name="FK_factura_tienda" Association="Self.FK_factura_tienda">
             <End Role="tienda" EntitySet="tienda" />
@@ -853,17 +783,9 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <End Role="TipoCategoria" EntitySet="TipoCategoria" />
             <End Role="producto" EntitySet="producto" />
           </AssociationSet>
-          <AssociationSet Name="FK_productoEstante_producto" Association="Self.FK_productoEstante_producto">
-            <End Role="producto" EntitySet="producto" />
-            <End Role="productoEstante" EntitySet="productoEstante" />
-          </AssociationSet>
           <AssociationSet Name="FK_productoFacturados_producto" Association="Self.FK_productoFacturados_producto">
             <End Role="producto" EntitySet="producto" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_proveedor_producto" Association="Self.FK_proveedor_producto">
-            <End Role="producto" EntitySet="producto" />
-            <End Role="proveedor" EntitySet="proveedor" />
           </AssociationSet>
           <AssociationSet Name="FK_contactos_proveedor1" Association="Self.FK_contactos_proveedor1">
             <End Role="proveedor" EntitySet="proveedor" />
@@ -876,6 +798,10 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
           <AssociationSet Name="FK_usuario_tipoUsuario" Association="Self.FK_usuario_tipoUsuario">
             <End Role="tipoUsuario" EntitySet="tipoUsuario" />
             <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="productoEstante" Association="Self.productoEstante">
+            <End Role="estante" EntitySet="estante" />
+            <End Role="producto" EntitySet="producto" />
           </AssociationSet>
           <AssociationSet Name="proveedorProducto" Association="Self.proveedorProducto">
             <End Role="producto" EntitySet="producto" />
@@ -892,6 +818,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
             <EntityTypeMapping TypeName="sellyModel.estante">
               <MappingFragment StoreEntitySet="estante">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -940,7 +867,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idPais" ColumnName="idPais" />
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1024,15 +950,14 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="productoEstante">
-            <EntityTypeMapping TypeName="sellyModel.productoEstante">
-              <MappingFragment StoreEntitySet="productoEstante">
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-                <ScalarProperty Name="idEstante" ColumnName="idEstante" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="productoEstante" TypeName="sellyModel.productoEstante" StoreEntitySet="productoEstante">
+            <EndProperty Name="estante">
+              <ScalarProperty Name="id" ColumnName="idEstante" />
+            </EndProperty>
+            <EndProperty Name="producto">
+              <ScalarProperty Name="id" ColumnName="idProducto" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="proveedorProducto" TypeName="sellyModel.proveedorProducto" StoreEntitySet="proveedorProducto">
             <EndProperty Name="producto">
               <ScalarProperty Name="id" ColumnName="idProducto" />

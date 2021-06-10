@@ -22,9 +22,16 @@ namespace Infraestructure.Repository
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
                 }
             }
+        }
+
+        public TipoCategoria obtenerCategoriaPorID(int idProducto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

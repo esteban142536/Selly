@@ -4,35 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7d7032b57eb4f559f4102689af5fd4e" Name="Diagram1">
-        <EntityTypeShape EntityType="sellyModel.estante" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.inventario" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.pais" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.producto" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.proveedor" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.tienda" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.TipoCategoria" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.TipoMovimiento" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.tipoUsuario" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.usuario" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.contactos" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.detalleFactura" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.productoEstante" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="145def3b15dc410f88c8ee5b07d9d66e" Name="Diagram1">
+        <EntityTypeShape EntityType="sellyModel.estante" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.inventario" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.pais" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.producto" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.proveedor" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.tienda" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.TipoCategoria" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.TipoMovimiento" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.tipoUsuario" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.usuario" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.contactos" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.detalleFactura" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="sellyModel.FK_detalleFactura_estante" ManuallyRouted="false" />
-        <AssociationConnector Association="sellyModel.FK_productoEstante_estante" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_factura_tienda" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_factura_usuario" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_inventario_TipoMovimiento" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_productoFacturados_factura" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_proveedor_pais" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_producto_TipoCategoria" ManuallyRouted="false" />
-        <AssociationConnector Association="sellyModel.FK_productoEstante_producto" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_productoFacturados_producto" ManuallyRouted="false" />
-        <AssociationConnector Association="sellyModel.FK_proveedor_producto" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_contactos_proveedor1" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_detalleFactura_proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_usuario_tipoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="sellyModel.productoEstante" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.proveedorProducto" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

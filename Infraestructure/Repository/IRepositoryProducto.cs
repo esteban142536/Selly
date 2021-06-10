@@ -10,5 +10,7 @@ namespace Infraestructure.Repository
    public interface IRepositoryProducto
     {
         void guardarProducto(producto producto);
+
+        IEnumerable<producto> listadoProducto();
     }
 }

@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
     public interface IServiseProducto
     {
         void guardarProducto(producto producto);
+        IEnumerable<producto> listadoProducto();
     }
 }

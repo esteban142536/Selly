@@ -19,22 +19,20 @@ namespace Infraestructure.Models
         {
             this.contactos = new HashSet<contactos>();
             this.detalleFactura = new HashSet<detalleFactura>();
-            this.producto1 = new HashSet<producto>();
+            this.producto = new HashSet<producto>();
         }
     
         public string nombreEmpresa { get; set; }
         public string direccion { get; set; }
         public int id { get; set; }
         public int idPais { get; set; }
-        public int idProducto { get; set; }
     
         public virtual pais pais { get; set; }
-        public virtual producto producto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contactos> contactos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<producto> producto1 { get; set; }
+        public virtual ICollection<producto> producto { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace proyecto.Controllers
             return View();
         }
 
-        public ActionResult ingresarProducto(producto produ, String categoria)
+        public ActionResult ingresarProducto(producto produ)
         {
             if (produ==null) {
                 return View();
@@ -31,6 +31,12 @@ namespace proyecto.Controllers
             ServiseTipoCategoria.asignarCategoria(tc);
             serviseProducto.guardarProducto(produ);
             return View();
+        }
+
+        public ActionResult detallesProductos() {
+           
+
+            return View(serviseProducto.listadoProducto());
         }
 
     }

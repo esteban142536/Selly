@@ -206,3 +206,5 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\Web.csproj.CopyComplete
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\proyecto.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\proyecto.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.xml

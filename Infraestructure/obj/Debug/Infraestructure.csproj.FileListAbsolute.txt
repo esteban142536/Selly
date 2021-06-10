@@ -22,3 +22,5 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructu
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\log4net.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\log4net.xml

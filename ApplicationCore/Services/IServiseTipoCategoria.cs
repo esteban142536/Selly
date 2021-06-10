@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
    public interface IServiseTipoCategoria
     {
         void asignarCategoria(TipoCategoria tc);
+        TipoCategoria obtenerCategoriaPorID(int idProducto);
     }
 }

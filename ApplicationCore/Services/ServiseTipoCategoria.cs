@@ -15,5 +15,10 @@ namespace ApplicationCore.Services
             IRepositoryTipoCategoria reposi = new RepositoryTipoCategoria();
             reposi.asignarCategoria(tc);
         }
+
+        public TipoCategoria obtenerCategoriaPorID(int idProducto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

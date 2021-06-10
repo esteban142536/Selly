@@ -20,3 +20,5 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCo
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCore\obj\Debug\ApplicationCore.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\ApplicationCore\bin\Debug\log4net.xml

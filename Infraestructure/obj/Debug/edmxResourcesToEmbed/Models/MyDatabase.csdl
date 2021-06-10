@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sellyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="estante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="nombre" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="detalleFactura" Relationship="Self.FK_detalleFactura_estante" FromRole="estante" ToRole="detalleFactura" />
+    <NavigationProperty Name="producto" Relationship="Self.productoEstante" FromRole="estante" ToRole="producto" />
+  </EntityType>
+  <EntityType Name="inventario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="idTienda" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="totalPagado" Type="Double" />
+    <Property Name="comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="iva" Type="Double" />
+    <Property Name="idTipoMovimiento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tienda" Relationship="Self.FK_factura_tienda" FromRole="inventario" ToRole="tienda" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_factura_usuario" FromRole="inventario" ToRole="usuario" />
+    <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK_inventario_TipoMovimiento" FromRole="inventario" ToRole="TipoMovimiento" />
+    <NavigationProperty Name="detalleFactura" Relationship="Self.FK_productoFacturados_factura" FromRole="inventario" ToRole="detalleFactura" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="proveedor" Relationship="Self.FK_proveedor_pais" FromRole="pais" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="totalStock" Type="Int32" Nullable="false" />
+    <Property Name="cantMaxima" Type="Int32" Nullable="false" />
+    <Property Name="cantMinima" Type="Int32" Nullable="false" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="costoUnitario" Type="Double" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="TipoCategoria" Relationship="Self.FK_producto_TipoCategoria" FromRole="producto" ToRole="TipoCategoria" />
+    <NavigationProperty Name="detalleFactura" Relationship="Self.FK_productoFacturados_producto" FromRole="producto" ToRole="detalleFactura" />
+    <NavigationProperty Name="estante" Relationship="Self.productoEstante" FromRole="producto" ToRole="estante" />
+    <NavigationProperty Name="proveedor" Relationship="Self.proveedorProducto" FromRole="producto" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombreEmpresa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPais" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pais" Relationship="Self.FK_proveedor_pais" FromRole="proveedor" ToRole="pais" />
+    <NavigationProperty Name="contactos" Relationship="Self.FK_contactos_proveedor1" FromRole="proveedor" ToRole="contactos" />
+    <NavigationProperty Name="detalleFactura" Relationship="Self.FK_detalleFactura_proveedor" FromRole="proveedor" ToRole="detalleFactura" />
+    <NavigationProperty Name="producto" Relationship="Self.proveedorProducto" FromRole="proveedor" ToRole="producto" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tienda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="inventario" Relationship="Self.FK_factura_tienda" FromRole="tienda" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="TipoCategoria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="producto" Relationship="Self.FK_producto_TipoCategoria" FromRole="TipoCategoria" ToRole="producto" />
+  </EntityType>
+  <EntityType Name="TipoMovimiento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tipoSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipoEntrada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventario" Relationship="Self.FK_inventario_TipoMovimiento" FromRole="TipoMovimiento" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="tipoUsuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="permisoUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_tipoUsuario" FromRole="tipoUsuario" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="esActivo" Type="Boolean" Nullable="false" />
+    <Property Name="idTipoUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="inventario" Relationship="Self.FK_factura_usuario" FromRole="usuario" ToRole="inventario" />
+    <NavigationProperty Name="tipoUsuario" Relationship="Self.FK_usuario_tipoUsuario" FromRole="usuario" ToRole="tipoUsuario" />
+  </EntityType>
+  <EntityType Name="contactos">
+    <Key>
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="numero" />
+      <PropertyRef Name="correo" />
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero" Type="Int32" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProveedor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="proveedor" Relationship="Self.FK_contactos_proveedor1" FromRole="contactos" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="detalleFactura">
+    <Key>
+      <PropertyRef Name="idProducto" />
+      <PropertyRef Name="idInventario" />
+      <PropertyRef Name="precio" />
+      <PropertyRef Name="cantidadComprada" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="idInventario" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="cantidadComprada" Type="Int32" Nullable="false" />
+    <Property Name="idEstante" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="idProveedor" Type="Int32" />
+    <NavigationProperty Name="estante" Relationship="Self.FK_detalleFactura_estante" FromRole="detalleFactura" ToRole="estante" />
+    <NavigationProperty Name="inventario" Relationship="Self.FK_productoFacturados_factura" FromRole="detalleFactura" ToRole="inventario" />
+    <NavigationProperty Name="producto" Relationship="Self.FK_productoFacturados_producto" FromRole="detalleFactura" ToRole="producto" />
+    <NavigationProperty Name="proveedor" Relationship="Self.FK_detalleFactura_proveedor" FromRole="detalleFactura" ToRole="proveedor" />
+  </EntityType>
+  <Association Name="FK_detalleFactura_estante">
+    <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
+    <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleFactura">
+        <PropertyRef Name="idEstante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_factura_tienda">
+    <End Role="tienda" Type="Self.tienda" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tienda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="idTienda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_factura_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventario_TipoMovimiento">
+    <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMovimiento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="idTipoMovimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productoFacturados_factura">
+    <End Role="inventario" Type="Self.inventario" Multiplicity="1" />
+    <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleFactura">
+        <PropertyRef Name="idInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proveedor_pais">
+    <End Role="pais" Type="Self.pais" Multiplicity="1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="idPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_TipoCategoria">
+    <End Role="TipoCategoria" Type="Self.TipoCategoria" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCategoria">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productoFacturados_producto">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleFactura">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contactos_proveedor1">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="contactos" Type="Self.contactos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contactos">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detalleFactura_proveedor">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+    <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleFactura">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_tipoUsuario">
+    <End Role="tipoUsuario" Type="Self.tipoUsuario" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idTipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productoEstante">
+    <End Role="estante" Type="Self.estante" Multiplicity="*" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+  </Association>
+  <Association Name="proveedorProducto">
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="sellyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="estante" EntityType="Self.estante" />
+    <EntitySet Name="inventario" EntityType="Self.inventario" />
+    <EntitySet Name="pais" EntityType="Self.pais" />
+    <EntitySet Name="producto" EntityType="Self.producto" />
+    <EntitySet Name="proveedor" EntityType="Self.proveedor" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tienda" EntityType="Self.tienda" />
+    <EntitySet Name="TipoCategoria" EntityType="Self.TipoCategoria" />
+    <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" />
+    <EntitySet Name="tipoUsuario" EntityType="Self.tipoUsuario" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="contactos" EntityType="Self.contactos" />
+    <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" />
+    <AssociationSet Name="FK_detalleFactura_estante" Association="Self.FK_detalleFactura_estante">
+      <End Role="estante" EntitySet="estante" />
+      <End Role="detalleFactura" EntitySet="detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_factura_tienda" Association="Self.FK_factura_tienda">
+      <End Role="tienda" EntitySet="tienda" />
+      <End Role="inventario" EntitySet="inventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_factura_usuario" Association="Self.FK_factura_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="inventario" EntitySet="inventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventario_TipoMovimiento" Association="Self.FK_inventario_TipoMovimiento">
+      <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
+      <End Role="inventario" EntitySet="inventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productoFacturados_factura" Association="Self.FK_productoFacturados_factura">
+      <End Role="inventario" EntitySet="inventario" />
+      <End Role="detalleFactura" EntitySet="detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proveedor_pais" Association="Self.FK_proveedor_pais">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_TipoCategoria" Association="Self.FK_producto_TipoCategoria">
+      <End Role="TipoCategoria" EntitySet="TipoCategoria" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productoFacturados_producto" Association="Self.FK_productoFacturados_producto">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="detalleFactura" EntitySet="detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contactos_proveedor1" Association="Self.FK_contactos_proveedor1">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="contactos" EntitySet="contactos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detalleFactura_proveedor" Association="Self.FK_detalleFactura_proveedor">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="detalleFactura" EntitySet="detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_tipoUsuario" Association="Self.FK_usuario_tipoUsuario">
+      <End Role="tipoUsuario" EntitySet="tipoUsuario" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="productoEstante" Association="Self.productoEstante">
+      <End Role="estante" EntitySet="estante" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="proveedorProducto" Association="Self.proveedorProducto">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
