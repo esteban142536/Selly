@@ -38,5 +38,6 @@ namespace Infraestructure.Models
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<detalleFactura> detalleFactura { get; set; }
+        public virtual DbSet<productoEstante> productoEstante { get; set; }
     }
 }

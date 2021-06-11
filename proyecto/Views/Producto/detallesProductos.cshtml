@@ -9,59 +9,26 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.totalStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantMaxima)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantMinima)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoUnitario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.totalStock)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cantMaxima)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cantMinima)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.costoUnitario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.descripcion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)
-    </td>
-    @foreach (var itemProve in item.proveedor)
-    {
-        <td>
-            @Html.DisplayFor(modelItem => itemProve.nombreEmpresa)
-        </td>
-    }
-    </tr>
-}
+<div class="col-lg-9">
+    <div id="resultado" class="row">
+        @foreach (var item in Model)
+        {
 
-</table>
+            <div class="col-sm-3">
+                <div class="card" style="width: 12rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"> @Html.DisplayNameFor(model => model.TipoCategoria): @Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</h6>
+                        <p class="card-text">   @Html.DisplayNameFor(model => model.costoUnitario):  @Html.DisplayFor(modelItem => item.costoUnitario)</p>
+                        |@Html.ActionLink("Ver detalles", "detalleEstecifico", new { id = item.id })
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,56 @@
+﻿@model Infraestructure.Models.inventario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>inventario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPagado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idTipoMovimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idTipoMovimiento)
+        </dd>
+
+    </dl>
+</div>

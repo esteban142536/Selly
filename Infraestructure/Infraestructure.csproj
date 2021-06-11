@@ -71,6 +71,7 @@
     <Compile Include="Models\inventario.cs">
       <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyMetadata.cs" />
     <Compile Include="Models\MyDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +91,9 @@
       <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\producto.cs">
+      <DependentUpon>MyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\productoEstante.cs">
       <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proveedor.cs">
@@ -114,11 +118,15 @@
       <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryInventario.cs" />
     <Compile Include="Repository\IRepositoryProducto.cs" />
+    <Compile Include="Repository\IRepositoryProveedor.cs" />
     <Compile Include="Repository\IRepositoryTipoCategoria.cs" />
     <Compile Include="Repository\IRepositoryTipoUsuario.cs" />
     <Compile Include="Repository\IRepositoryUsuario.cs" />
+    <Compile Include="Repository\RepositoryInventario.cs" />
     <Compile Include="Repository\RepositoryProducto.cs" />
+    <Compile Include="Repository\RepositoryProveedor.cs" />
     <Compile Include="Repository\RepositoryTipoCategoria.cs" />
     <Compile Include="Repository\RepositoryTipoUsuario.cs" />
     <Compile Include="Repository\RepositoryUsuario.cs" />

@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
-   public interface IRepositoryProducto
+   public interface IRepositoryProveedor
     {
-        void guardarProducto(producto producto);
+        IEnumerable<proveedor> listadoProveedor();
 
-        IEnumerable<producto> listadoProducto();
-
-        producto obtenerProductoID(int id);
+        proveedor obtenerProveedorID(int id);
     }
 }

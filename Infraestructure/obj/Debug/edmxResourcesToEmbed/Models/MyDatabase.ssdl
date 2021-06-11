@@ -27,16 +27,15 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <Property Name="idInventario" Type="int" Nullable="false" />
     <Property Name="precio" Type="float" Nullable="false" />
     <Property Name="cantidadComprada" Type="int" Nullable="false" />
-    <Property Name="idEstante" Type="varchar" MaxLength="15" />
+    <Property Name="idEstante" Type="int" />
     <Property Name="idProveedor" Type="int" />
   </EntityType>
   <EntityType Name="estante">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="cantidad" Type="nchar" MaxLength="10" />
-    <Property Name="nombre" Type="varbinary" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
   </EntityType>
   <EntityType Name="inventario">
     <Key>
@@ -80,7 +79,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.productoEstante' no tiene definida
       <PropertyRef Name="idEstante" />
     </Key>
     <Property Name="idProducto" Type="int" Nullable="false" />
-    <Property Name="idEstante" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="idEstante" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="proveedor">
     <Key>
@@ -366,6 +366,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
     <EntitySet Name="productoEstante" EntityType="Self.productoEstante" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [productoEstante].[idProducto] AS [idProducto], 
+    [productoEstante].[cantidad] AS [cantidad], 
     [productoEstante].[idEstante] AS [idEstante]
     FROM [dbo].[productoEstante] AS [productoEstante]</DefiningQuery>
     </EntitySet>

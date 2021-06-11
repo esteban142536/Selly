@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\IServiseInventario.cs" />
+    <Compile Include="Services\IServiseProveedor.cs" />
+    <Compile Include="Services\ServiseInventario.cs" />
+    <Compile Include="Services\ServiseProveedor.cs" />
     <Compile Include="Utils\Cryptography.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceTipoUsuario.cs" />

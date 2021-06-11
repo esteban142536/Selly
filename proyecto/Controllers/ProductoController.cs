@@ -39,5 +39,13 @@ namespace proyecto.Controllers
             return View(serviseProducto.listadoProducto());
         }
 
+        public ActionResult detalleEstecifico(int id)
+        {
+            producto pro = serviseProducto.obtenerProductoID(id);
+
+            return View(pro);
+        }
+
+
     }
 }

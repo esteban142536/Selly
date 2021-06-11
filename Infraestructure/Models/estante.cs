@@ -18,16 +18,15 @@ namespace Infraestructure.Models
         public estante()
         {
             this.detalleFactura = new HashSet<detalleFactura>();
-            this.producto = new HashSet<producto>();
+            this.productoEstante = new HashSet<productoEstante>();
         }
     
-        public string id { get; set; }
-        public string cantidad { get; set; }
-        public byte[] nombre { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<producto> producto { get; set; }
+        public virtual ICollection<productoEstante> productoEstante { get; set; }
     }
 }

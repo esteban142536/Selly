@@ -31,6 +31,7 @@ namespace Infraestructure.Repository
 
         public TipoCategoria obtenerCategoriaPorID(int idProducto)
         {
+            //cdt.Configuration.LazyLoadingEnabled = false;
             throw new NotImplementedException();
         }
     }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Services
 {
-    public interface IServiseProducto
+   public interface IServiseInventario
     {
-        void guardarProducto(producto producto);
-        IEnumerable<producto> listadoProducto();
-        producto obtenerProductoID(int id);
+        IEnumerable<inventario> listadoInventario();
+
+        inventario obtenerInventarioID(int id);
     }
 }

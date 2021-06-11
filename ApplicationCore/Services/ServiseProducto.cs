@@ -23,5 +23,10 @@ namespace ApplicationCore.Services
         {
             return repo.listadoProducto();
         }
+
+        public producto obtenerProductoID(int id)
+        {
+            return repo.obtenerProductoID(id);
+        }
     }
 }

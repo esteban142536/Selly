@@ -3,48 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
-    public class RepositoryProducto : IRepositoryProducto
+    public class RepositoryInventario : IRepositoryInventario
     {
-        public void guardarProducto(producto producto)
+        public IEnumerable<inventario> listadoInventario()
         {
-
+            IEnumerable<inventario> lista = null;
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
 
                 try
                 {
-                    cdt.producto.Add(producto);
-                    cdt.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    string mensaje = "";
-                    Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
-                    throw;
-                }
-            }
-
-        }
-
-        public IEnumerable<producto> listadoProducto()
-        {
-            IEnumerable<producto> lista=null;
-            IEnumerable<proveedor> listaproveedor = null;
-
-            using (contextData cdt = new contextData())
-            {
-                cdt.Configuration.LazyLoadingEnabled = false;
-
-                try
-                {
-
-                    lista = cdt.producto.Include(x=>x.TipoCategoria).ToList();
+                    lista = cdt.inventario.Include(x => x.TipoMovimiento).ToList();
                     return lista;
-
                 }
                 catch (Exception ex)
                 {
@@ -55,16 +31,25 @@ namespace Infraestructure.Repository
             }
         }
 
-        public producto obtenerProductoID(int id)
+        public inventario obtenerInventarioID(int id)
         {
-            producto producto = null;
+
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
-                producto = cdt.producto.Include(x => x.TipoCategoria).Include(x=>x.proveedor).Include(x => x.productoEstante).Include("productoEstante.estante")
-                    .Where(x => x.id == id).FirstOrDefault();
+
+                try
+                {
+                    return cdt.inventario.Include(x => x.TipoMovimiento).Include(x => x.usuario).Include(x => x.tienda).FirstOrDefault();
+                    
+                }
+                catch (Exception ex)
+                {
+                    string mensaje = "";
+                    Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
             }
-            return producto;
-            }
+        }
     }
 }

@@ -22,43 +22,13 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        @Html.ActionLink("Prueba registro", "escritura", "Usuario", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Listado y detalle de productos", "detallesProductos", "Producto", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Prueba inicio sesion", "Index", "Usuario", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Listado y detalle de proveedores", "Index", "Proveedor", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-
-                        <!-- aqui se valida si el usuario es administrador -->
-                        @{
-                            Object sesion = Session["UserType"];
-                            if (sesion != null)
-                            {
-                                int usua = int.Parse(sesion.ToString());
-                                if (usua == 1)
-                                {
-                                    <a class="nav-link" href="#">esto esta funcionando</a>
-                                }
-
-                            }
-
-                        }
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Acerca de ", "About", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
+                        @Html.ActionLink("Listado de entradas y salidas de inventario", "Index", "Inventario", null, new { @class = "nav-link" })
                     </li>
                 </ul>
                 <form class="d-flex">

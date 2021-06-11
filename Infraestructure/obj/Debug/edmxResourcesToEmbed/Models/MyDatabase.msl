@@ -5,7 +5,6 @@
       <EntityTypeMapping TypeName="sellyModel.estante">
         <MappingFragment StoreEntitySet="estante">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -137,14 +136,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="productoEstante" TypeName="sellyModel.productoEstante" StoreEntitySet="productoEstante">
-      <EndProperty Name="estante">
-        <ScalarProperty Name="id" ColumnName="idEstante" />
-      </EndProperty>
-      <EndProperty Name="producto">
-        <ScalarProperty Name="id" ColumnName="idProducto" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="productoEstante">
+      <EntityTypeMapping TypeName="sellyModel.productoEstante">
+        <MappingFragment StoreEntitySet="productoEstante">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="proveedorProducto" TypeName="sellyModel.proveedorProducto" StoreEntitySet="proveedorProducto">
       <EndProperty Name="producto">
         <ScalarProperty Name="id" ColumnName="idProducto" />
