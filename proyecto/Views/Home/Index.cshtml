@@ -1,38 +1,107 @@
 ﻿
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Menu administrador";
 }
 
 
+<div class="row" style="margin-top:3%;">
+    <div class="col-md-4">
+        <div class="card border-success mb-3" style="height:92%">
+            <div class="card-header">Cantidad total de productos</div>
+            <div class="card-body">
+                <p class="card-text">Hasta la fecha de hoy 28 de Mayo del 2021 se han registrado 250.000 producto</p>
+                <button type="button" class="btn btn-success btn-sm" >Más detalles</button>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="card border-success mb-3">
+            <div class="card-header">Cantidad de entradas registradas</div>
+            <div class="card-body">
+                <p class="card-text">Fecha: 28/05/2021 </p>
+                <p class="card-text">Se han registrado 988.698.369 entradas </p>
+                <button type="button" class="btn btn-success btn-sm">Más detalles</button>
+            </div>
+        </div>
+    </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="col-md-4">
+        <div class="card border-success mb-3">
+            <div class="card-header">Cantidad de salidas</div>
+            <div class="card-body">
+                <p class="card-text">Fecha: 28/05/2021 </p>
+                <p class="card-text">Se han registrado 895.325.235 salidas </p>
+                <button type="button" class="btn btn-success btn-sm">Más detalles</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+<table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
+    <thead class="table-success">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Camtidad</th>
+            <th scope="col">Costo (Colones)</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
 
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td> Sartén</td>
+            <td>Articulo del hogar</td>
+            <td>2</td>
+            <td>14.000</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">Detalle</button>
+            </th>
+        </tr>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-
-</div>
+        <tr>
+            <td>2</td>
+            <td>Audífonos</td>
+            <td>Tecnología</td>
+            <td>10</td>
+            <td>8000</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">Detalle</button>
+            </th>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Estuche celular</td>
+            <td>Tecnología</td>
+            <td>2</td>
+            <td>5000</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">Detalle</button>
+            </th>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Jueguete de Paw Patrol</td>
+            <td>Jueguete</td>
+            <td>5</td>
+            <td>23.000</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">Detalle</button>
+            </th>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Blusa</td>
+            <td>Moda</td>
+            <td>5</td>
+            <td>12.000</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">Detalle</button>
+            </th>
+        </tr>
+    </tbody>
+</table>

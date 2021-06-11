@@ -1,21 +1,30 @@
 ﻿@model Infraestructure.Models.usuario
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio de sesión";
 }
 
 <h2>Index</h2>
 
 <div>
     <form method="post">
-        <h4>usuario</h4>
-        <br />
+        <img class="imagen_Logo"
+             src="~/Imagenes/Logo.PNG"
+             alt="No se encuentra la imagen" />
+
+        <h2>¡Te damos la bienvenida!</h2>
+        <h3>Inicio de Sesión con tu cuenta Selly</h3>
+
         <p>Email</p>
         @Html.TextBoxFor(x => x.email)
         <br />
-        <p>clave</p>
-        @Html.TextBoxFor(x=>x.clave)
+        <p>Contraseña</p>
+        @Html.TextBoxFor(x => x.clave)
         <input type="submit" value="Submit" />
+
+        <a href="~/Views/Usuario/escritura.cshtml">¿No tienes cuenta? Create uno</a>
+        </br>
+        <button type="button" class="btn btn-success">Acceder</button>
     </form>
 
 

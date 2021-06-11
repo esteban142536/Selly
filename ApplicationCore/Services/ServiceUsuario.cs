@@ -1,5 +1,4 @@
-﻿using ApplicationCore.Utils;
-using Infraestructure.Models;
+﻿using Infraestructure.Models;
 using Infraestructure.Repository;
 using System;
 using System.Collections.Generic;
@@ -15,14 +14,12 @@ namespace ApplicationCore.Services
         public usuario logIn(string email, string clave)
         {
             IRepositoryUsuario reposi = new RepositoryUsuario();
-            string crytclave = Cryptography.EncrypthAES(clave);
-            return reposi.logIn(email, crytclave);
+            return reposi.logIn(email,clave);
         }
 
         public void SignIn(usuario usuario)
         {
             IRepositoryUsuario reposi = new RepositoryUsuario();
-            usuario.clave = Cryptography.EncrypthAES(usuario.clave);
             reposi.SignIn(usuario);
         }
     }
