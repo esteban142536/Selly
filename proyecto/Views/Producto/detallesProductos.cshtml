@@ -4,14 +4,11 @@
     ViewBag.Title = "detallesProductos";
 }
 
-<h2>detallesProductos</h2>
+<h2>Lista de productos registrados</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <div class="col-lg-9">
-    <div id="resultado" class="row">
+    <div class="row">
         @foreach (var item in Model)
         {
 
@@ -21,8 +18,8 @@
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
                         <h6 class="card-subtitle mb-2 text-muted"> @Html.DisplayNameFor(model => model.TipoCategoria): @Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</h6>
-                        <p class="card-text">   @Html.DisplayNameFor(model => model.costoUnitario):  @Html.DisplayFor(modelItem => item.costoUnitario)</p>
-                        |@Html.ActionLink("Ver detalles", "detalleEstecifico", new { id = item.id })
+                        <p class="card-text">   @Html.DisplayNameFor(model => model.costoUnitario): &#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</p>
+                        @Html.ActionLink("Ver detalles", "detalleEstecifico", new { id = item.id })
                     </div>
                 </div>
             </div>

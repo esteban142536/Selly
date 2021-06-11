@@ -4,52 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista de inventarios</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoMovimiento.tipoSalida)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idTienda)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.totalPagado)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.TipoMovimiento.tipoEntrada)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TipoMovimiento.tipoSalida)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.idTienda)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.fecha)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.totalPagado)
-    </td>
-    <td>
-        @Html.ActionLink("Detallar informacion de inventario", "Details", new { id = item.id })
-    </td>
-</tr>
-}
+<div class="col-lg-9">
+    <div class="row">
+        @foreach (var item in Model)
+        {
 
-</table>
+            <div class="col-sm-3">
+                <div class="card" style="width: 12rem;">
+
+                    <div class="card-body">
+                        <h6 class="card-text"> Tipo de entrada: @Html.DisplayFor(modelItem => item.TipoMovimiento.tipoEntrada)</h6>
+                        <h6 class="card-text"> Tipo de salida: @Html.DisplayFor(modelItem => item.TipoMovimiento.tipoSalida)</h6>
+
+                        <h6 class="card-text"> @Html.DisplayNameFor(model => model.fecha): @Html.DisplayFor(modelItem => item.fecha)</h6>
+                        <br />
+                        <h6 class="card-text"> @Html.DisplayNameFor(model => model.totalPagado): &#8353;@Html.DisplayFor(modelItem => item.totalPagado)</h6>
+                        @Html.ActionLink("Detallar proveedor", "Details", new { id = item.id })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

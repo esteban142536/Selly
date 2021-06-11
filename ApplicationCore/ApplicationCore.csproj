@@ -53,11 +53,8 @@
     <Compile Include="Services\IServiseTipoCategoria.cs" />
     <Compile Include="Services\ServiceTipoUsuario.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
-<<<<<<< HEAD
     <Compile Include="Services\ServiseProducto.cs" />
     <Compile Include="Services\ServiseTipoCategoria.cs" />
-=======
->>>>>>> Grafico
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">

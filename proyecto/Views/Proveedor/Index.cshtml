@@ -4,37 +4,26 @@
     ViewBag.Title = "Listado de proveedores";
 }
 
-<h2>Index</h2>
+<h2>Listado de proveedores</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombreEmpresa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idPais)
-        </th>
-        <th></th>
-    </tr>
+    <div class="col-lg-9">
+        <div class="row">
+            @foreach (var item in Model)
+            {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreEmpresa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.direccion)
-        </td>
-        <td>
-            @Html.ActionLink("Ver informacion del proveedor", "Details", new { id=item.id })
-        </td>
-    </tr>
-}
+                <div class="col-sm-3">
+                    <div class="card" style="width: 12rem;">
 
-</table>
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombreEmpresa)</h5>
+                            <h6 class="card-text"> @Html.DisplayNameFor(model => model.direccion): @Html.DisplayFor(modelItem => item.direccion)</h6>
+
+                            @Html.ActionLink("Detallar proveedor", "Details", new { id = item.id })
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+

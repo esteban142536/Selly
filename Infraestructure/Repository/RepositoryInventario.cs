@@ -40,7 +40,7 @@ namespace Infraestructure.Repository
 
                 try
                 {
-                    return cdt.inventario.Include(x => x.TipoMovimiento).Include(x => x.usuario).Include(x => x.tienda).FirstOrDefault();
+                    return cdt.inventario.Include(x => x.TipoMovimiento).Include(x => x.usuario).Include(x => x.tienda).Where(x=>x.id==id).FirstOrDefault();
                     
                 }
                 catch (Exception ex)

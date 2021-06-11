@@ -4,7 +4,7 @@
     ViewBag.Title = "Detalle de proveedor";
 }
 
-<h2>Details</h2>
+<h2>Detalles del proveedor</h2>
 
 <div>
     <h4>proveedor</h4>
@@ -33,22 +33,29 @@
         <dd>
             @Html.DisplayFor(model => model.pais.nombre)
         </dd>
-        <p>Contactos del proveedor</p>
-        </br>
+
+        <hr />
+        <b>Contactos del proveedor</b>
         @foreach (var pro in Model.contactos)
         {
             <li>
-                <b>@Html.DisplayNameFor(model => pro.nombre):</b>
+                <b>
+                    @Html.DisplayNameFor(model => pro.nombre):
+                </b>
                 @Html.DisplayFor(model => pro.nombre)
+
                 <br />
-                <b>@Html.DisplayNameFor(model => pro.numero):</b>
+                <b>
+                    @Html.DisplayNameFor(model => pro.numero):
+                </b>
                 @Html.DisplayFor(model => pro.numero)
+
                 <br />
             </li>
         }
 
-        <p>Productos entregador por este proveedor</p>
-        </br>
+        <hr />
+        <b>Productos entregador por este proveedor</b>
         @foreach (var pro in Model.producto)
         {
             <li>
@@ -63,7 +70,4 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

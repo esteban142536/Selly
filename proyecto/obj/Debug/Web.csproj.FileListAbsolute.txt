@@ -1,107 +1,3 @@
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\proyecto.dll.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\proyecto.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\proyecto.pdb
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csc.exe
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csc.exe.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csc.rsp
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csi.exe
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csi.exe.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\csi.rsp
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.AppContext.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Console.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.IO.Compression.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Net.Http.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Net.Sockets.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.ValueTuple.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Xml.XPath.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\vbc.exe
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\vbc.exe.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\vbc.rsp
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\VBCSCompiler.exe
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Antlr3.Runtime.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\ApplicationCore.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Infraestructure.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Newtonsoft.Json.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Net.Http.Formatting.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Helpers.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Http.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Http.WebHost.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Mvc.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Optimization.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Razor.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.Razor.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\WebGrease.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\ApplicationCore.pdb
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Infraestructure.pdb
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Helpers.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Mvc.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Optimization.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Razor.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.WebPages.Razor.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Newtonsoft.Json.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Antlr3.Runtime.pdb
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Net.Http.Formatting.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Http.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\System.Web.Http.WebHost.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Helpers.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Mvc.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Optimization.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Razor.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.WebPages.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Net.Http.Formatting.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Http.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\obj\Debug\Web.csprojAssemblyReference.cache
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\obj\Debug\Web.csproj.CoreCompileInputs.cache
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\obj\Debug\Web.csproj.CopyComplete
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\obj\Debug\proyecto.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\obj\Debug\proyecto.pdb
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\EntityFramework.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\EntityFramework.SqlServer.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\Infraestructure.dll.config
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\EntityFramework.xml
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\proyecto\bin\EntityFramework.SqlServer.xml
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\proyecto.dll.config
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\proyecto.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\proyecto.pdb
@@ -159,6 +55,7 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\EntityFramework.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\EntityFramework.SqlServer.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\Infraestructure.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\Newtonsoft.Json.dll
@@ -178,6 +75,7 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\Infraestructure.dll.config
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\EntityFramework.xml
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\EntityFramework.SqlServer.xml
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.xml
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\System.Web.Helpers.xml
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\System.Web.Mvc.xml
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\System.Web.Optimization.xml
@@ -206,112 +104,3 @@ C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\Web.csproj.CopyComplete
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\proyecto.dll
 C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\obj\Debug\proyecto.pdb
-<<<<<<< HEAD
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.dll
-C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\proyecto\bin\log4net.xml
-=======
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\proyecto.dll.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\proyecto.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\proyecto.pdb
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csc.exe
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csc.exe.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csc.rsp
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csi.exe
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csi.exe.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\csi.rsp
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.AppContext.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Console.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.IO.Compression.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Net.Http.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Net.Sockets.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.ValueTuple.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Xml.XPath.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\vbc.exe
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\vbc.exe.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\vbc.rsp
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\VBCSCompiler.exe
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Antlr3.Runtime.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\ApplicationCore.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\EntityFramework.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\EntityFramework.SqlServer.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Infraestructure.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Newtonsoft.Json.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Net.Http.Formatting.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Helpers.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Http.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Http.WebHost.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Mvc.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Optimization.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Razor.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.Razor.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\WebGrease.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\ApplicationCore.pdb
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Infraestructure.pdb
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Infraestructure.dll.config
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\EntityFramework.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\EntityFramework.SqlServer.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Helpers.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Mvc.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Optimization.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Razor.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.WebPages.Razor.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Newtonsoft.Json.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Antlr3.Runtime.pdb
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Net.Http.Formatting.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Http.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\System.Web.Http.WebHost.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Helpers.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Mvc.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Optimization.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Razor.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.WebPages.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Net.Http.Formatting.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Http.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\obj\Debug\Web.csproj.CoreCompileInputs.cache
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\obj\Debug\Web.csproj.CopyComplete
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\obj\Debug\proyecto.dll
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\obj\Debug\proyecto.pdb
-C:\Users\Adriana\Desktop\Proyecto\3\Selly-main\proyecto\obj\Debug\Web.csprojAssemblyReference.cache
->>>>>>> Grafico

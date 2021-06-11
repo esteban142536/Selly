@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Listado de inventario</h2>
 
 <div>
-    <h4>inventario</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -21,11 +20,42 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.usuario.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.apellidos)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento.tipoEntrada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento.tipoSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento.tipoSalida)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.totalPagado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.totalPagado)
+            &#8353;@Html.DisplayFor(model => model.totalPagado)
         </dd>
 
         <dt>
@@ -41,16 +71,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.iva)
+            %@Html.DisplayFor(model => model.iva)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.idTipoMovimiento)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.idTipoMovimiento)
-        </dd>
 
     </dl>
 </div>

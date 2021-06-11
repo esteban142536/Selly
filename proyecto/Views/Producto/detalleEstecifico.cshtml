@@ -4,10 +4,10 @@
     ViewBag.Title = "detalleEstecifico";
 }
 
-<h2>detalleEstecifico</h2>
+<h2>Detalles del producto</h2>
 
 <div>
-    <h4>producto</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,14 +43,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idCategoria)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.idCategoria)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.costoUnitario)
         </dt>
 
@@ -77,17 +69,21 @@
         <dt>
             @Html.DisplayNameFor(model => Model.proveedor)
         </dt>
+
+        <p>Listado de proveedores del producto</p>
         @foreach (var pro in Model.proveedor)
         {
             <li>@pro.nombreEmpresa</li>
         }
 
-
-
-        @foreach (var pro in Model.productoEstante)
-        {
-            @Html.DisplayFor(model => pro.estante.nombre)
-        }
+        <hr />
+        <dt>
+            Estante donde esta el producto
+        </dt>
+            @foreach (var pro in Model.productoEstante)
+            {
+                @Html.DisplayFor(model => pro.estante.nombre)
+            }
 
 
     </dl>
