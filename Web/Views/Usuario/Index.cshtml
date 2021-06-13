@@ -1,0 +1,46 @@
+﻿@model Infraestructure.Models.usuario
+
+@{
+    ViewBag.Title = "Inicio de sesión";
+}
+
+<div>
+    <form method="post">
+        <div class="content-sesion">
+            <h2>
+                ¡Te damos la bienvenida a
+                <img class="imagen_Logo"
+                     src="~/Imagenes/Logo.PNG"
+                     alt="No se encuentra la imagen"
+                     style="width:5%; height:5%" />!
+            </h2>
+            <h3>Inicio de Sesión con tu cuenta Selly</h3>
+
+            <br /><br />
+            <div class="content-sesion-body">
+                <p>
+                    Correo Elect.
+                    @Html.TextBoxFor(x => x.email)
+                </p>
+
+                <p>
+                    Contraseña:
+                    @Html.TextBoxFor(x => x.clave)
+                </p>
+            </div>
+
+            <a>
+                @Html.ActionLink("¿No tienes cuenta? Create uno", "registro", "Usuario", null, new { style = "text-decoration: none", @class = "text-success" })
+            </a>
+            <br /><br />
+
+            <button class="btn btn-success" type="submit" value="Submit">
+                @Html.ActionLink("Acceder", "Index", "Home", null, new { @class = "btn btn-success" })
+            </button>
+
+            <button type="button" class="btn btn-success">
+                @Html.ActionLink("Cancelar", "Index", "Home", null, new { @class = "btn btn-success" })
+            </button>
+        </div>
+    </form>
+</div>

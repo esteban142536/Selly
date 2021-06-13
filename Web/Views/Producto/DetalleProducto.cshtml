@@ -1,0 +1,71 @@
+﻿@model Infraestructure.Models.producto
+
+@{
+    ViewBag.Title = "Más detalles";
+}
+
+<div class="titulo">
+    <h2>Detalle del producto</h2>
+</div>
+<hr />
+
+<div class="detalle" style="margin-left:8%">
+    <div class="row">
+        <div class="col">
+            <strong>@Html.DisplayNameFor(model => model.nombre)</strong>
+            <br />
+            @Html.DisplayFor(model => model.nombre)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.totalStock)</strong>
+            <br />
+            @Html.DisplayFor(model => model.totalStock)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.cantMaxima)</strong>
+            <br />
+            @Html.DisplayFor(model => model.cantMaxima)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.cantMinima)</strong>
+            <br />
+            @Html.DisplayFor(model => model.cantMinima)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.costoUnitario)</strong>
+            <br />
+            &#8353;@Html.DisplayFor(model => model.costoUnitario)
+            <br /><br />
+        </div>
+
+        <div class="col">
+            <strong>@Html.DisplayNameFor(model => model.descripcion)</strong>
+            <br />
+            @Html.DisplayFor(model => model.descripcion)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.TipoCategoria.Descripcion)</strong>
+            <br />
+            @Html.DisplayFor(model => model.TipoCategoria.Descripcion)
+            <br /><br />
+
+            <strong>Ubicación</strong>
+            <br />
+            @foreach (var pro in Model.productoEstante)
+            {
+                @Html.DisplayFor(model => pro.estante.nombre)
+                <br/>
+            }
+        </div>
+
+        <div class="col">
+            <strong>Listado de proveedores del producto</strong>
+            <br />
+            @foreach (var pro in Model.proveedor)
+            {
+                @pro.nombreEmpresa
+                <br />
+            }
+        </div>
+    </div>
+</div>

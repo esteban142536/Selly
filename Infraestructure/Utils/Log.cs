@@ -1,12 +1,12 @@
-﻿
-    using log4net;
-    using System;
-    using System.Data.Entity.Core;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.SqlClient;
-    using System.Reflection;
-    using System.Text;
-
+﻿using log4net;
+using System;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Reflection;
+using System.Text;
+namespace Infraestructure
+{
     public class Log
     {
         private static readonly Log _instance = new Log();
@@ -255,3 +255,5 @@
 
         }
     }
+}
+

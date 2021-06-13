@@ -1,0 +1,56 @@
+﻿@model Infraestructure.Models.inventario
+
+@{
+    ViewBag.Title = "Más detalles";
+}
+
+<div class="titulo">
+    <h2>Detalle del inventario</h2>
+</div>
+<hr />
+
+<div class="detalle" style="margin-left:12%">
+    <div class="row">
+        <div class="col-sm-6">
+            <strong>@Html.DisplayNameFor(model => model.fecha)</strong>
+            <br />
+            @Html.DisplayFor(model => model.fecha)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.usuario.nombre)</strong>
+            <br />
+            @Html.DisplayFor(model => model.usuario.nombre)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.usuario.apellidos)</strong>
+            <br />
+            @Html.DisplayFor(model => model.usuario.apellidos)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.comentario)</strong>
+            <br />
+            @Html.DisplayFor(model => model.comentario)
+        </div>
+
+        <div class="col-sm-6">
+            <strong>@Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)</strong>
+            <br />
+            @Html.DisplayFor(model => model.TipoMovimiento.tipoEntrada)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.TipoMovimiento.tipoSalida)</strong>
+            <br />
+            @Html.DisplayFor(model => model.TipoMovimiento.tipoSalida)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.totalPagado)</strong>
+            <br />
+            &#8353;@Html.DisplayFor(model => model.totalPagado)
+            <br /><br />
+
+            <strong>@Html.DisplayNameFor(model => model.iva)</strong>
+            <br />
+            %@Html.DisplayFor(model => model.iva)
+        </div>
+    </div>
+</div>

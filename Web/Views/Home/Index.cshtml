@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Menú";
+}
+
+<!-- Carrusel -->
+<div id="carousel-Menu" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+        <button type="button"
+                data-bs-target="#carousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"></button>
+        <button type="button"
+                data-bs-target="#carousel"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button"
+                data-bs-target="#carousel"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="~/Imagenes/audifono.jpg"
+                 style="height:380px"
+                 class="d-block w-100"
+                 alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+                <h2>La música es vida </h2>
+                <h5> <strong> ¡Lo mejor para tus oídos! </strong> </h5>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/Imagenes/sarten.jpg"
+                 style="height:380px"
+                 class="d-block w-100"
+                 alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Seguridad y facilidad en tu cocina</h2>
+                <h5> <strong> ¡Cocina con nosotros! </strong> </h5>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/Imagenes/moda.jpg"
+                 style="height:380px"
+                 class="d-block w-100"
+                 alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Suavecito para tu piel</h2>
+                <h5> <strong> ¡La mejor moda para ti! </strong> </h5>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carousel"
+            data-bs-slide="prev">
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#carousel"
+            data-bs-slide="next">
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Cartas -->
+<div class="card-group" style="margin-bottom:5%;">
+    <div class="card">
+        <img src="~/Imagenes/cafetera.jpg" class="card-img-top" alt="..." style="height:242px; width:200px; margin-left:115px">
+        <div class="card-body">
+            <h5 class="card-title">Oferta única para tu hogar</h5>
+            <p class="card-text">Compra esta cafetera única a 7500 colones para tu familia, ten tu cafe en segundos y deliciosos</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="~/Imagenes/juguete.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Descuento único para tu hijo</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="~/Imagenes/tecnologia.jpg" class="card-img-top" alt="..." style="height:242px;">
+        <div class="card-body">
+            <h5 class="card-title">Descuento</h5>
+            <p class="card-text">Compra tu drone con cámara de alta modo Hold plegable RC de avión y 
+            helicóptero Pro Drones de juguetes Quadcopter Dron. A solo 25 000 colones </p>
+        </div>
+    </div>
+</div>
+
+<!-- Acerca de -->
+<div class="content-AcercaDe">
+    <div class="card bg-dark text-white">
+        <img src="~/Imagenes/acercaDe.jpg" class="card-img" alt="..." style="height:400px">
+
+        <div class="card-img-overlay" style="text-align:center; margin-top:2%">
+            <h5 class="card-title" style="font-size: 3em;"><strong>Acerca de nosotros</strong></h5>
+            <p class="card-text" style="font-size: 1.3em;">¿Te gustaría conocernos?</p>
+            <p class="card-text" style="font-size: 1.3em;">
+                Esperamos que con nuestra empresa podemos dar facilitar y calidad para traer la
+                felicidad a tu familia. ¡Hogar feliz,
+                vida feliz! Conoscanos más con nuestra historia y esperiencia
+            </p>
+            <p class="card-text" style="font-size: 1.3em;">Conoscanos más con nuestra historia y esperiencia</p>
+
+            <button type="button" class="btn btn-success">
+                @Html.ActionLink("Más detalles", "acercaDe", "Home", null, new { @class = "btn btn-success" })
+            </button>
+        </div>
+    </div>
+</div>

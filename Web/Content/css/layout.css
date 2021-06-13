@@ -1,0 +1,98 @@
+﻿body {
+    margin: 0
+}
+
+.barra {
+    position: relative;
+    padding: 15px;
+    background-color: #2596be;
+}
+
+.barra-texto {
+    position: absolute;
+    top: 3px;
+    right: 16px;
+    font-size: 16px;
+    color: white;
+}
+
+.encabezado {
+    text-align: center;
+}
+
+.imagen_Logo {
+    width: 150px;
+    height: 200px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right:2%;
+}
+
+.container-fluid {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.nav-item {
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.footer {
+    background-color: #2596be;
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin-top:3%;
+}
+
+.content-sesion{
+    margin-top: 5%;
+    margin-bottom:7%;
+    text-align: center;
+}
+
+#carousel-Menu {
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+
+.acercaDe {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.img-fondo {
+    width: 100%;
+}
+
+.texto {
+    text-align: center;
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+h1 {
+    font-size: 3em;
+    color: #FFF;
+    padding: 10px 0px 20px;
+}
+
+.texto-p {
+    font-size: 1.4em;
+    color: #FFF;
+    padding: 5px 0px 10px;
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: black;
+    font-size: 2em;
+}

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{861FE36E-FA01-453C-8F89-E6AE3F989327}</ProjectGuid>
+    <ProjectGuid>{BC84C341-F0C7-472B-861C-47CCEF9D530D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApplicationCore</RootNamespace>
@@ -41,30 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\IServiseInventario.cs" />
-    <Compile Include="Services\IServiseProveedor.cs" />
-    <Compile Include="Services\ServiseInventario.cs" />
-    <Compile Include="Services\ServiseProveedor.cs" />
-    <Compile Include="Utils\Cryptography.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceTipoUsuario.cs" />
     <Compile Include="Services\IServiceUsuario.cs" />
+    <Compile Include="Services\IServiseInventario.cs" />
     <Compile Include="Services\IServiseProducto.cs" />
+    <Compile Include="Services\IServiseProveedor.cs" />
     <Compile Include="Services\IServiseTipoCategoria.cs" />
     <Compile Include="Services\ServiceTipoUsuario.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
+    <Compile Include="Services\ServiseInventario.cs" />
     <Compile Include="Services\ServiseProducto.cs" />
+    <Compile Include="Services\ServiseProveedor.cs" />
     <Compile Include="Services\ServiseTipoCategoria.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">
-      <Project>{33e047d2-c1cd-4bb0-bca3-7ea1cd030252}</Project>
-      <Name>Infraestructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">
+      <Project>{d87ec340-da64-46b7-a263-f899dc81773f}</Project>
+      <Name>Infraestructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

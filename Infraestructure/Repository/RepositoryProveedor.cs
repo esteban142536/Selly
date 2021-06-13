@@ -20,7 +20,7 @@ namespace Infraestructure.Repository
 
                 try
                 {
-                    lista = cdt.proveedor.Include(x => x.contactos).ToList();
+                    lista = cdt.proveedor.Include(x => x.contactos).Include(x => x.pais).ToList();
                     return lista;
 
                 }

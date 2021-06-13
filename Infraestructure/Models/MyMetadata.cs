@@ -12,20 +12,29 @@ namespace Infraestructure.Models
         public int idUsuario { get; set; }
         public int idTienda { get; set; }
 
-        [Display(Name = "Fecha de emicion")]
+        [Display(Name = "Fecha de emisión")]
         public string fecha { get; set; }
 
-        [Display(Name = "Total pagado")]
+        [Display(Name = "Total")]
         public Nullable<double> totalPagado { get; set; }
-        [Display(Name = "Comentario del empleado")]
+
+        [Display(Name = "Comentario")]
         public string comentario { get; set; }
-        [Display(Name = "Impuesto al valor agregado")]
+
+        [Display(Name = "IVA")]
         public Nullable<double> iva { get; set; }
+
         public int idTipoMovimiento { get; set; }
 
+        [Display(Name = "Tienda")]
         public virtual tienda tienda { get; set; }
+
+        [Display(Name = "Usuario")]
         public virtual usuario usuario { get; set; }
+
+        [Display(Name = "Tipo de movimiento")]
         public virtual TipoMovimiento TipoMovimiento { get; set; }
+
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
     }
     internal partial class TipoInventarioMetadata
