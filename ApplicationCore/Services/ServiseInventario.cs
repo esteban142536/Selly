@@ -11,6 +11,12 @@ namespace ApplicationCore.Services
     public class ServiseInventario : IServiseInventario
     {
         IRepositoryInventario repo = new RepositoryInventario();
+
+        public void crearInventario(inventario inve)
+        {
+            repo.crearInventario(inve);
+        }
+
         public IEnumerable<inventario> listadoInventario()
         {
             return repo.listadoInventario();

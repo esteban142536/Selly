@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
-   public interface IRepositoryInventario
+   public interface IRepositoryTienda
     {
-        IEnumerable<inventario> listadoInventario();
-
-        inventario obtenerInventarioID(int id);
-
-        void crearInventario(inventario inve);
+        int agregarTienda(tienda td);
+        IEnumerable<tienda> GetListaTiendas();
     }
 }

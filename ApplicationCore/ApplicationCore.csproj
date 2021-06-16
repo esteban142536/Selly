@@ -47,17 +47,21 @@
     <Compile Include="Services\IServiseInventario.cs" />
     <Compile Include="Services\IServiseProducto.cs" />
     <Compile Include="Services\IServiseProveedor.cs" />
+    <Compile Include="Services\IServiseTienda.cs" />
     <Compile Include="Services\IServiseTipoCategoria.cs" />
+    <Compile Include="Services\IServiseTipoMovimiento.cs" />
     <Compile Include="Services\ServiceTipoUsuario.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
     <Compile Include="Services\ServiseInventario.cs" />
     <Compile Include="Services\ServiseProducto.cs" />
     <Compile Include="Services\ServiseProveedor.cs" />
+    <Compile Include="Services\ServiseTienda.cs" />
     <Compile Include="Services\ServiseTipoCategoria.cs" />
+    <Compile Include="Services\ServiseTipoMovimiento.cs" />
+    <Compile Include="Utils\Cryptography.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">

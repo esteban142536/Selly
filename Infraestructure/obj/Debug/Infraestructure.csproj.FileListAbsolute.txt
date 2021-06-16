@@ -40,3 +40,17 @@ C:\Users\Adriana\Desktop\GitKraken\Selly-main\Infraestructure\obj\Debug\Infraest
 C:\Users\Adriana\Desktop\GitKraken\Selly-main\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
 C:\Users\Adriana\Desktop\GitKraken\Selly-main\Infraestructure\obj\Debug\Infraestructure.dll
 C:\Users\Adriana\Desktop\GitKraken\Selly-main\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\Infraestructure.dll.config
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\Infraestructure.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\Infraestructure.pdb
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\EntityFramework.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\log4net.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\EntityFramework.xml
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\bin\Debug\log4net.xml
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.dll
+C:\Users\Esteban\Desktop\Esteban\Programacion web 2\proyecto\Selly\Infraestructure\obj\Debug\Infraestructure.pdb

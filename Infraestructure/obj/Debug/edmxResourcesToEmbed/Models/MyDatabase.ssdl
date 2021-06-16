@@ -120,7 +120,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.proveedorProducto' no tiene defini
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tipoSalida" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="tipoEntrada" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>

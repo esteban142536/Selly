@@ -51,5 +51,28 @@ namespace Infraestructure.Repository
                 }
             }
         }
+
+        public void crearInventario(inventario inve)
+        {
+
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                    cdt.inventario.Add(inve);
+                    cdt.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    string mensaje = "";
+                    Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
+        }
+
     }
 }

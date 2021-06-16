@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Services
 {
-   public interface IServiseInventario
+   public interface IServiseTienda
     {
-        IEnumerable<inventario> listadoInventario();
-
-        inventario obtenerInventarioID(int id);
-
-        void crearInventario(inventario inve);
+        int agregarTienda(tienda td);
+        IEnumerable<tienda> GetListaTiendas();
     }
 }

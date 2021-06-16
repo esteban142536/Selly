@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Services
 {
-   public interface IServiseInventario
+   public interface IServiseTipoMovimiento
     {
-        IEnumerable<inventario> listadoInventario();
-
-        inventario obtenerInventarioID(int id);
-
-        void crearInventario(inventario inve);
+        int agregarTipoMovimiento(TipoMovimiento tm);
+        void modificarTipoMovimiento(TipoMovimiento tm);
     }
 }
