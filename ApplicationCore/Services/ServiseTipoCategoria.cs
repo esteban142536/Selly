@@ -10,10 +10,15 @@ namespace ApplicationCore.Services
 {
     public class ServiseTipoCategoria : IServiseTipoCategoria
     {
+            IRepositoryTipoCategoria reposi = new RepositoryTipoCategoria();
         public void asignarCategoria(TipoCategoria tc)
         {
-            IRepositoryTipoCategoria reposi = new RepositoryTipoCategoria();
             reposi.asignarCategoria(tc);
+        }
+
+        public IEnumerable<TipoCategoria> GetListaTipoCategoria()
+        {
+            return reposi.GetListaTipoCategoria();
         }
 
         public TipoCategoria obtenerCategoriaPorID(int idProducto)

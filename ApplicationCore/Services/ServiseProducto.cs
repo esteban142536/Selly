@@ -14,9 +14,9 @@ namespace ApplicationCore.Services
 
         IRepositoryProducto repo=new RepositoryProducto();
 
-        public void guardarProducto(producto producto)
+        public void guardarProducto(producto producto, int idProveedor, int idEstante)
         {
-            repo.guardarProducto(producto);
+            repo.guardarProducto(producto, idProveedor, idEstante);
         }
 
         public IEnumerable<producto> listadoProducto()

@@ -56,62 +56,66 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\contactos.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contextData.cs" />
     <Compile Include="Models\detalleFactura.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\estante.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\inventario.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MyDataBase.Context.cs">
+    <Compile Include="Models\MyDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyDataBase.Context.tt</DependentUpon>
+      <DependentUpon>MyDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MyDataBase.cs">
+    <Compile Include="Models\MyDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MyDataBase.Designer.cs">
+    <Compile Include="Models\MyDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyDataBase.edmx</DependentUpon>
+      <DependentUpon>MyDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MyMetadata.cs" />
     <Compile Include="Models\pais.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\producto.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\productoEstante.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proveedor.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tienda.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoCategoria.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoMovimiento.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipoUsuario.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usuario.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
+      <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryEstante.cs" />
     <Compile Include="Repository\IRepositoryInventario.cs" />
     <Compile Include="Repository\IRepositoryProducto.cs" />
     <Compile Include="Repository\IRepositoryProveedor.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="Repository\IRepositoryTipoMovimiento.cs" />
     <Compile Include="Repository\IRepositoryTipoUsuario.cs" />
     <Compile Include="Repository\IRepositoryUsuario.cs" />
+    <Compile Include="Repository\RepositoryEstante.cs" />
     <Compile Include="Repository\RepositoryInventario.cs" />
     <Compile Include="Repository\RepositoryProducto.cs" />
     <Compile Include="Repository\RepositoryProveedor.cs" />
@@ -131,13 +136,13 @@
     <Compile Include="Utils\Log.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\MyDataBase.edmx">
+    <EntityDeploy Include="Models\MyDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyDataBase.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="Models\MyDataBase.edmx.diagram">
-      <DependentUpon>MyDataBase.edmx</DependentUpon>
+    <None Include="Models\MyDatabase.edmx.diagram">
+      <DependentUpon>MyDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -145,15 +150,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\MyDataBase.Context.tt">
+    <Content Include="Models\MyDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDataBase.edmx</DependentUpon>
-      <LastGenOutput>MyDataBase.Context.cs</LastGenOutput>
+      <DependentUpon>MyDatabase.edmx</DependentUpon>
+      <LastGenOutput>MyDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MyDataBase.tt">
+    <Content Include="Models\MyDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDataBase.edmx</DependentUpon>
-      <LastGenOutput>MyDataBase.cs</LastGenOutput>
+      <DependentUpon>MyDatabase.edmx</DependentUpon>
+      <LastGenOutput>MyDatabase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

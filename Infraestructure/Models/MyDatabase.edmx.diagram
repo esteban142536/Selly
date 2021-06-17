@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9ea0b843db194ba8b966a68ddd72d245" Name="Diagram1">
+      <Diagram DiagramId="045ce586df454d318eda23e236fdc22d" Name="Diagram1">
         <EntityTypeShape EntityType="sellyModel.estante" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.inventario" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.pais" Width="1.5" PointX="1.5" PointY="35.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.producto" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.proveedor" Width="1.5" PointX="0.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sellyModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.tienda" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.TipoCategoria" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.TipoMovimiento" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />

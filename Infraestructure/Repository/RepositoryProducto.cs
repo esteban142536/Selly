@@ -8,8 +8,12 @@ namespace Infraestructure.Repository
 {
     public class RepositoryProducto : IRepositoryProducto
     {
-        public void guardarProducto(producto producto)
+
+        IRepositoryProveedor repoPro = new RepositoryProveedor();
+
+        public void guardarProducto(producto producto, int idProveedor, int idEstante)
         {
+           proveedor pro;
 
             using (contextData cdt = new contextData())
             {
@@ -17,7 +21,21 @@ namespace Infraestructure.Repository
 
                 try
                 {
+                    //carga los proveedores a la tabla intermedia
+                    pro = repoPro.obtenerProveedorID(idProveedor);
+                    cdt.proveedor.Attach(pro);
+                    producto.proveedor.Add(pro);
+
+                    //salva el producto
                     cdt.producto.Add(producto);
+
+                    //carga la tabla intermedia de ubicacion
+                    productoEstante pe = new productoEstante();
+                    pe.idProducto = producto.id;
+                    pe.idEstante = idEstante;
+                    pe.cantidad = producto.totalStock;
+                    cdt.productoEstante.Add(pe);
+
                     cdt.SaveChanges();
                 }
                 catch (Exception ex)
@@ -33,7 +51,6 @@ namespace Infraestructure.Repository
         public IEnumerable<producto> listadoProducto()
         {
             IEnumerable<producto> lista=null;
-            IEnumerable<proveedor> listaproveedor = null;
 
             using (contextData cdt = new contextData())
             {

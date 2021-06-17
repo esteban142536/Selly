@@ -4,7 +4,7 @@
     ViewBag.Title = "MantenimientoProducto";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Save", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="titulo">
@@ -34,7 +34,10 @@
 
             <p>
                 Categor&#237;a:
-                
+                @Html.DropDownList("categoria",
+(SelectList)ViewBag.idCategoria,
+"Seleccione una categoria",
+new { htmlAttributes = new { @class = "form-control" } })
             </p>
 
             <p>
@@ -43,7 +46,13 @@
                 @Html.ValidationMessageFor(model => model.costoUnitario, "", new { @class = "text-danger" })
             </p>
 
-            <p>Ubicaci&#243;n:</p>
+            <p>
+                Ubicaci&#243;n:
+                @Html.DropDownList("estante",
+(SelectList)ViewBag.idEstantes,
+"Seleccione un estante",
+new { htmlAttributes = new { @class = "form-control" } })
+            </p>
 
             <p>
                 Total de stock:
@@ -63,12 +72,20 @@
             </p>
 
             <p>
+                Proveedor del producto:
+                @Html.DropDownList("proveedor",
+(SelectList)ViewBag.idProveedores,
+"Seleccione un proveedor",
+new { htmlAttributes = new { @class = "form-control" } })
+            </p>
+
+            <p>
                 Imagen:
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="ImageFile">
             </p>
 
             <div class="boton" style="margin-left:35%">
-                <button type="button" class="btn btn-success">Agregar</button>
+                <button type="submit" class="btn btn-success">Agregar</button>
                 <button type="button" class="btn btn-success">Cancelar</button>
             </div>
         </div>

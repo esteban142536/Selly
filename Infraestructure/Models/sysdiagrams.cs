@@ -12,18 +12,12 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class detalleFactura
+    public partial class sysdiagrams
     {
-        public int idProducto { get; set; }
-        public int idInventario { get; set; }
-        public double precio { get; set; }
-        public int cantidadComprada { get; set; }
-        public Nullable<int> idEstante { get; set; }
-        public Nullable<int> idProveedor { get; set; }
-    
-        public virtual estante estante { get; set; }
-        public virtual inventario inventario { get; set; }
-        public virtual producto producto { get; set; }
-        public virtual proveedor proveedor { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace ApplicationCore.Services
     {
         void asignarCategoria(TipoCategoria tc);
         TipoCategoria obtenerCategoriaPorID(int idProducto);
+        IEnumerable<TipoCategoria> GetListaTipoCategoria();
     }
 }

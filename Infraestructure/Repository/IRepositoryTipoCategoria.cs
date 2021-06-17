@@ -11,5 +11,7 @@ namespace Infraestructure.Repository
     {
         void asignarCategoria(TipoCategoria tc);
         TipoCategoria obtenerCategoriaPorID(int idProducto);
+
+        IEnumerable<TipoCategoria> GetListaTipoCategoria();
     }
 }

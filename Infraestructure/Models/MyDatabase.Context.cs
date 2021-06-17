@@ -30,6 +30,7 @@ namespace Infraestructure.Models
         public virtual DbSet<pais> pais { get; set; }
         public virtual DbSet<producto> producto { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tienda> tienda { get; set; }
         public virtual DbSet<TipoCategoria> TipoCategoria { get; set; }
         public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }

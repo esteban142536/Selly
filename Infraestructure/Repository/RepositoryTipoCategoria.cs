@@ -29,6 +29,26 @@ namespace Infraestructure.Repository
             }
         }
 
+        public IEnumerable<TipoCategoria> GetListaTipoCategoria()
+        {
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                  return  cdt.TipoCategoria.ToList();
+                   
+                }
+                catch (Exception e)
+                {
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
+        }
+
         public TipoCategoria obtenerCategoriaPorID(int idProducto)
         {
             //cdt.Configuration.LazyLoadingEnabled = false;

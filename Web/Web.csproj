@@ -315,7 +315,6 @@
     <Content Include="Views\Inventario\EntradaSalida.cshtml" />
     <Content Include="Views\Producto\DetalleProducto.cshtml" />
     <Content Include="Views\Producto\Productos.cshtml" />
-    <Content Include="Views\Producto\ingresarProducto.cshtml" />
     <Content Include="Views\Proveedor\DetalleProveedor.cshtml" />
     <Content Include="Views\Proveedor\Proveedores.cshtml" />
     <Content Include="Views\Usuario\registro.cshtml" />
