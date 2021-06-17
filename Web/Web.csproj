@@ -323,6 +323,9 @@
     <Content Include="Views\Home\MenuAdministrador.cshtml" />
     <Content Include="Views\Home\AcercaDe.cshtml" />
     <Content Include="Views\Inventario\CrearInventario.cshtml" />
+    <Content Include="Views\Producto\DetalleProductoCliente.cshtml" />
+    <Content Include="Views\Producto\MantenimientoProducto.cshtml" />
+    <Content Include="Views\Proveedor\MantenimientoProveedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,76 @@
+﻿@model Infraestructure.Models.producto
+
+@{
+    ViewBag.Title = "MantenimientoProducto";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="titulo">
+        <h2>Mantenimiento del producto</h2>
+        <hr />
+    </div>
+
+    <div class="mantenimiento">
+        <div class="btn-group" role="group" style="margin-left:41%">
+            <button type="button" class="btn btn-success">Agregar</button>
+            <button type="button" class="btn btn-success">Modificar</button>
+            <button type="button" class="btn btn-success">Eliminar</button>
+        </div>
+
+        <div class="form-group" style="margin-left:30%; margin-right:30%; margin-top:2%">
+            <p>
+                Nombre:
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </p>
+
+            <p>
+                Descripci&#243;n:
+                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+            </p>
+
+            <p>
+                Categor&#237;a:
+                
+            </p>
+
+            <p>
+                Costo unitario:
+                @Html.EditorFor(model => model.costoUnitario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.costoUnitario, "", new { @class = "text-danger" })
+            </p>
+
+            <p>Ubicaci&#243;n:</p>
+
+            <p>
+                Total de stock:
+                @Html.EditorFor(model => model.totalStock, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.totalStock, "", new { @class = "text-danger" })
+            </p>
+            <p>
+                Cantidad máxima:
+                @Html.EditorFor(model => model.cantMaxima, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cantMaxima, "", new { @class = "text-danger" })
+            </p>
+
+            <p>
+                Cantidad mínima:
+                @Html.EditorFor(model => model.cantMinima, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cantMinima, "", new { @class = "text-danger" })
+            </p>
+
+            <p>
+                Imagen:
+                <input class="form-control" type="file" id="formFile">
+            </p>
+
+            <div class="boton" style="margin-left:35%">
+                <button type="button" class="btn btn-success">Agregar</button>
+                <button type="button" class="btn btn-success">Cancelar</button>
+            </div>
+        </div>
+    </div>
+}

@@ -6,8 +6,8 @@
 
 <div class="titulo">
     <h2>Detalle del producto</h2>
+    <hr />
 </div>
-<hr />
 
 <div class="detalle" style="margin-left:8%">
     <div class="row">
@@ -49,7 +49,7 @@
             @Html.DisplayFor(model => model.TipoCategoria.Descripcion)
             <br /><br />
 
-            <strong>Ubicación</strong>
+            <strong>Ubicaci&#243;n</strong>
             <br />
             @foreach (var pro in Model.productoEstante)
             {
@@ -59,12 +59,13 @@
         </div>
 
         <div class="col">
-            <strong>Listado de proveedores del producto</strong>
+            <strong>Proveedores del producto</strong>
             <br />
             @foreach (var pro in Model.proveedor)
             {
-                @pro.nombreEmpresa
-                <br />
+                <ul type="circle">
+                    <li>@pro.nombreEmpresa</li>
+                </ul>
             }
         </div>
     </div>

@@ -12,8 +12,9 @@
     <thead class="table-success">
         <tr>
             <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Categor&#237;a</th>
             <th scope="col">Costo Unitario</th>
+            <th scope="col">Total de stock</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -21,16 +22,17 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</td>
-                <td>&#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</td>
-                <th scope="col">
-                    <button type="button" class="btn btn-success">
-                        @Html.ActionLink("Ver detalles", "DetalleProducto", "Producto", new { id = item.id }, new { @class = "btn btn-success" })
-                    </button>
-                </th>
-            </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+            <td>@Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</td>
+            <td>&#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</td>
+            <td>@Html.DisplayFor(modelItem => item.totalStock)</td>
+            <th scope="col">
+                <button type="button" class="btn btn-success">
+                    @Html.ActionLink("Ver detalles", "DetalleProducto", "Producto", new { id = item.id }, new { @class = "btn btn-success" })
+                </button>
+            </th>
+        </tr>
         }
     </tbody>
 </table>

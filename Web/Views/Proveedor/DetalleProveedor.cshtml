@@ -6,8 +6,8 @@
 
 <div class="titulo">
     <h2>Detalle del proveedor</h2>
+    <hr />
 </div>
-<hr />
 
 <div class="detalle" style="margin-left:8%">
     <div class="row">
@@ -29,35 +29,37 @@
         </div>
 
         <div class="col">
-            <strong>Contáctos</strong>
-            <br />
+            <strong>Contactos</strong>
+            <br /><br />
+
             @foreach (var pro in Model.contactos)
             {
-                    <b>
-                        @Html.DisplayNameFor(model => pro.nombre):
-                    </b>
-                    <br />
-                    @Html.DisplayFor(model => pro.nombre)
-                    <br /><br />
+                <b>
+                    <li type="circle">@Html.DisplayNameFor(model => pro.nombre):</li>
+                </b>
 
-                    <b>
-                        @Html.DisplayNameFor(model => pro.numero):
-                    </b>
-                    <br />
-                    @Html.DisplayFor(model => pro.numero)
-                    <br /><br />
+                @Html.DisplayFor(model => pro.nombre)
+                <br />
+
+                <b>
+                    @Html.DisplayNameFor(model => pro.numero):
+                </b>
+                <br />
+                @Html.DisplayFor(model => pro.numero)
+                <br /><br />
             }
         </div>
 
         <div class="col">
             <strong>Productos entregados</strong>
-            <br />
+            <br /><br />
+
             @foreach (var pro in Model.producto)
             {
                 <b>@Html.DisplayNameFor(model => pro.nombre):</b>
                 <br />
                 @Html.DisplayFor(model => pro.nombre)
-                <br /><br />
+                <br />
 
                 <b>@Html.DisplayNameFor(model => pro.totalStock):</b>
                 <br />

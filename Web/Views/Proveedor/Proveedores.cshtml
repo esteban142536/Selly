@@ -12,8 +12,8 @@
     <thead class="table-success">
         <tr>
             <th scope="col">Nombre de la empresa</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">País</th>
+            <th scope="col">Direcci&#243;n</th>
+            <th scope="col">Pa&#237;s</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -27,7 +27,7 @@
                 <td>@Html.DisplayFor(modelItem => item.pais.nombre)</td>
                 <th scope="col">
                     <button type="button" class="btn btn-success">
-                        @Html.ActionLink("Detalle", "DetalleProveedor", "Proveedor", new { id = item.id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Ver detalles", "DetalleProveedor", "Proveedor", new { id = item.id }, new { @class = "btn btn-success" })
                     </button>
                 </th>
             </tr>

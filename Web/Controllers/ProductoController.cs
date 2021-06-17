@@ -12,7 +12,7 @@ namespace proyecto.Controllers
     {
         IServiseProducto serviseProducto = new ServiseProducto();
         IServiseTipoCategoria ServiseTipoCategoria = new ServiseTipoCategoria();
-
+        
 
         // GET: Producto
 
@@ -33,11 +33,21 @@ namespace proyecto.Controllers
             return View(serviseProducto.listadoProducto());
         }
 
+        public ActionResult MantenimientoProducto(producto produ)
+        {
+            TipoCategoria tc = new TipoCategoria();
+            return View();
+        }
+
         public ActionResult DetalleProducto(int id)
         {
             producto pro = serviseProducto.obtenerProductoID(id);
-
             return View(pro);
+        }
+
+        public ActionResult DetalleProductoCliente()
+        {
+            return View();
         }
 
 

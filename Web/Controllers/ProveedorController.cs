@@ -25,6 +25,9 @@ namespace proyecto.Controllers
             return View(serviseProveedor.obtenerProveedorID(id));
         }
 
-
+        public ActionResult MantenimientoProveedor()
+        {
+            return View();
+        }
     }
 }
