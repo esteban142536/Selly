@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Acceso denegado";
+}
+
+<h2>Usted no tiene permisos para entrar a esta pagina</h2>
+<br>
+
+<input type="button" value="Regresar a pagina anterior" class="btn btn-warning" onclick="goBack()" />
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+

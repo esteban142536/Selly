@@ -46,6 +46,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="productoEstante">
+      <EntityTypeMapping TypeName="sellyModel.productoEstante">
+        <MappingFragment StoreEntitySet="productoEstante">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="proveedor">
       <EntityTypeMapping TypeName="sellyModel.proveedor">
         <MappingFragment StoreEntitySet="proveedor">
@@ -133,15 +142,6 @@
           <ScalarProperty Name="cantidadComprada" ColumnName="cantidadComprada" />
           <ScalarProperty Name="idEstante" ColumnName="idEstante" />
           <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="productoEstante">
-      <EntityTypeMapping TypeName="sellyModel.productoEstante">
-        <MappingFragment StoreEntitySet="productoEstante">
-          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

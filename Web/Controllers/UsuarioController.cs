@@ -1,7 +1,10 @@
 ﻿using ApplicationCore.Services;
 using Infraestructure.Models;
 using System;
+using System.Reflection;
 using System.Web.Mvc;
+using Web.Util;
+using Web.Utils;
 
 namespace proyecto.Controllers
 {
@@ -13,19 +16,32 @@ namespace proyecto.Controllers
         // GET: Usuario
         public ActionResult Index(String email, String clave)
         {
+
+            if(email == null || clave == null){ 
+                return View();
+            }
+
             usuario user;
 
+            if (ModelState.IsValid)
+            {
             user = iserviseUsuario.logIn(email, clave);
 
             if (user==null)
             {
-                return View(user);
+                return View();
             }
 
-            Session.Add("UserType", iserviseTipoUsuario.obtenerPermisos(user.idTipoUsuario));
+            Session.Add("Usuario", user);
 
          
-            return RedirectToAction("PrevalenceData", "Usuario", user);
+            return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.NotificationMessage = SweetAlertHelper.Mensaje("Login", "Error al autenticarse", SweetAlertMessageType.warning);
+            }
+            return View("Index");
         }
 
         
@@ -48,6 +64,26 @@ namespace proyecto.Controllers
             iserviseUsuario.SignIn(usu);
 
            return View();
+        }
+
+        //cerrar sesion
+        public ActionResult cerrarSesion()
+        {
+            try
+            {
+                Session["Usuario"] = null;
+            }catch(Exception ex)
+            {
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult sinPermisos()
+        {
+
+            return View();
         }
 
     }

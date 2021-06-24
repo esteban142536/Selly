@@ -15,36 +15,45 @@ namespace Infraestructure.Models
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
 
         [Display(Name = "Fecha de emisión")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string fecha { get; set; }
 
         [Display(Name = "Total")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public Nullable<double> totalPagado { get; set; }
 
         [Display(Name = "Comentario")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string comentario { get; set; }
 
         [Display(Name = "IVA")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public Nullable<double> iva { get; set; }
 
         [Display(Name = "Tienda")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual tienda tienda { get; set; }
 
         [Display(Name = "Usuario")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual usuario usuario { get; set; }
 
         [Display(Name = "Tipo de movimiento")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual TipoMovimiento TipoMovimiento { get; set; }
     }
 
-    internal partial class TipoInventarioMetadata
+    internal partial class TipoMovimientoMetadata
     {
         public int id { get; set; }
         public virtual ICollection<inventario> inventario { get; set; }
 
         [Display(Name = "Tipo de salida")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string tipoSalida { get; set; }
 
         [Display(Name = "Tipo de entrada")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string tipoEntrada { get; set; }
     }
 
@@ -57,12 +66,15 @@ namespace Infraestructure.Models
         public virtual ICollection<producto> producto { get; set; }
 
         [Display(Name = "Nombre del proveedor")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string nombreEmpresa { get; set; }
 
         [Display(Name = "Dirección")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string direccion { get; set; }
 
         [Display(Name = "País")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual pais pais { get; set; }
     }
 
@@ -72,6 +84,7 @@ namespace Infraestructure.Models
         public virtual ICollection<proveedor> proveedor { get; set; }
 
         [Display(Name = "País")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string nombre { get; set; }
     }
 
@@ -85,24 +98,31 @@ namespace Infraestructure.Models
         public virtual ICollection<proveedor> proveedor { get; set; }
 
         [Display(Name = "Nombre del producto")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string nombre { get; set; }
 
         [Display(Name = "Total de stock")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public int totalStock { get; set; }
 
         [Display(Name = "Cantidad máxima")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public int cantMaxima { get; set; }
 
         [Display(Name = "Cantidad mínima")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public int cantMinima { get; set; }
 
         [Display(Name = "Costo unitario")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public double costoUnitario { get; set; }
 
         [Display(Name = "Descripción")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string descripcion { get; set; }
 
         [Display(Name = "Imagen")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public byte[] imagen { get; set; }
     }
 
@@ -112,6 +132,7 @@ namespace Infraestructure.Models
         public virtual ICollection<producto> producto { get; set; }
 
         [Display(Name = "Categoría")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string Descripcion { get; set; }
     }
 
@@ -129,9 +150,12 @@ namespace Infraestructure.Models
         public string apellidos { get; set; }
 
         [Display(Name = "Correo electrónico")]
+        [Required(ErrorMessage ="{0} es un campo requerido")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "{0} no tiene formato válido")]
         public string email { get; set; }
 
         [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string clave { get; set; }
 
         [Display(Name = "Estado de la cuenta")]
@@ -144,12 +168,15 @@ namespace Infraestructure.Models
         public virtual proveedor proveedor { get; set; }
 
         [Display(Name = "Nombre del contacto")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string nombre { get; set; }
 
         [Display(Name = "Número de teléfono")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public int numero { get; set; }
 
         [Display(Name = "Correo electrónico")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
         public string correo { get; set; }
     }
 }

@@ -31,6 +31,12 @@
                 <button type="button" class="btn btn-success">
                     @Html.ActionLink("Ver detalles", "DetalleProducto", "Producto", new { id = item.id }, new { @class = "btn btn-success" })
                 </button>
+                <button type="button" class="btn btn-success">
+                    @Html.ActionLink("Editar producto", "Edit", "Producto", new { id = item.id }, new { @class = "btn btn-success" })
+                </button>
+                <button type="button" class="btn btn-success">
+                    @Html.ActionLink("Eliminar producto", "DetalleProducto", "Producto", new { id = item.id }, new { @class = "btn btn-success" })
+                </button>
             </th>
         </tr>
         }

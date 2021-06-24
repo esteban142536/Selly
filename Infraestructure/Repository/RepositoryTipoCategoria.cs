@@ -51,8 +51,22 @@ namespace Infraestructure.Repository
 
         public TipoCategoria obtenerCategoriaPorID(int idProducto)
         {
-            //cdt.Configuration.LazyLoadingEnabled = false;
-            throw new NotImplementedException();
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                    return cdt.TipoCategoria.Where(x=>x.id==idProducto).FirstOrDefault();
+
+                }
+                catch (Exception e)
+                {
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
         }
     }
 }

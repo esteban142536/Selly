@@ -23,7 +23,7 @@ namespace ApplicationCore.Services
 
         public TipoCategoria obtenerCategoriaPorID(int idProducto)
         {
-            throw new NotImplementedException();
+            return reposi.obtenerCategoriaPorID(idProducto);
         }
     }
 }

@@ -19,13 +19,15 @@
             <br /><br />
             <div class="content-sesion-body">
                 <p>
-                    Correo Elect.
+                    Correo electr&#243;nico:
                     @Html.TextBoxFor(x => x.email)
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
                 </p>
 
                 <p>
-                    Contraseña:
-                    @Html.TextBoxFor(x => x.clave)
+                    Contrase&#241;a:
+                    @Html.PasswordFor(x => x.clave)
+                    @Html.ValidationMessageFor(model => model.clave, "", new { @class = "text-danger" })
                 </p>
             </div>
 
@@ -35,7 +37,7 @@
             <br /><br />
 
             <button class="btn btn-success" type="submit" value="Submit">
-                @Html.ActionLink("Acceder", "Index", "Home", null, new { @class = "btn btn-success" })
+                Acceder
             </button>
 
             <button type="button" class="btn btn-success">
@@ -44,3 +46,7 @@
         </div>
     </form>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

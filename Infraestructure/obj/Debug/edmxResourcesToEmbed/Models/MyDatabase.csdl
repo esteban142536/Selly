@@ -52,6 +52,17 @@
     <NavigationProperty Name="detalleFactura" Relationship="Self.FK_productoFacturados_producto" FromRole="producto" ToRole="detalleFactura" />
     <NavigationProperty Name="proveedor" Relationship="Self.proveedorProducto" FromRole="producto" ToRole="proveedor" />
   </EntityType>
+  <EntityType Name="productoEstante">
+    <Key>
+      <PropertyRef Name="idProducto" />
+      <PropertyRef Name="idEstante" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="idEstante" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="estante" Relationship="Self.FK_productoEstante_estante" FromRole="productoEstante" ToRole="estante" />
+    <NavigationProperty Name="producto" Relationship="Self.FK_productoEstante_producto" FromRole="productoEstante" ToRole="producto" />
+  </EntityType>
   <EntityType Name="proveedor">
     <Key>
       <PropertyRef Name="id" />
@@ -106,7 +117,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="permisoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="permisoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_tipoUsuario" FromRole="tipoUsuario" ToRole="usuario" />
   </EntityType>
   <EntityType Name="usuario">
@@ -153,17 +164,6 @@
     <NavigationProperty Name="inventario" Relationship="Self.FK_productoFacturados_factura" FromRole="detalleFactura" ToRole="inventario" />
     <NavigationProperty Name="producto" Relationship="Self.FK_productoFacturados_producto" FromRole="detalleFactura" ToRole="producto" />
     <NavigationProperty Name="proveedor" Relationship="Self.FK_detalleFactura_proveedor" FromRole="detalleFactura" ToRole="proveedor" />
-  </EntityType>
-  <EntityType Name="productoEstante">
-    <Key>
-      <PropertyRef Name="idProducto" />
-      <PropertyRef Name="idEstante" />
-    </Key>
-    <Property Name="idProducto" Type="Int32" Nullable="false" />
-    <Property Name="cantidad" Type="Int32" />
-    <Property Name="idEstante" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="estante" Relationship="Self.FK_productoEstante_estante" FromRole="productoEstante" ToRole="estante" />
-    <NavigationProperty Name="producto" Relationship="Self.FK_productoEstante_producto" FromRole="productoEstante" ToRole="producto" />
   </EntityType>
   <Association Name="FK_detalleFactura_estante">
     <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
@@ -330,6 +330,7 @@
     <EntitySet Name="inventario" EntityType="Self.inventario" />
     <EntitySet Name="pais" EntityType="Self.pais" />
     <EntitySet Name="producto" EntityType="Self.producto" />
+    <EntitySet Name="productoEstante" EntityType="Self.productoEstante" />
     <EntitySet Name="proveedor" EntityType="Self.proveedor" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tienda" EntityType="Self.tienda" />
@@ -339,7 +340,6 @@
     <EntitySet Name="usuario" EntityType="Self.usuario" />
     <EntitySet Name="contactos" EntityType="Self.contactos" />
     <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" />
-    <EntitySet Name="productoEstante" EntityType="Self.productoEstante" />
     <AssociationSet Name="FK_detalleFactura_estante" Association="Self.FK_detalleFactura_estante">
       <End Role="estante" EntitySet="estante" />
       <End Role="detalleFactura" EntitySet="detalleFactura" />

@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Services;
+using Infraestructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace proyecto.Controllers
     public class ProveedorController : Controller
     {
         IServiseProveedor serviseProveedor = new ServiseProveedor();
-
+        IServicePais servisepais = new ServicePais();
 
         public ActionResult Proveedores()
         {
@@ -27,7 +28,17 @@ namespace proyecto.Controllers
 
         public ActionResult MantenimientoProveedor()
         {
+            ViewBag.idCategoria = listaPais();
             return View();
+        }
+
+        //Combo de pais
+        private SelectList listaPais(int idPais = 0)
+        {
+
+            IEnumerable<pais> listaPais = servisepais.GetListaPais();
+
+            return new SelectList(listaPais, "id", "pais", idPais);
         }
     }
 }

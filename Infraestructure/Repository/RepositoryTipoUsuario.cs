@@ -28,7 +28,7 @@ namespace Infraestructure.Repository
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
-                permiso = cdt.tipoUsuario.Where(x=>x.id==id).FirstOrDefault<tipoUsuario>().permisoUsuario;
+                permiso = cdt.tipoUsuario.Where(x=>x.id==id).FirstOrDefault<tipoUsuario>().id;
 
             }
             return permiso;

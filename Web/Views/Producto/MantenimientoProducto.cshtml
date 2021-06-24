@@ -14,9 +14,7 @@
 
     <div class="mantenimiento">
         <div class="btn-group" role="group" style="margin-left:41%">
-            <button type="button" class="btn btn-success">Agregar</button>
-            <button type="button" class="btn btn-success">Modificar</button>
-            <button type="button" class="btn btn-success">Eliminar</button>
+            <button type="submit" class="btn btn-success">Agregar</button>
         </div>
 
         <div class="form-group" style="margin-left:30%; margin-right:30%; margin-top:2%">
@@ -36,7 +34,6 @@
                 Categor&#237;a:
                 @Html.DropDownList("categoria",
 (SelectList)ViewBag.idCategoria,
-"Seleccione una categoria",
 new { htmlAttributes = new { @class = "form-control" } })
             </p>
 
@@ -50,7 +47,6 @@ new { htmlAttributes = new { @class = "form-control" } })
                 Ubicaci&#243;n:
                 @Html.DropDownList("estante",
 (SelectList)ViewBag.idEstantes,
-"Seleccione un estante",
 new { htmlAttributes = new { @class = "form-control" } })
             </p>
 
@@ -75,7 +71,6 @@ new { htmlAttributes = new { @class = "form-control" } })
                 Proveedor del producto:
                 @Html.DropDownList("proveedor",
 (SelectList)ViewBag.idProveedores,
-"Seleccione un proveedor",
 new { htmlAttributes = new { @class = "form-control" } })
             </p>
 

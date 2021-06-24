@@ -117,6 +117,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepositoryEstante.cs" />
     <Compile Include="Repository\IRepositoryInventario.cs" />
+    <Compile Include="Repository\IRepositoryPais.cs" />
     <Compile Include="Repository\IRepositoryProducto.cs" />
     <Compile Include="Repository\IRepositoryProveedor.cs" />
     <Compile Include="Repository\IRepositoryTienda.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Repository\IRepositoryUsuario.cs" />
     <Compile Include="Repository\RepositoryEstante.cs" />
     <Compile Include="Repository\RepositoryInventario.cs" />
+    <Compile Include="Repository\RepositoryPais.cs" />
     <Compile Include="Repository\RepositoryProducto.cs" />
     <Compile Include="Repository\RepositoryProveedor.cs" />
     <Compile Include="Repository\RepositoryTienda.cs" />
