@@ -77,8 +77,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
       <PropertyRef Name="idEstante" />
     </Key>
     <Property Name="idProducto" Type="int" Nullable="false" />
-    <Property Name="cantidad" Type="int" />
     <Property Name="idEstante" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="proveedor">
     <Key>

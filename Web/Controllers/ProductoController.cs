@@ -17,6 +17,7 @@ namespace proyecto.Controllers
         IServiseTipoCategoria ServiseTipoCategoria = new ServiseTipoCategoria();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
         IServiseEstante serviseEstante = new ServiseEstante();
+        IServicePais servisePais = new ServicePais();
         MemoryStream target = new MemoryStream();
 
 
@@ -57,7 +58,7 @@ namespace proyecto.Controllers
         {
 
         
-            produ.idCategoria = int.Parse(categoria[0]);
+                 produ.idCategoria = int.Parse(categoria[0]);
                 produ.TipoCategoria = ServiseTipoCategoria.obtenerCategoriaPorID(int.Parse(categoria[0]));
 
 
@@ -80,7 +81,7 @@ namespace proyecto.Controllers
             }
             */
 
-            serviseProducto.guardarProducto(produ, int.Parse(proveedor[0]), int.Parse(estante[0]));
+            serviseProducto.guardarProducto(produ, proveedor, estante);
             return RedirectToAction("Index");
 
         }

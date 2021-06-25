@@ -9,7 +9,7 @@ namespace ApplicationCore.Services
 {
     public interface IServiseProducto
     {
-        void guardarProducto(producto producto, int idProveedor, int idEstante);
+        void guardarProducto(producto producto, String[] idProveedor, String[] idEstante);
         IEnumerable<producto> listadoProducto();
         producto obtenerProductoID(int id);
     }

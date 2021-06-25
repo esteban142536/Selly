@@ -23,9 +23,9 @@ namespace ApplicationCore.Services
             return repository.GetListaPais();
         }
 
-        public pais obtenerCategoriaPorID(int idPais)
+        public pais obtenerPaisPorID(int idPais)
         {
-            throw new NotImplementedException();
+            return repository.obtenerPaisPorID(idPais);
         }
     }
 }

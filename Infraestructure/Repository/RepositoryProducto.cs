@@ -11,7 +11,7 @@ namespace Infraestructure.Repository
 
         IRepositoryProveedor repoPro = new RepositoryProveedor();
 
-        public void guardarProducto(producto producto, int idProveedor, int idEstante)
+        public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
            proveedor pro;
             producto produExist = obtenerProductoID(producto.id);
@@ -25,7 +25,7 @@ namespace Infraestructure.Repository
                 if (produExist==null) { 
                 //si producto no existe
                     //carga los proveedores a la tabla intermedia
-                    pro = repoPro.obtenerProveedorID(idProveedor);
+                    pro = repoPro.obtenerProveedorID(int.Parse(idProveedor[0]));
                     cdt.proveedor.Attach(pro);
                     producto.proveedor.Add(pro);
 
@@ -35,7 +35,7 @@ namespace Infraestructure.Repository
                     //carga la tabla intermedia de ubicacion
                     productoEstante pe = new productoEstante();
                     pe.idProducto = producto.id;
-                    pe.idEstante = idEstante;
+                    pe.idEstante = int.Parse(idEstante[0]);
                     pe.cantidad = producto.totalStock;
                     cdt.productoEstante.Add(pe);
 
@@ -50,21 +50,26 @@ namespace Infraestructure.Repository
 
 
                         //actualiza los proveedores a la tabla intermedia
-                        var selectedCategoriasID = new HashSet<string>(idProveedor);
-                        cdt.Entry(producto).Collection(p => p.proveedor).Load();//--
-                        var newCategoriaForLibro = cdt.proveedor.Where(x => selectedCategoriasID.Contains(x.id.ToString())).ToList();
-                        producto.proveedor = newCategoriaForLibro;
+                        var proveedoresLista = new HashSet<string>(idProveedor);
+                        cdt.Entry(producto).Collection(p => p.proveedor).Load();
+                        var nuevoProveedorLista = cdt.proveedor.Where(x => proveedoresLista.Contains(x.id.ToString())).Include(x=>x.pais).Include(x => x.contactos).Include(x => x.detalleFactura).ToList();
+                        producto.proveedor = nuevoProveedorLista;
                         cdt.Entry(producto).State = EntityState.Modified;
-                        cdt.Entry(producto.proveedor).State = EntityState.Modified;
-
 
                         //actualiza la tabla intermedia de ubicacion
-                        var selectedUbicacionID = new HashSet<string>(idEstante);
+
                         cdt.Entry(producto).Collection(p => p.productoEstante).Load();
-                        var newUbicacionForProducto = cdt.productoEstante.Where(x => selectedUbicacionID.Contains(x.idEstante.ToString())).ToList();
-                        producto.productoEstante = newUbicacionForProducto;
+
+                        foreach (productoEstante podues in producto.productoEstante) { 
+                        cdt.productoEstante.Remove(podues);//--> esto esta mal, preguntar a la profe una alternativa
+                            break;
+                        }
+                        productoEstante pe = new productoEstante();
+                        pe.idProducto = producto.id;
+                        pe.idEstante = int.Parse(idEstante[0]);
+                        pe.cantidad = producto.totalStock;
+                        cdt.productoEstante.Add(pe);
                         cdt.Entry(producto).State = EntityState.Modified;
-                        cdt.Entry(producto.productoEstante).State = EntityState.Modified;
 
                         cdt.SaveChanges();
                     }

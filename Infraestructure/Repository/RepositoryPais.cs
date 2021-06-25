@@ -49,9 +49,24 @@ namespace Infraestructure.Repository
             }
         }
 
-        public pais obtenerCategoriaPorID(int idPais)
+        public pais obtenerPaisPorID(int idPais)
         {
-            throw new NotImplementedException();
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                    return cdt.pais.Where(x=>x.id==idPais).FirstOrDefault();
+
+                }
+                catch (Exception e)
+                {
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
         }
     }
 }

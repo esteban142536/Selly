@@ -14,7 +14,7 @@ namespace ApplicationCore.Services
 
         IRepositoryProducto repo=new RepositoryProducto();
 
-        public void guardarProducto(producto producto, int idProveedor, int idEstante)
+        public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
             repo.guardarProducto(producto, idProveedor, idEstante);
         }

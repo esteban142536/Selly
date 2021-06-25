@@ -10,7 +10,7 @@ namespace ApplicationCore.Services
    public interface IServicePais
     {
         void asignarPais(pais tc);
-        pais obtenerCategoriaPorID(int idPais);
+        pais obtenerPaisPorID(int idPais);
         IEnumerable<pais> GetListaPais();
     }
 }

@@ -10,7 +10,7 @@ namespace Infraestructure.Repository
    public interface IRepositoryPais
     {
         void asignarPais(pais tc);
-        pais obtenerCategoriaPorID(int idPais);
+        pais obtenerPaisPorID(int idPais);
 
         IEnumerable<pais> GetListaPais();
     }

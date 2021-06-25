@@ -58,8 +58,8 @@
       <PropertyRef Name="idEstante" />
     </Key>
     <Property Name="idProducto" Type="Int32" Nullable="false" />
-    <Property Name="cantidad" Type="Int32" />
     <Property Name="idEstante" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
     <NavigationProperty Name="estante" Relationship="Self.FK_productoEstante_estante" FromRole="productoEstante" ToRole="estante" />
     <NavigationProperty Name="producto" Relationship="Self.FK_productoEstante_producto" FromRole="productoEstante" ToRole="producto" />
   </EntityType>

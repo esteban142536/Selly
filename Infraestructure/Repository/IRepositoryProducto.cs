@@ -9,7 +9,7 @@ namespace Infraestructure.Repository
 {
    public interface IRepositoryProducto
     {
-        void guardarProducto(producto producto,int idProveedor, int idEstante);
+        void guardarProducto(producto producto, String[] idProveedor, String[] idEstante);
 
         IEnumerable<producto> listadoProducto();
 

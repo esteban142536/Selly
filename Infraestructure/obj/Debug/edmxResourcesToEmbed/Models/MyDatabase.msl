@@ -50,8 +50,8 @@
       <EntityTypeMapping TypeName="sellyModel.productoEstante">
         <MappingFragment StoreEntitySet="productoEstante">
           <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
           <ScalarProperty Name="idEstante" ColumnName="idEstante" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
