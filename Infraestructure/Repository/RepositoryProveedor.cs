@@ -31,7 +31,6 @@ namespace Infraestructure.Repository
                     throw;
                 }
             }
-
         }
 
         public proveedor obtenerProveedorID(int id)
@@ -43,6 +42,44 @@ namespace Infraestructure.Repository
                 proveedor = cdt.proveedor.Include(x => x.contactos).Include(x => x.producto).Include(x => x.pais).Where(x => x.id == id).FirstOrDefault();
             }
             return proveedor;
+        }
+
+        public void guardarProveedor(proveedor proveedor)
+        {
+            proveedor proveedorExiste = obtenerProveedorID(proveedor.id);
+
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                    if (proveedorExiste == null)
+                    {
+                        //Guarda el proveedor
+                        cdt.proveedor.Add(proveedor);
+                        cdt.SaveChanges();
+                    }
+                    else
+                    {
+                        //Guarda el proveedor modificado
+                        cdt.proveedor.Add(proveedor);
+                        cdt.Entry(proveedor).State = EntityState.Modified;
+                        cdt.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string mensaje = "";
+                    Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
+        }
+
+        public proveedor ModificarProveedor(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

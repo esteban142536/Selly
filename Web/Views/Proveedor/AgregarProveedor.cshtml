@@ -1,0 +1,46 @@
+﻿@model Infraestructure.Models.proveedor
+
+@{
+    ViewBag.Title = "Agregar proveedor";
+}
+
+@using (Html.BeginForm("Save", "Proveedor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="titulo">
+        <h2>Agregar proveedor</h2>
+        <hr />
+    </div>
+
+    <div class="content-AgregarContacto" style="margin-left:30%; margin-right:30%; margin-top:2%">
+        <p>
+            Nombre de la empresa:
+            @Html.EditorFor(model => model.nombreEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombreEmpresa, "", new { @class = "text-danger" })
+        </p>
+
+        <p>
+            Direcci&#243;n:
+            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+        </p>
+
+        <p>
+            Pa&#237;s:
+            @Html.DropDownList("pais",
+                (SelectList)ViewBag.idPais,
+                null,
+                new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <br />
+
+        <div class="boton" style="margin-left:25%">
+            <button type="submit" class="btn btn-success">Agregar</button>
+            <button type="button" class="btn btn-success">
+                @Html.ActionLink("Cancelar", "Index", "Proveedor", new { style = "text-decoration:none", @class = "btn-success" })
+            </button>
+        </div>
+    </div>
+}

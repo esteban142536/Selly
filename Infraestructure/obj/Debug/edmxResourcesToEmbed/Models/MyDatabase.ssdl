@@ -1,18 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="sellyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'selly.dbo.contactos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="contactos">
     <Key>
-      <PropertyRef Name="nombre" />
-      <PropertyRef Name="numero" />
-      <PropertyRef Name="correo" />
-      <PropertyRef Name="idProveedor" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="numero" Type="int" Nullable="false" />
     <Property Name="correo" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="idProveedor" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -77,8 +73,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
       <PropertyRef Name="idEstante" />
     </Key>
     <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" />
     <Property Name="idEstante" Type="int" Nullable="false" />
-    <Property Name="cantidad" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="proveedor">
     <Key>
@@ -330,6 +326,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="sellyModelStoreContainer">
+    <EntitySet Name="contactos" EntityType="Self.contactos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="estante" EntityType="Self.estante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inventario" EntityType="Self.inventario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
@@ -343,14 +340,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipoUsuario" EntityType="Self.tipoUsuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="contactos" EntityType="Self.contactos" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [contactos].[nombre] AS [nombre], 
-    [contactos].[numero] AS [numero], 
-    [contactos].[correo] AS [correo], 
-    [contactos].[idProveedor] AS [idProveedor]
-    FROM [dbo].[contactos] AS [contactos]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [detalleFactura].[idProducto] AS [idProducto], 

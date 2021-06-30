@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="sellyModelStoreContainer" CdmEntityContainer="sellyEntities">
+    <EntitySetMapping Name="contactos">
+      <EntityTypeMapping TypeName="sellyModel.contactos">
+        <MappingFragment StoreEntitySet="contactos">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="estante">
       <EntityTypeMapping TypeName="sellyModel.estante">
         <MappingFragment StoreEntitySet="estante">
@@ -50,8 +61,8 @@
       <EntityTypeMapping TypeName="sellyModel.productoEstante">
         <MappingFragment StoreEntitySet="productoEstante">
           <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
           <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,16 +131,6 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="esActivo" ColumnName="esActivo" />
           <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="contactos">
-      <EntityTypeMapping TypeName="sellyModel.contactos">
-        <MappingFragment StoreEntitySet="contactos">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="numero" ColumnName="numero" />
-          <ScalarProperty Name="correo" ColumnName="correo" />
-          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

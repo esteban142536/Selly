@@ -31,11 +31,7 @@
                 }
             }
         }
-
-
-
         <i class=" barra-texto"><strong>Usuario: @email</strong></i>
-
     </div>
 
     <div class="encabezado">
@@ -91,6 +87,7 @@
                             <a class="dropdown-item" href="#">Lista de compras</a>
                         </div>
                     </li>
+
                     @{
                         if (Session["Usuario"] != null)
                         {
@@ -108,22 +105,24 @@
 
                                         <a class="dropdown-item" href="#">Mantenimiento</a>
                                         <div class="dropdown-divider"></div>
-                                        @Html.ActionLink("Producto", "MantenimientoProducto", "Producto", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Producto", "Index", "Producto", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Proveedor", "Index", "Proveedor", null, new { @class = "dropdown-item" })
                                         <a class="dropdown-item" href="#">Usuario</a>
-                                        @Html.ActionLink("Proveedor", "MantenimientoProveedor", "Proveedor", null, new { @class = "dropdown-item" })
+
 
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Reporte</a>
+
                                         <div class="dropdown-divider"></div>
-                                        @Html.ActionLink("Producto", "Index", "Producto", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Producto", "ReporteProducto", "Producto", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Proveedores", "ReporteProveedores", "Proveedor", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Entrada y Salida", "EntradaSalida", "Inventario", null, new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Proveedores", "Proveedores", "Proveedor", null, new { @class = "dropdown-item" })
                                         <a class="dropdown-item" href="#">Usuario</a>
+
                                     </div>
                             </div>
                         }
                     }
-
                     </li>
                 </ul>
 
@@ -138,11 +137,8 @@
                             {
                                 @Html.ActionLink("Cerrar sesion", "cerrarSesion", "Usuario", null, new { @class = "nav-link" })
 
-                            }
-
+                           }
                         }
-
-
                     </button>
                 </form>
             </div>
@@ -176,17 +172,17 @@
             </div>
         </footer>
     </div>
+
     @RenderSection("footer", false)
 
     @if (ViewBag.NotificationMessage != null)
-    {
+                                {
         <script>
- @Html.Raw(@ViewBag.NotificationMessage);
+            @Html.Raw(@ViewBag.NotificationMessage);
         </script>
     }
 
-
-    @Scripts.Render("~/bundles/jquery")
+                                @Scripts.Render("~/bundles/jquery")
 
     @Scripts.Render("~/bundles/sweetalert")
     <script src="~/Scripts/bootstrap.js"></script>

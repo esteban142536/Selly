@@ -67,14 +67,15 @@ namespace Infraestructure.Models
 
         [Display(Name = "Nombre del proveedor")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [DataType(DataType.Text, ErrorMessage = "{0} no tiene formato válido")]
         public string nombreEmpresa { get; set; }
 
         [Display(Name = "Dirección")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [DataType(DataType.Text, ErrorMessage = "{0} no tiene formato válido")]
         public string direccion { get; set; }
 
         [Display(Name = "País")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual pais pais { get; set; }
     }
 
@@ -164,6 +165,7 @@ namespace Infraestructure.Models
 
     internal partial class ContactoMetadata
     {
+        public int id { get; set; }
         public int idProveedor { get; set; }
         public virtual proveedor proveedor { get; set; }
 
@@ -173,10 +175,12 @@ namespace Infraestructure.Models
 
         [Display(Name = "Número de teléfono")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "{0} no tiene formato válido")]
         public int numero { get; set; }
 
         [Display(Name = "Correo electrónico")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "{0} no tiene formato válido")]
         public string correo { get; set; }
     }
 }

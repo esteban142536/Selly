@@ -11,13 +11,16 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(ContactoMetadata))]
     public partial class contactos
     {
         public string nombre { get; set; }
         public int numero { get; set; }
         public string correo { get; set; }
         public int idProveedor { get; set; }
+        public int id { get; set; }
     
         public virtual proveedor proveedor { get; set; }
     }

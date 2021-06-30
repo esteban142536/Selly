@@ -17,52 +17,16 @@ namespace proyecto.Controllers
         IServiseTipoCategoria ServiseTipoCategoria = new ServiseTipoCategoria();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
         IServiseEstante serviseEstante = new ServiseEstante();
-        IServicePais servisePais = new ServicePais();
         MemoryStream target = new MemoryStream();
 
 
-        // GET: Producto
-
-        //listas para llenar los Combos
-        private SelectList listaTipoCategoria(int idCategoria = 0)
-        {
-
-            IEnumerable<TipoCategoria> listaTipoCategorias = ServiseTipoCategoria.GetListaTipoCategoria();
-
-            return new SelectList(listaTipoCategorias, "id", "Descripcion", idCategoria);
-        }
-        private SelectList listaProveedores(int idProveedor = 0)
-        {
-
-            IEnumerable<proveedor> listaProveedores = serviseProveedor.listadoProveedor();
-
-            return new SelectList(listaProveedores, "id", "nombreEmpresa", idProveedor);
-        }
-        private SelectList listaEstantes(int idEstante = 0)
-        {
-
-            IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
-
-            return new SelectList(listaEstante, "id", "nombre", idEstante);
-        }
-
-
-        public ActionResult Index() {
-            return View(serviseProducto.listadoProducto());
-        }
-
-
-        //para guardar productos nuevos
+        //Guarda productos nuevos
         [HttpPost]
         public ActionResult Save(producto produ, String[] categoria, String[] proveedor, String[] estante, HttpPostedFileBase ImageFile)
         {
+            produ.idCategoria = int.Parse(categoria[0]);
 
-        
-                 produ.idCategoria = int.Parse(categoria[0]);
-                produ.TipoCategoria = ServiseTipoCategoria.obtenerCategoriaPorID(int.Parse(categoria[0]));
-
-
-            //valida si existe una imagen
+            //Valida si existe una imagen
             if (produ.imagen == null)
             {
                 if (ImageFile != null)
@@ -71,24 +35,21 @@ namespace proyecto.Controllers
                     produ.imagen = target.ToArray();
                     ModelState.Remove("Imagen");
                 }
-
             }
-            //la validacion esta fallando, revisar posteriormente
-         /*   if (!ModelState.IsValid)
+               if (produ.nombre==null||produ.descripcion == null||produ.costoUnitario == 0||produ.totalStock == 0||produ.cantMaxima == 0||produ.cantMinima==0)
             {
-                MantenimientoProducto();
-                return View("MantenimientoProducto");
+                ViewBag.idCategoria = listaTipoCategoria(produ.idCategoria);
+                ViewBag.idProveedores = listaProveedores();
+                ViewBag.idEstantes = listaEstantes();
+                return View("AgregarProducto", produ);
             }
-            */
-
+          
             serviseProducto.guardarProducto(produ, proveedor, estante);
             return RedirectToAction("Index");
-
         }
 
-
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
-        public ActionResult MantenimientoProducto()
+        public ActionResult AgregarProducto()
         {
             ViewBag.idCategoria = listaTipoCategoria();
             ViewBag.idProveedores = listaProveedores();
@@ -107,40 +68,71 @@ namespace proyecto.Controllers
             return View();
         }
 
-        //para editar productos antiguos
-public ActionResult Edit(int? id)
-{
-
-    try
-    {
-       
-        if (id == null)
+        //Para editar productos
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        public ActionResult EditarProducto(int? id)
         {
-            return RedirectToAction("Index");
-        }
+        try
+            {
+                if (id == null)
+                {
+                    return RedirectToAction("Index");
+                }
 
-        producto pro = serviseProducto.obtenerProductoID(id.Value);
-        if (pro == null)
-        {
-            TempData["Message"] = "No existe el libro solicitado";
-            return RedirectToAction("Index");
-        }
+                producto pro = serviseProducto.obtenerProductoID(id.Value);
+
+                if (pro == null)
+                {
+                    TempData["Message"] = "No existe el producto solicitado";
+                    return RedirectToAction("Index");
+                }
                 
                 ViewBag.idCategoria = listaTipoCategoria(pro.idCategoria);
                 ViewBag.idProveedores = listaProveedores();
                 ViewBag.idEstantes = listaEstantes();
                 return View(pro);
-    }
-    catch (Exception ex)
-    {
+            }
+        catch (Exception ex)
+            {
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
 
-        Log.Error(ex, MethodBase.GetCurrentMethod());
-        TempData["Message"] = "Error al procesar los datos! " + ex.Message;
-        return RedirectToAction("Index");
-    }
-}
-        
+        public ActionResult Index()
+        {
+            return View(serviseProducto.listadoProducto());
+        }
 
+        public ActionResult ReporteProducto()
+        {
+            return View(serviseProducto.listadoProducto());
+        }
 
+        //Listas para llenar los combos
+        private SelectList listaTipoCategoria(int idCategoria = 0)
+        {
+
+            IEnumerable<TipoCategoria> listaTipoCategorias = ServiseTipoCategoria.GetListaTipoCategoria();
+
+            return new SelectList(listaTipoCategorias, "id", "Descripcion", idCategoria);
+        }
+
+        private SelectList listaProveedores(int idProveedor = 0)
+        {
+
+            IEnumerable<proveedor> listaProveedores = serviseProveedor.listadoProveedor();
+
+            return new SelectList(listaProveedores, "id", "nombreEmpresa", idProveedor);
+        }
+
+        private SelectList listaEstantes(int idEstante = 0)
+        {
+
+            IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
+
+            return new SelectList(listaEstante, "id", "nombre", idEstante);
+        }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Services\IServiseEstante.cs" />
     <Compile Include="Services\IServiseInventario.cs" />
     <Compile Include="Services\IServiseProducto.cs" />
+    <Compile Include="Services\IServiseContactos.cs" />
     <Compile Include="Services\IServiseProveedor.cs" />
     <Compile Include="Services\IServiseTienda.cs" />
     <Compile Include="Services\IServiseTipoCategoria.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Services\ServiseEstante.cs" />
     <Compile Include="Services\ServiseInventario.cs" />
     <Compile Include="Services\ServiseProducto.cs" />
+    <Compile Include="Services\ServiseContactos.cs" />
     <Compile Include="Services\ServiseProveedor.cs" />
     <Compile Include="Services\ServiseTienda.cs" />
     <Compile Include="Services\ServiseTipoCategoria.cs" />

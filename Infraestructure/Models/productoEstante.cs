@@ -15,8 +15,8 @@ namespace Infraestructure.Models
     public partial class productoEstante
     {
         public int idProducto { get; set; }
+        public Nullable<int> cantidad { get; set; }
         public int idEstante { get; set; }
-        public int cantidad { get; set; }
     
         public virtual estante estante { get; set; }
         public virtual producto producto { get; set; }

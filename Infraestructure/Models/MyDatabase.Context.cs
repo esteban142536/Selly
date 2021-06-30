@@ -25,6 +25,7 @@ namespace Infraestructure.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<estante> estante { get; set; }
         public virtual DbSet<inventario> inventario { get; set; }
         public virtual DbSet<pais> pais { get; set; }
@@ -37,7 +38,6 @@ namespace Infraestructure.Models
         public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
         public virtual DbSet<tipoUsuario> tipoUsuario { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
-        public virtual DbSet<contactos> contactos { get; set; }
         public virtual DbSet<detalleFactura> detalleFactura { get; set; }
     }
 }

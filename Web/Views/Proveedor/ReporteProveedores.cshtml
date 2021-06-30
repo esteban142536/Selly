@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Infraestructure.Models.proveedor>
+
+@{
+    ViewBag.Title = "Proveedores";
+}
+
+<div class="titulo">
+    <h2>Proveedores</h2>
+</div>
+
+<table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
+    <thead class="table-success">
+        <tr>
+            <th scope="col">Nombre de la empresa</th>
+            <th scope="col">Direcci&#243;n</th>
+            <th scope="col">Pa&#237;s</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.nombreEmpresa)</td>
+                <td>@Html.DisplayFor(modelItem => item.direccion)</td>
+                <td>@Html.DisplayFor(modelItem => item.pais.nombre)</td>
+                <th scope="col">
+                    <button type="button" class="btn btn-success">
+                        @Html.ActionLink("Ver detalles", "DetalleProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-success" })
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+

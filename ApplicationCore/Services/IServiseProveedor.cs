@@ -9,8 +9,8 @@ namespace ApplicationCore.Services
 {
    public interface IServiseProveedor
     {
+        void guardarProveedor(proveedor proveedor);
         IEnumerable<proveedor> listadoProveedor();
-
         proveedor obtenerProveedorID(int id);
     }
 }

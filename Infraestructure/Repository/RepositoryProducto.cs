@@ -13,7 +13,7 @@ namespace Infraestructure.Repository
 
         public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
-           proveedor pro;
+            proveedor pro;
             producto produExist = obtenerProductoID(producto.id);
 
             using (contextData cdt = new contextData())
@@ -22,46 +22,47 @@ namespace Infraestructure.Repository
 
                 try
                 {
-                if (produExist==null) { 
-                //si producto no existe
-                    //carga los proveedores a la tabla intermedia
-                    pro = repoPro.obtenerProveedorID(int.Parse(idProveedor[0]));
-                    cdt.proveedor.Attach(pro);
-                    producto.proveedor.Add(pro);
+                    if (produExist == null)
+                    {
+                        //si producto no existe 
+                        //carga los proveedores a la tabla intermedia 
+                        pro = repoPro.obtenerProveedorID(int.Parse(idProveedor[0]));
+                        cdt.proveedor.Attach(pro);
+                        producto.proveedor.Add(pro);
 
-                    //salva el producto
-                    cdt.producto.Add(producto);
+                        //salva el producto 
+                        cdt.producto.Add(producto);
 
-                    //carga la tabla intermedia de ubicacion
-                    productoEstante pe = new productoEstante();
-                    pe.idProducto = producto.id;
-                    pe.idEstante = int.Parse(idEstante[0]);
-                    pe.cantidad = producto.totalStock;
-                    cdt.productoEstante.Add(pe);
+                        //carga la tabla intermedia de ubicacion 
+                        productoEstante pe = new productoEstante();
+                        pe.idProducto = producto.id;
+                        pe.idEstante = int.Parse(idEstante[0]);
+                        pe.cantidad = producto.totalStock;
+                        cdt.productoEstante.Add(pe);
 
-                    cdt.SaveChanges();
+                        cdt.SaveChanges();
                     }
                     else
                     {
-                        //actualiza el producto
+                        //actualiza el producto 
                         cdt.producto.Add(producto);
                         cdt.Entry(producto).State = EntityState.Modified;
-                        cdt.Entry(producto.TipoCategoria).State = EntityState.Modified;
 
 
-                        //actualiza los proveedores a la tabla intermedia
+                        //actualiza los proveedores a la tabla intermedia 
                         var proveedoresLista = new HashSet<string>(idProveedor);
                         cdt.Entry(producto).Collection(p => p.proveedor).Load();
-                        var nuevoProveedorLista = cdt.proveedor.Where(x => proveedoresLista.Contains(x.id.ToString())).Include(x=>x.pais).Include(x => x.contactos).Include(x => x.detalleFactura).ToList();
+                        var nuevoProveedorLista = cdt.proveedor.Where(x => proveedoresLista.Contains(x.id.ToString())).Include(x => x.pais).Include(x => x.contactos).Include(x => x.detalleFactura).ToList();
                         producto.proveedor = nuevoProveedorLista;
                         cdt.Entry(producto).State = EntityState.Modified;
 
-                        //actualiza la tabla intermedia de ubicacion
+                        //actualiza la tabla intermedia de ubicacion 
 
                         cdt.Entry(producto).Collection(p => p.productoEstante).Load();
 
-                        foreach (productoEstante podues in producto.productoEstante) { 
-                        cdt.productoEstante.Remove(podues);//--> esto esta mal, preguntar a la profe una alternativa
+                        foreach (productoEstante podues in producto.productoEstante)
+                        {
+                            cdt.productoEstante.Remove(podues);//--> esto esta mal, preguntar a la profe una alternativa 
                             break;
                         }
                         productoEstante pe = new productoEstante();

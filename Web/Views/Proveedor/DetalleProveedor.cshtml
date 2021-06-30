@@ -31,7 +31,12 @@
         <div class="col">
             <strong>Contactos</strong>
             <br /><br />
-
+            @if (Model.contactos.Count == 0)
+            {
+                <b>
+                    <li type="circle">Este proveedor no tiene registrado contactos aun</li>
+                </b>
+            }
             @foreach (var pro in Model.contactos)
             {
                 <b>
@@ -53,6 +58,12 @@
         <div class="col">
             <strong>Productos entregados</strong>
             <br /><br />
+            @if (Model.producto.Count == 0)
+            {
+                <b>
+                    <li type="circle">Este proveedor no tiene productos registrados aun</li>
+                </b>
+            }
 
             @foreach (var pro in Model.producto)
             {

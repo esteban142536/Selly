@@ -5,19 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="sellyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'selly.dbo.contactos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="contactos">
           <Key>
-            <PropertyRef Name="nombre" />
-            <PropertyRef Name="numero" />
-            <PropertyRef Name="correo" />
-            <PropertyRef Name="idProveedor" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="numero" Type="int" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="idProveedor" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -82,8 +78,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             <PropertyRef Name="idEstante" />
           </Key>
           <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
           <Property Name="idEstante" Type="int" Nullable="false" />
-          <Property Name="cantidad" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
@@ -335,6 +331,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="sellyModelStoreContainer">
+          <EntitySet Name="contactos" EntityType="Self.contactos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="estante" EntityType="Self.estante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario" EntityType="Self.inventario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
@@ -348,14 +345,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoUsuario" EntityType="Self.tipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="contactos" EntityType="Self.contactos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [contactos].[nombre] AS [nombre], 
-    [contactos].[numero] AS [numero], 
-    [contactos].[correo] AS [correo], 
-    [contactos].[idProveedor] AS [idProveedor]
-    FROM [dbo].[contactos] AS [contactos]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [detalleFactura].[idProducto] AS [idProducto], 
@@ -432,6 +421,17 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sellyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="contactos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idProveedor" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="proveedor" Relationship="Self.FK_contactos_proveedor1" FromRole="contactos" ToRole="proveedor" />
+        </EntityType>
         <EntityType Name="estante">
           <Key>
             <PropertyRef Name="id" />
@@ -490,8 +490,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             <PropertyRef Name="idEstante" />
           </Key>
           <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
           <Property Name="idEstante" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
           <NavigationProperty Name="estante" Relationship="Self.FK_productoEstante_estante" FromRole="productoEstante" ToRole="estante" />
           <NavigationProperty Name="producto" Relationship="Self.FK_productoEstante_producto" FromRole="productoEstante" ToRole="producto" />
         </EntityType>
@@ -503,8 +503,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPais" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="pais" Relationship="Self.FK_proveedor_pais" FromRole="proveedor" ToRole="pais" />
           <NavigationProperty Name="contactos" Relationship="Self.FK_contactos_proveedor1" FromRole="proveedor" ToRole="contactos" />
+          <NavigationProperty Name="pais" Relationship="Self.FK_proveedor_pais" FromRole="proveedor" ToRole="pais" />
           <NavigationProperty Name="detalleFactura" Relationship="Self.FK_detalleFactura_proveedor" FromRole="proveedor" ToRole="detalleFactura" />
           <NavigationProperty Name="producto" Relationship="Self.proveedorProducto" FromRole="proveedor" ToRole="producto" />
         </EntityType>
@@ -566,19 +566,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <NavigationProperty Name="inventario" Relationship="Self.FK_factura_usuario" FromRole="usuario" ToRole="inventario" />
           <NavigationProperty Name="tipoUsuario" Relationship="Self.FK_usuario_tipoUsuario" FromRole="usuario" ToRole="tipoUsuario" />
         </EntityType>
-        <EntityType Name="contactos">
-          <Key>
-            <PropertyRef Name="nombre" />
-            <PropertyRef Name="numero" />
-            <PropertyRef Name="correo" />
-            <PropertyRef Name="idProveedor" />
-          </Key>
-          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="numero" Type="Int32" Nullable="false" />
-          <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idProveedor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="proveedor" Relationship="Self.FK_contactos_proveedor1" FromRole="contactos" ToRole="proveedor" />
-        </EntityType>
         <EntityType Name="detalleFactura">
           <Key>
             <PropertyRef Name="idProducto" />
@@ -597,6 +584,18 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <NavigationProperty Name="producto" Relationship="Self.FK_productoFacturados_producto" FromRole="detalleFactura" ToRole="producto" />
           <NavigationProperty Name="proveedor" Relationship="Self.FK_detalleFactura_proveedor" FromRole="detalleFactura" ToRole="proveedor" />
         </EntityType>
+        <Association Name="FK_contactos_proveedor1">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="contactos" Type="Self.contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contactos">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_detalleFactura_estante">
           <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
           <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
@@ -717,18 +716,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_contactos_proveedor1">
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
-          <End Role="contactos" Type="Self.contactos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="proveedor">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="contactos">
-              <PropertyRef Name="idProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_detalleFactura_proveedor">
           <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
           <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
@@ -758,6 +745,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
         </Association>
         <EntityContainer Name="sellyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contactos" EntityType="Self.contactos" />
           <EntitySet Name="estante" EntityType="Self.estante" />
           <EntitySet Name="inventario" EntityType="Self.inventario" />
           <EntitySet Name="pais" EntityType="Self.pais" />
@@ -770,8 +758,11 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
           <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" />
           <EntitySet Name="tipoUsuario" EntityType="Self.tipoUsuario" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
-          <EntitySet Name="contactos" EntityType="Self.contactos" />
           <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" />
+          <AssociationSet Name="FK_contactos_proveedor1" Association="Self.FK_contactos_proveedor1">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="contactos" EntitySet="contactos" />
+          </AssociationSet>
           <AssociationSet Name="FK_detalleFactura_estante" Association="Self.FK_detalleFactura_estante">
             <End Role="estante" EntitySet="estante" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
@@ -812,10 +803,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             <End Role="producto" EntitySet="producto" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
           </AssociationSet>
-          <AssociationSet Name="FK_contactos_proveedor1" Association="Self.FK_contactos_proveedor1">
-            <End Role="proveedor" EntitySet="proveedor" />
-            <End Role="contactos" EntitySet="contactos" />
-          </AssociationSet>
           <AssociationSet Name="FK_detalleFactura_proveedor" Association="Self.FK_detalleFactura_proveedor">
             <End Role="proveedor" EntitySet="proveedor" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
@@ -835,6 +822,17 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sellyModelStoreContainer" CdmEntityContainer="sellyEntities">
+          <EntitySetMapping Name="contactos">
+            <EntityTypeMapping TypeName="sellyModel.contactos">
+              <MappingFragment StoreEntitySet="contactos">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="estante">
             <EntityTypeMapping TypeName="sellyModel.estante">
               <MappingFragment StoreEntitySet="estante">
@@ -884,8 +882,8 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
             <EntityTypeMapping TypeName="sellyModel.productoEstante">
               <MappingFragment StoreEntitySet="productoEstante">
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-                <ScalarProperty Name="idEstante" ColumnName="idEstante" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idEstante" ColumnName="idEstante" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -954,16 +952,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="esActivo" ColumnName="esActivo" />
                 <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="contactos">
-            <EntityTypeMapping TypeName="sellyModel.contactos">
-              <MappingFragment StoreEntitySet="contactos">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

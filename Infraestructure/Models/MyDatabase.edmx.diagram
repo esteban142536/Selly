@@ -4,7 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5136d073711d4e99841eda4b7b601fe2" Name="Diagram1">
+      <Diagram DiagramId="945f780fcc22494b9009c1b015f31447" Name="Diagram1">
+        <EntityTypeShape EntityType="sellyModel.contactos" Width="1.5" PointX="6" PointY="24" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.estante" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.inventario" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.pais" Width="1.5" PointX="1.5" PointY="24.375" IsExpanded="true" />
@@ -17,8 +18,8 @@
         <EntityTypeShape EntityType="sellyModel.TipoMovimiento" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.tipoUsuario" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.usuario" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sellyModel.contactos" Width="1.5" PointX="6" PointY="24.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sellyModel.detalleFactura" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="sellyModel.FK_contactos_proveedor1" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_detalleFactura_estante" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_productoEstante_estante" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_factura_tienda" ManuallyRouted="false" />
@@ -29,7 +30,6 @@
         <AssociationConnector Association="sellyModel.FK_producto_TipoCategoria" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_productoEstante_producto" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_productoFacturados_producto" ManuallyRouted="false" />
-        <AssociationConnector Association="sellyModel.FK_contactos_proveedor1" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_detalleFactura_proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.FK_usuario_tipoUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="sellyModel.proveedorProducto" ManuallyRouted="false" />
