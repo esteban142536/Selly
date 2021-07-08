@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
     public interface IServiseEstante
     {
         IEnumerable<estante> GetListaEstante();
+        estante obtenerEstantePorID(int idEstante);
     }
 }

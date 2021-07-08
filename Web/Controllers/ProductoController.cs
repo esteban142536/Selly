@@ -4,6 +4,7 @@ using Infraestructure.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -39,8 +40,8 @@ namespace proyecto.Controllers
                if (produ.nombre==null||produ.descripcion == null||produ.costoUnitario == 0||produ.totalStock == 0||produ.cantMaxima == 0||produ.cantMinima==0)
             {
                 ViewBag.idCategoria = listaTipoCategoria(produ.idCategoria);
-                ViewBag.idProveedores = listaProveedores();
-                ViewBag.idEstantes = listaEstantes();
+                ViewBag.idProveedores = listaproveedor(null);
+                ViewBag.idEstantes = listaEstantes(null);
                 return View("AgregarProducto", produ);
             }
           
@@ -52,8 +53,8 @@ namespace proyecto.Controllers
         public ActionResult AgregarProducto()
         {
             ViewBag.idCategoria = listaTipoCategoria();
-            ViewBag.idProveedores = listaProveedores();
-            ViewBag.idEstantes = listaEstantes();
+            ViewBag.idProveedores = listaproveedor(null);
+            ViewBag.idEstantes = listaEstantes(null);
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace proyecto.Controllers
         }
 
         //Para editar productos
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+     //   [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult EditarProducto(int? id)
         {
         try
@@ -88,8 +89,8 @@ namespace proyecto.Controllers
                 }
                 
                 ViewBag.idCategoria = listaTipoCategoria(pro.idCategoria);
-                ViewBag.idProveedores = listaProveedores();
-                ViewBag.idEstantes = listaEstantes();
+                ViewBag.idProveedores = listaproveedor(null);
+                ViewBag.idEstantes = listaEstantes(null);
                 return View(pro);
             }
         catch (Exception ex)
@@ -119,20 +120,34 @@ namespace proyecto.Controllers
             return new SelectList(listaTipoCategorias, "id", "Descripcion", idCategoria);
         }
 
-        private SelectList listaProveedores(int idProveedor = 0)
+        private MultiSelectList listaproveedor(ICollection<proveedor> proveedores)
         {
-
             IEnumerable<proveedor> listaProveedores = serviseProveedor.listadoProveedor();
+            int[] listaEstantesSelect = null;
 
-            return new SelectList(listaProveedores, "id", "nombreEmpresa", idProveedor);
+            if (proveedores != null)
+            {
+
+                listaEstantesSelect = proveedores.Select(c => c.id).ToArray();
+            }
+
+            return new MultiSelectList(listaProveedores, "id", "nombreEmpresa", listaEstantesSelect);
+
         }
-
-        private SelectList listaEstantes(int idEstante = 0)
+        private MultiSelectList listaEstantes(ICollection<proveedor> proveedores)
         {
-
             IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
+            int[] listaEstanteSelect = null;
 
-            return new SelectList(listaEstante, "id", "nombre", idEstante);
+            if (proveedores != null)
+            {
+
+                listaEstanteSelect = proveedores.Select(c => c.id).ToArray();
+            }
+
+            return new MultiSelectList(listaEstante, "id", "nombre", listaEstanteSelect);
+
         }
+
     }
 }

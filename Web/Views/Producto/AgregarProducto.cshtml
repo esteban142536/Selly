@@ -67,8 +67,8 @@ new { htmlAttributes = new { @class = "form-control" } })
             <p>
                 Proveedor del producto:
                 @Html.DropDownList("proveedor",
-(SelectList)ViewBag.idProveedores,
-new { htmlAttributes = new { @class = "form-control" } })
+(MultiSelectList)ViewBag.idProveedores,
+new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
             </p>
 
             <p>

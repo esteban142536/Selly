@@ -15,5 +15,10 @@ namespace ApplicationCore.Services
         {
             return repositoryEstante.GetListaEstante();
         }
+
+        public estante obtenerEstantePorID(int idEstante)
+        {
+            return repositoryEstante.obtenerEstantePorID(idEstante);
+        }
     }
 }

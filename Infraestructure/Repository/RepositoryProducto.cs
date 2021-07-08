@@ -10,6 +10,7 @@ namespace Infraestructure.Repository
     {
 
         IRepositoryProveedor repoPro = new RepositoryProveedor();
+        IRepositoryEstante repoEsta = new RepositoryEstante();
 
         public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
@@ -24,11 +25,13 @@ namespace Infraestructure.Repository
                 {
                     if (produExist == null)
                     {
-                        //si producto no existe 
+                        //si producto no existe, es nuevo
                         //carga los proveedores a la tabla intermedia 
-                        pro = repoPro.obtenerProveedorID(int.Parse(idProveedor[0]));
+                        foreach (var idPro in idProveedor) { 
+                        pro = repoPro.obtenerProveedorID(int.Parse(idPro));
                         cdt.proveedor.Attach(pro);
                         producto.proveedor.Add(pro);
+                        }
 
                         //salva el producto 
                         cdt.producto.Add(producto);
@@ -56,14 +59,35 @@ namespace Infraestructure.Repository
                         producto.proveedor = nuevoProveedorLista;
                         cdt.Entry(producto).State = EntityState.Modified;
 
-                        //actualiza la tabla intermedia de ubicacion 
 
-                        cdt.Entry(producto).Collection(p => p.productoEstante).Load();
+                        //actualizar tabla intermedia de ubicacion usando muchos a muchos
+ //idEstante arreglo de los identificadores de las ubicaciones o estantes
+                        if (idEstante != null)
+                        {
+                            //Obtener los estantes registrados del producto a modificar
+                            List<productoEstante> estantesdelProducto = cdt.productoEstante.Where(x=>x.idProducto==producto.id).ToList();
+                            // Borrar los estantes existentes del producto
+                            foreach (var item in estantesdelProducto)
+                            {                             
+                                producto.productoEstante.Remove(item);
+                            }
+                            //Registrar los estantes especificados
+                            foreach (var estante in idEstante)
+                            {
+                                productoEstante pe = new productoEstante();
+                                pe.idProducto = producto.id;
+                                pe.idEstante = int.Parse(estante);
+                                pe.cantidad = 0;
+                                cdt.productoEstante.Add(pe);
+                            }
+                        }
+
+                        //actualiza la tabla intermedia de ubicacion
+                    /*    cdt.Entry(producto).Collection(p => p.productoEstante).Load();
 
                         foreach (productoEstante podues in producto.productoEstante)
                         {
                             cdt.productoEstante.Remove(podues);//--> esto esta mal, preguntar a la profe una alternativa 
-                            break;
                         }
                         productoEstante pe = new productoEstante();
                         pe.idProducto = producto.id;
@@ -71,6 +95,7 @@ namespace Infraestructure.Repository
                         pe.cantidad = producto.totalStock;
                         cdt.productoEstante.Add(pe);
                         cdt.Entry(producto).State = EntityState.Modified;
+                    */
 
                         cdt.SaveChanges();
                     }

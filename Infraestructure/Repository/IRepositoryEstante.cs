@@ -10,5 +10,6 @@ namespace Infraestructure.Repository
    public interface IRepositoryEstante
     {
         IEnumerable<estante> GetListaEstante();
+        estante obtenerEstantePorID(int idEstante);
     }
 }

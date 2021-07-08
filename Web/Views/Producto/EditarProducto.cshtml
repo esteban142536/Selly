@@ -45,9 +45,9 @@
             <p>
                 Ubicaci&#243;n:
                 @Html.DropDownList("estante",
-                (SelectList)ViewBag.idEstantes,
+                (MultiSelectList)ViewBag.idEstantes,
                 null,
-                new { htmlAttributes = new { @class = "form-control" } })
+                new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
             </p>
 
             <p>
@@ -70,9 +70,8 @@
             <p>
                 Proveedor del producto:
                 @Html.DropDownList("proveedor",
-                (SelectList)ViewBag.idProveedores,
-                null,
-                new { htmlAttributes = new { @class = "form-control" } })
+                (MultiSelectList)ViewBag.idProveedores,
+                new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
             </p>
 
             <p>
@@ -81,6 +80,7 @@
                 @Html.HiddenFor(model => model.imagen)
                 @Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
             </p>
+
 
             <div class="boton" style="margin-left:30%">
                 <button type="submit" class="btn btn-success">Modificar</button>

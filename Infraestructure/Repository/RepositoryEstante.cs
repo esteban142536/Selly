@@ -29,5 +29,28 @@ namespace Infraestructure.Repository
                 }
             }
         }
+
+
+        public estante obtenerEstantePorID(int idEstante)
+        {
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                    return cdt.estante.Where(x => x.id == idEstante).FirstOrDefault();
+
+                }
+                catch (Exception e)
+                {
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
+        }
+
+
     }
 }
