@@ -70,7 +70,7 @@ namespace proyecto.Controllers
         }
 
         //Para editar productos
-     //   [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult EditarProducto(int? id)
         {
         try

@@ -37,11 +37,15 @@ namespace Infraestructure.Repository
                         cdt.producto.Add(producto);
 
                         //carga la tabla intermedia de ubicacion 
-                        productoEstante pe = new productoEstante();
-                        pe.idProducto = producto.id;
-                        pe.idEstante = int.Parse(idEstante[0]);
-                        pe.cantidad = producto.totalStock;
-                        cdt.productoEstante.Add(pe);
+                        foreach (var idEsta in idEstante)
+                        {
+                            productoEstante pe = new productoEstante();
+                            pe.idProducto = producto.id;
+                            pe.idEstante = int.Parse(idEsta);
+                            pe.cantidad = producto.totalStock;
+                            producto.productoEstante.Add(pe);
+                        }
+
 
                         cdt.SaveChanges();
                     }
@@ -61,7 +65,7 @@ namespace Infraestructure.Repository
 
 
                         //actualizar tabla intermedia de ubicacion usando muchos a muchos
- //idEstante arreglo de los identificadores de las ubicaciones o estantes
+                        //idEstante arreglo de los identificadores de las ubicaciones o estantes
                         if (idEstante != null)
                         {
                             //Obtener los estantes registrados del producto a modificar
@@ -81,22 +85,6 @@ namespace Infraestructure.Repository
                                 cdt.productoEstante.Add(pe);
                             }
                         }
-
-                        //actualiza la tabla intermedia de ubicacion
-                    /*    cdt.Entry(producto).Collection(p => p.productoEstante).Load();
-
-                        foreach (productoEstante podues in producto.productoEstante)
-                        {
-                            cdt.productoEstante.Remove(podues);//--> esto esta mal, preguntar a la profe una alternativa 
-                        }
-                        productoEstante pe = new productoEstante();
-                        pe.idProducto = producto.id;
-                        pe.idEstante = int.Parse(idEstante[0]);
-                        pe.cantidad = producto.totalStock;
-                        cdt.productoEstante.Add(pe);
-                        cdt.Entry(producto).State = EntityState.Modified;
-                    */
-
                         cdt.SaveChanges();
                     }
                 }
