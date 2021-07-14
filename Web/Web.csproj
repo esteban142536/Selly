@@ -158,6 +158,8 @@
     <Compile Include="Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="Utils\Log.cs" />
     <Compile Include="Utils\SweetAlertHelper.cs" />
+    <Compile Include="ViewModel\Carrito.cs" />
+    <Compile Include="ViewModel\ViewModelOrdenDetalle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -341,6 +343,8 @@
     <Content Include="Views\Proveedor\EditarProveedor.cshtml" />
     <Content Include="Views\Contacto\Index.cshtml" />
     <Content Include="Views\Contacto\EditarContacto.cshtml" />
+    <Content Include="Views\Producto\listaProductos.cshtml" />
+    <Content Include="Views\Shared\_cantidadCarrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

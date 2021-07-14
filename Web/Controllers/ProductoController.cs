@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Web.Security;
+using Web.ViewModel;
 
 namespace proyecto.Controllers
 {
@@ -101,6 +102,12 @@ namespace proyecto.Controllers
             }
         }
 
+
+        public ActionResult listaProductos()
+        {
+            return View(serviseProducto.listadoProducto());
+        }
+
         public ActionResult Index()
         {
             return View(serviseProducto.listadoProducto());
@@ -110,6 +117,14 @@ namespace proyecto.Controllers
         {
             return View(serviseProducto.listadoProducto());
         }
+        public ActionResult ordenarProducto(int? idProducto)
+        {
+            int cantidadproducto = Carrito.Instancia.Items.Count();
+            ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem((int)idProducto);
+            return PartialView("_cantidadCarrito");
+
+        }
+
 
         //Listas para llenar los combos
         private SelectList listaTipoCategoria(int idCategoria = 0)

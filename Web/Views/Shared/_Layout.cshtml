@@ -49,6 +49,9 @@
                     <li class="nav-item">
                         @Html.ActionLink(" ", "MenuAdministrador", "Home", null, new { style = "color:white", @class = "bi bi-house h1" })
                     </li>
+                    <li class="nav-item" id="cantidadproducto">
+                        @Html.Partial("_cantidadCarrito")
+                    </li>
 
                     <li class="nav-item">
                         @Html.ActionLink("Menú", "Index", "Home", null, new { @class = "nav-link active" })

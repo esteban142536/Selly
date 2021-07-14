@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Infraestructure.Models.producto>
+
+@{
+    ViewBag.Title = "listaProductos";
+}
+
+<h2>listaProductos</h2>
+
+<div id="resultado" class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
+                    <p class="card-text">   @Html.DisplayNameFor(model => model.totalStock):  @Html.DisplayFor(modelItem => item.totalStock)</p>
+                    <p class="card-text">   @Html.DisplayNameFor(model => model.costoUnitario):  @Html.DisplayFor(modelItem => item.costoUnitario)</p>
+                    <div class="card-body">
+                        @Ajax.ActionLink("Ordenar",//Texto para el usuario
+                               "ordenarProducto",//Acción a llamar
+                               "Producto",
+                               new
+                               {
+                                   idProducto = item.id
+                               },//Parámetros a enviar
+                               new AjaxOptions
+                               {
+                                   UpdateTargetId = "cantidadproducto",
+                                   InsertionMode = InsertionMode.Replace,
+                                   HttpMethod = "GET",
+                               }, new { @class = "btn btn-primary" }
+                               )
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+}
+
+
