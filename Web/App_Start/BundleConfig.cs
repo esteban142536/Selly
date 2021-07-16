@@ -14,8 +14,7 @@ namespace Web
                         "~/Scripts/jquery.validate*"));
 
             // SweetAlert
-            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include(
-                "~/Scripts/sweetalert.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include("~/Scripts/sweetalert.min.js"));
 
             //jQuery.Unobtrusive
             bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
@@ -32,7 +31,7 @@ namespace Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.css",
                       //"~/Content/site.css",
-                      "~/Content/bootstrap.css"
+                      "~/Content/bootstrap.css", "~/Content/sweetalert.css"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css2").Include(

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Web.ViewModel
 {
-    public class ViewModelOrdenDetalle
+    public class ViewModelInventarioDetalle
     {
         public string nombre { get; set; }
         public int totalStock { get; set; }
@@ -33,11 +33,11 @@ namespace Web.ViewModel
         }
         private double calculoSubtotal()
         {
-            return this.Precio * this.costoUnitario;
+            return this.Precio * this.totalStock;
         }
 
 
-        public ViewModelOrdenDetalle(int idProducto)
+        public ViewModelInventarioDetalle(int idProducto)
         {
             IServiseProducto serviseProducto = new ServiseProducto();
             this.id = idProducto;

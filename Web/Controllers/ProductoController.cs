@@ -38,7 +38,11 @@ namespace proyecto.Controllers
                     ModelState.Remove("Imagen");
                 }
             }
-               if (produ.nombre==null||produ.descripcion == null||produ.costoUnitario == 0||produ.totalStock == 0||produ.cantMaxima == 0||produ.cantMinima==0)
+               if (produ.nombre==null||produ.descripcion == null||
+                produ.costoUnitario <= 0 ||
+                produ.totalStock <= 0 ||  produ.totalStock >= 99 ||
+                produ.cantMaxima <= 0 || produ.cantMaxima >= 99 ||
+                produ.cantMinima <= 0|| produ.cantMinima >= 99)
             {
                 ViewBag.idCategoria = listaTipoCategoria(produ.idCategoria);
                 ViewBag.idProveedores = listaproveedor(null);

@@ -58,22 +58,8 @@
                         <span class="visually-hidden">(current)</span>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           data-bs-toggle="dropdown"
-                           href="#"
-                           role="button"
-                           aria-haspopup="true"
-                           aria-expanded="true">
-                            Catálogo
-                        </a>
-
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Artículos del hogar</a>
-                            <a class="dropdown-item" href="#">Tecnología</a>
-                            <a class="dropdown-item" href="#">Juguetes</a>
-                            <a class="dropdown-item" href="#">Moda</a>
-                        </div>
+                    <li class="nav-item">
+                        @Html.ActionLink("Catálogo", "listaProductos", "Producto", null, new { @class = "nav-link active" })
                     </li>
 
                     <li class="nav-item dropdown">

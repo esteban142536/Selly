@@ -8,7 +8,7 @@ namespace Web.ViewModel
 {
     public class Carrito
     {
-        public List<ViewModelOrdenDetalle> Items { get; private set; }
+        public List<ViewModelInventarioDetalle> Items { get; private set; }
 
         //Implementación Singleton
 
@@ -22,7 +22,7 @@ namespace Web.ViewModel
             if (HttpContext.Current.Session["carrito"] == null)
             {
                 Instancia = new Carrito();
-                Instancia.Items = new List<ViewModelOrdenDetalle>();
+                Instancia.Items = new List<ViewModelInventarioDetalle>();
                 HttpContext.Current.Session["carrito"] = Instancia;
             }
             else
@@ -42,14 +42,14 @@ namespace Web.ViewModel
         {
             String mensaje = "";
             // Crear un nuevo artículo para agregar al carrito
-            ViewModelOrdenDetalle nuevoItem = new ViewModelOrdenDetalle(productoID);
+            ViewModelInventarioDetalle nuevoItem = new ViewModelInventarioDetalle(productoID);
             // Si este artículo ya existe en lista de libros, aumente la Cantidad
             // De lo contrario, agregue el nuevo elemento a la lista
             if (nuevoItem != null)
             {
                 if (Items.Exists(x => x.id == productoID))
                 {
-                    ViewModelOrdenDetalle item = Items.Find(x => x.id == productoID);
+                    ViewModelInventarioDetalle item = Items.Find(x => x.id == productoID);
                     item.totalStock++;
                 }
                 else
@@ -62,7 +62,7 @@ namespace Web.ViewModel
             }
             else
             {
-                mensaje = SweetAlertHelper.Mensaje("Orden Libro", "El libro solicitado no existe", SweetAlertMessageType.warning);
+                mensaje = SweetAlertHelper.Mensaje("Orden producto", "El producto solicitado no existe", SweetAlertMessageType.warning);
             }
             return mensaje;
         }
@@ -78,18 +78,18 @@ namespace Web.ViewModel
             if (Cantidad == 0)
             {
                 EliminarItem(idProducto);
-                mensaje = SweetAlertHelper.Mensaje("Orden Libro", "Libro eliminado", SweetAlertMessageType.success);
+                mensaje = SweetAlertHelper.Mensaje("Inventario producto", "Producto eliminado", SweetAlertMessageType.success);
 
             }
             else
             {
                 // Encuentra el artículo y actualiza la Cantidad
-                ViewModelOrdenDetalle actualizarItem = new ViewModelOrdenDetalle(idProducto);
+                ViewModelInventarioDetalle actualizarItem = new ViewModelInventarioDetalle(idProducto);
                 if (Items.Exists(x => x.id == idProducto))
                 {
-                    ViewModelOrdenDetalle item = Items.Find(x => x.id == idProducto);
+                    ViewModelInventarioDetalle item = Items.Find(x => x.id == idProducto);
                     item.totalStock = Cantidad;
-                    mensaje = SweetAlertHelper.Mensaje("Orden Libro", "Cantidad actualizada", SweetAlertMessageType.success);
+                    mensaje = SweetAlertHelper.Mensaje("Orden producto", "Cantidad actualizada", SweetAlertMessageType.success);
 
                 }
             }
@@ -97,9 +97,7 @@ namespace Web.ViewModel
 
         }
 
-        /**
-         * EliminarItem (): elimina un artículo del carrito de compras
-         */
+
         public String EliminarItem(int idProducto)
         {
             String mensaje = "El producto no existe";
@@ -107,15 +105,13 @@ namespace Web.ViewModel
             {
                 var itemEliminar = Items.Single(x => x.id == idProducto);
                 Items.Remove(itemEliminar);
-                mensaje = SweetAlertHelper.Mensaje("Orden Libro", "Libro eliminado", SweetAlertMessageType.success);
+                mensaje = SweetAlertHelper.Mensaje("Orden producto", "producto eliminado", SweetAlertMessageType.success);
             }
             return mensaje;
 
         }
 
-        /**
-         * GetTotal() - Devuelve el precio total de todos los libros.
-         */
+
         public double GetTotal()
         {
             double total = 0;
@@ -130,9 +126,6 @@ namespace Web.ViewModel
 
             return total;
         }
-        /**
-         * GetTotalPeso() - Devuelve el total de peso de todos los libros.
-         */
 
         public void eliminarCarrito()
         {

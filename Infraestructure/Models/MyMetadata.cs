@@ -104,14 +104,19 @@ namespace Infraestructure.Models
 
         [Display(Name = "Total de stock")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
         public int totalStock { get; set; }
 
         [Display(Name = "Cantidad máxima")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
+
         public int cantMaxima { get; set; }
 
         [Display(Name = "Cantidad mínima")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
+
         public int cantMinima { get; set; }
 
         [Display(Name = "Costo unitario")]

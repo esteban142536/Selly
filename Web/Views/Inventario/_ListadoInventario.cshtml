@@ -1,0 +1,65 @@
+﻿@model List<Web.ViewModel.ViewModelInventarioDetalle>
+
+<div class="content-body" style="margin-left:7%; margin-right:6%; margin-top:3%; margin-bottom:3%">
+    <h3>Productos</h3>
+
+
+    <table class="table table-hover" style="margin-top:3%">
+        <thead class="table-success">
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Costo Unitario</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+        </thead>
+
+        @foreach (var produc in Model)
+        { 
+        <tbody>
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => produc.Producto.id)
+                    @produc.Producto.nombre
+                </td>
+
+                <td>
+                    @Html.EditorFor(modelItem => produc.totalStock, new { htmlAttributes = new { @class = "form-control changeCantidad", data_libroid = produc.Producto.id, onchange = "updateCantidad(this)" } })
+
+                </td>
+                <td>@Html.DisplayFor(modelItem => produc.Producto.costoUnitario)</td>
+
+                <td>    @Html.DisplayFor(modelItem => produc.SubTotal)
+                </td>
+            </tr>
+        </tbody>
+        }
+
+    </table>
+
+    <div class="row">
+        <div class="col">
+            <p>
+                Total:
+                @((((Double)Web.ViewModel.Carrito.Instancia.GetTotal())).ToString("C2"))
+
+            </p>
+        </div>
+        <div class="col">
+            <p>
+                Total con 13% del IVA:
+                @((((Double)Web.ViewModel.Carrito.Instancia.GetTotal())*0.13).ToString("C2"))
+
+            </p>
+        </div>
+
+        <div class="col">
+            <p>
+                Comentario:
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+            </p>
+        </div>
+    </div>
+</div>
