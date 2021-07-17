@@ -69,14 +69,15 @@
                     <div class="row" style="margin-left:18%">
                         <div class="col">
 
-                            <p>
-                                @* Tipo de movimietno *@
-                                @Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)
-                                @Html.EditorFor(x => x.TipoMovimiento.tipoEntrada)
-                                <br />
-                                @Html.DisplayNameFor(model => model.TipoMovimiento.tipoSalida)
-                                @Html.EditorFor(x => x.TipoMovimiento.tipoSalida)
-                            </p>
+
+                            <br />
+
+                            <input type="button" onclick="updateCano()" value="Entrada" class="btn btn-success"/>
+                            <input type="button" onclick="appearSalida()" value="Salida" class="btn btn-success"/>
+
+                            <span id="searchResults"/>
+
+
                         </div>
 
                         <div class="col">
@@ -129,7 +130,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/jqueryajax")
 
-        <script type="text/javascript">
+<script type="text/javascript">
 
         //Actualizar cantidad de libros en el carrito
         //Cambio de cantidad en caja de texto
@@ -164,6 +165,35 @@
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
             });
-        }
-        </script>
+            }
+
+
+        function updateCano() {
+            $.ajax({
+                type: "GET",
+                dataType: 'text',
+                url: "/Inventario/appearEntrada",
+                success: function (data) {
+                    $("#searchResults").html('');
+                    $("#searchResults").html(data);
+                }, error: function (xhr, status, error) {
+                    console.log("Error: " + error + ", No Error: " + xhr.status);
+                },
+            });
+    }
+
+    function appearSalida() {
+        $.ajax({
+            type: "GET",
+            dataType: 'text',
+            url: "/Inventario/AppearSalida",
+            success: function (data) {
+                $("#searchResults").html('');
+                $("#searchResults").html(data);
+            }, error: function (xhr, status, error) {
+                console.log("Error: " + error + ", No Error: " + xhr.status);
+            },
+        });
+    }
+</script>
     }

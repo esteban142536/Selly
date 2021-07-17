@@ -12,20 +12,20 @@ namespace proyecto.Controllers
 {
     public class InventarioController : Controller
     {
-        IServiseInventario servise = new ServiseInventario();
+        IServiseInventario serviseInventa = new ServiseInventario();
         IServiseTipoMovimiento serviseMovi = new ServiseTipoMovimiento();
         IServiseTienda serviseTienda = new ServiseTienda();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
 
         public ActionResult EntradaSalida()
         {
-            return View(servise.listadoInventario());
+            return View(serviseInventa.listadoInventario());
         }
 
       
         public ActionResult DetalleInventario(int id)
         {
-            return View(servise.obtenerInventarioID(id));
+            return View(serviseInventa.obtenerInventarioID(id));
         }
 
         private SelectList listaTiendas(int idTienda= 0)
@@ -51,16 +51,25 @@ namespace proyecto.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(inventario inventario,TipoMovimiento tipoMovimiento, String[] tienda)
+        public ActionResult Save(inventario inventario,TipoMovimiento tipoMovimiento, String[] proveedor)
         {
-            if (inventario == null || tipoMovimiento == null || tienda==null)
+            if (tipoMovimiento.tipoEntrada==null)
             {
-                return View();
+                tipoMovimiento.tipoEntrada = "No aplica";
             }
-                inventario.idTienda = int.Parse(tienda[0]);
+            else
+            {
+                tipoMovimiento.tipoSalida = "No aplica";
+            }
+            if (inventario == null || tipoMovimiento == null || proveedor==null)
+            {
+                ViewBag.idProveedores = listaproveedor(null);
+                return View("AgregarInventario",inventario);
+            }
+                inventario.idTienda = int.Parse(proveedor[0]);
 
             //primero es asignar el tipo de movimeinto, luego la tienda y luego guardar el inventario
-            // servise.crearInventario(inventario);
+            serviseInventa.crearInventario(inventario);
             return View();
         }
 
@@ -99,13 +108,22 @@ namespace proyecto.Controllers
 
         }
 
-     /*   private SelectList listaEntradas(int? id) {
-            IServiceAutor _ServiceAutor = new ServiceAutor();
-            IEnumerable<Autor> listaAutores = _ServiceAutor.GetAutor();
-            //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaAutores, "IdAutor", "Nombre", idAutor);
+        /*   private SelectList listaEntradas(int? id) {
+               IServiceAutor _ServiceAutor = new ServiceAutor();
+               IEnumerable<Autor> listaAutores = _ServiceAutor.GetAutor();
+               //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+               return new SelectList(listaAutores, "IdAutor", "Nombre", idAutor);
+           }
+        */
+
+        public ActionResult appearEntrada()
+        {
+            return PartialView("_MovimientoEntrada");
         }
-     */
+        public ActionResult AppearSalida()
+        {
+            return PartialView("_MovimientoSalida");
+        }
 
     }
 }
