@@ -49,9 +49,6 @@
                     <li class="nav-item">
                         @Html.ActionLink(" ", "MenuAdministrador", "Home", null, new { style = "color:white", @class = "bi bi-house h1" })
                     </li>
-                    <li class="nav-item" id="cantidadproducto">
-                        @Html.Partial("_cantidadCarrito")
-                    </li>
 
                     <li class="nav-item">
                         @Html.ActionLink("Menú", "Index", "Home", null, new { @class = "nav-link active" })
@@ -60,21 +57,6 @@
 
                     <li class="nav-item">
                         @Html.ActionLink("Catálogo", "listaProductos", "Producto", null, new { @class = "nav-link active" })
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           data-bs-toggle="dropdown"
-                           href="#"
-                           role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">
-                            Cuenta
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="Cuenta">
-                            <a class="dropdown-item" href="#">Lista de compras</a>
-                        </div>
                     </li>
 
                     @{
@@ -92,24 +74,27 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="Administraci&#243;n">
 
-                                        <a class="dropdown-item" href="#">Mantenimiento</a>
+                                        <a class="dropdown-item" href="#"><strong>Mantenimiento</strong></a>
                                         <div class="dropdown-divider"></div>
                                         @Html.ActionLink("Producto", "Index", "Producto", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Proveedor", "Index", "Proveedor", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Entrada/Salida", "Index", "Inventario", null, new { @class = "dropdown-item" })
                                         <a class="dropdown-item" href="#">Usuario</a>
 
-
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reporte</a>
+                                        <a class="dropdown-item" href="#"><strong>Reporte</strong></a>
 
                                         <div class="dropdown-divider"></div>
                                         @Html.ActionLink("Producto", "ReporteProducto", "Producto", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Proveedores", "ReporteProveedores", "Proveedor", null, new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Entrada y Salida", "EntradaSalida", "Inventario", null, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Entrada/Salida", "ReporteEntradaSalida", "Inventario", null, new { @class = "dropdown-item" })
                                         <a class="dropdown-item" href="#">Usuario</a>
-
                                     </div>
                             </div>
+
+                            <li class="nav-item" id="cantidadproducto">
+                                @Html.Partial("_cantidadCarrito")
+                            </li>
                         }
                     }
                     </li>

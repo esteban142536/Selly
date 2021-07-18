@@ -4,42 +4,51 @@
     ViewBag.Title = "listaProductos";
 }
 
-<h2>listaProductos</h2>
+<div class="titulo">
+    <h2> <strong>Catálogo</strong> </h2>
+</div>
 
 <div id="resultado" class="row">
-    @foreach (var item in Model)
-    {
 
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
+    <div class="row row-cols-1 row-cols-md-4">
+        @foreach (var item in Model)
+        {
+            <div class="col" style="margin-bottom:3%">
+                <div class="card h-100">
                     <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.imagen)"
-                         alt="Imagen @Html.DisplayFor(modelItem => item.nombre)" class="img-thumbnail" />
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre)</h5>
-                    <p class="card-text">   @Html.DisplayNameFor(model => model.totalStock):  @Html.DisplayFor(modelItem => item.totalStock)</p>
-                    <p class="card-text">   @Html.DisplayNameFor(model => model.costoUnitario):  @Html.DisplayFor(modelItem => item.costoUnitario)</p>
-                    <div class="card-body">
-                        @Ajax.ActionLink("Ordenar",//Texto para el usuario
-                               "ordenarProducto",//Acción a llamar
-                               "Producto",
-                               new
-                               {
-                                   idProducto = item.id
-                               },//Parámetros a enviar
-                               new AjaxOptions
-                               {
-                                   UpdateTargetId = "cantidadproducto",
-                                   InsertionMode = InsertionMode.Replace,
-                                   HttpMethod = "GET",
-                               }, new { @class = "btn btn-primary" }
-                               )
+                         alt="Imagen @Html.DisplayFor(modelItem => item.nombre)" class="card-img-top" style="height:180px" />
+
+                    <div class="card-body" style="text-align:center">
+                        <h5><strong>@Html.DisplayFor(modelItem => item.nombre)</strong></h5>
+                        @Html.DisplayNameFor(model => model.totalStock):  @Html.DisplayFor(modelItem => item.totalStock)
+                        <br />
+                        @Html.DisplayNameFor(model => model.costoUnitario):  &#8353;@Html.DisplayFor(modelItem => item.costoUnitario)
+
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                @Ajax.ActionLink("Ordenar",//Texto para el usuario
+                                       "ordenarProducto",//Acción a llamar
+                                       "Producto",
+                                       new
+                                       {
+                                           idProducto = item.id
+                                       },//Parámetros a enviar
+                                       new AjaxOptions
+                                       {
+                                           UpdateTargetId = "cantidadproducto",
+                                           InsertionMode = InsertionMode.Replace,
+                                           HttpMethod = "GET",
+                                       }, new { @class = "btn btn-success" }
+                                       )
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-    }
+        }
+    </div>
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryajax")
 }

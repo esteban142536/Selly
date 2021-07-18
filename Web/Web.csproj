@@ -322,7 +322,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Inventario\DetalleInventario.cshtml" />
-    <Content Include="Views\Inventario\EntradaSalida.cshtml" />
+    <Content Include="Views\Inventario\ReporteEntradaSalida.cshtml" />
     <Content Include="Views\Producto\DetalleProducto.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Proveedor\DetalleProveedor.cshtml" />
@@ -331,7 +331,6 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Home\MenuAdministrador.cshtml" />
     <Content Include="Views\Home\AcercaDe.cshtml" />
-    <Content Include="Views\Inventario\CrearInventario.cshtml" />
     <Content Include="Views\Producto\DetalleProductoCliente.cshtml" />
     <Content Include="Views\Producto\AgregarProducto.cshtml" />
     <Content Include="Views\Usuario\cerrarSesion.cshtml" />
@@ -349,6 +348,7 @@
     <Content Include="Views\Inventario\_ListadoInventario.cshtml" />
     <Content Include="Views\Inventario\_MovimientoEntrada.cshtml" />
     <Content Include="Views\Inventario\_MovimientoSalida.cshtml" />
+    <Content Include="Views\Inventario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

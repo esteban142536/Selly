@@ -22,7 +22,7 @@
                     <p class="text-success">
                         <strong>
                             @* Tienda *@
-                            Selly
+                            @Html.DisplayNameFor(model => model.tienda) Selly
                         </strong>
                     </p>
                 </div>
@@ -66,18 +66,17 @@
 
             <div class="card border-primary mb-3" style="max-width: 70rem; margin-left:7%;">
                 <div class="card-body">
-                    <div class="row" style="margin-left:18%">
+                    <div class="row" style="margin-left:10%">
                         <div class="col">
-
-
+                            @* Tipo de movimiento *@
+                            @Html.DisplayNameFor(model => model.TipoMovimiento)
                             <br />
+                            <input type="button" onclick="appearEntrada()" value="Entrada" class="btn btn-success" />
+                            <input type="button" onclick="appearSalida()" value="Salida" class="btn btn-success" />
+                        </div>
 
-                            <input type="button" onclick="updateCano()" value="Entrada" class="btn btn-success"/>
-                            <input type="button" onclick="appearSalida()" value="Salida" class="btn btn-success"/>
-
-                            <span id="searchResults"/>
-
-
+                        <div class="col">
+                            <span id="searchResults" />
                         </div>
 
                         <div class="col">
@@ -86,22 +85,15 @@
                                 Proveedor:
                                 <br />
                                 @Html.DropDownList("proveedor",
-                                         (MultiSelectList)ViewBag.idProveedores,
-                                         new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
+                                (SelectList)ViewBag.idProveedores,
+                                null,
+                                new { htmlAttributes = new { @class = "form-control" } })
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <input class="form-control" list="datalistOptions" placeholder="Buscar producto...">
-            <datalist id="datalistOptions">
-                <option value="Audifonos">
-                <option value="Blusa">
-                <option value="Sarten">
-                <option value="Cargador">
-                <option value="Carro de juguete">
-            </datalist>
             <div id="resultadoDetalle">
                 @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
                 {
@@ -109,14 +101,14 @@
                 }
                 else
                 {
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    La orden no tiene libros asignados
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            }
-                </div>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
+                        No hay productos en la orden
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+            </div>
             <div class="boton" style="margin-left:43%">
                 <button type="submit" class="btn btn-success">Agregar</button>
                 <button type="button" class="btn btn-success">Cancelar</button>
@@ -125,15 +117,14 @@
     </div>
 }
 
-    @section Scripts {
+@section Scripts {
 
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-        //Actualizar cantidad de libros en el carrito
-        //Cambio de cantidad en caja de texto
+        //Actualizar cantidad de libros en el carrito y cambio de cantidad en caja de texto
         function updateCantidad(ctr) {
             var txtCantidad = $(ctr);
             var cantidad = txtCantidad.val();
@@ -152,6 +143,7 @@
                 },
             });
         }
+
         //Actualizar cantidad de libros en el menú
         function updateCantLibros() {
             $.ajax({
@@ -165,10 +157,9 @@
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
             });
-            }
+        }
 
-
-        function updateCano() {
+        function appearEntrada() {
             $.ajax({
                 type: "GET",
                 dataType: 'text',
@@ -180,20 +171,20 @@
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
             });
-    }
+        }
 
-    function appearSalida() {
-        $.ajax({
-            type: "GET",
-            dataType: 'text',
-            url: "/Inventario/AppearSalida",
-            success: function (data) {
-                $("#searchResults").html('');
-                $("#searchResults").html(data);
-            }, error: function (xhr, status, error) {
-                console.log("Error: " + error + ", No Error: " + xhr.status);
-            },
-        });
-    }
-</script>
-    }
+        function appearSalida() {
+            $.ajax({
+                type: "GET",
+                dataType: 'text',
+                url: "/Inventario/AppearSalida",
+                success: function (data) {
+                    $("#searchResults").html('');
+                    $("#searchResults").html(data);
+                }, error: function (xhr, status, error) {
+                    console.log("Error: " + error + ", No Error: " + xhr.status);
+                },
+            });
+        }
+    </script>
+}

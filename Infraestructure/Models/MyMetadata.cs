@@ -9,14 +9,22 @@ namespace Infraestructure.Models
 {
     internal partial class InventarioMetadata {
         public int id { get; set; }
-        public int idUsuario { get; set; }
+
         public int idTienda { get; set; }
         public int idTipoMovimiento { get; set; }
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
 
-        [Display(Name = "Fecha de emisión")]
+        [Display(Name = "Usuario:")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
+        public int idUsuario { get; set; }
+
+        [Display(Name = "Fecha de emisión:")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public string fecha { get; set; }
+
+        [Display(Name = "Tipo de movimiento:")]
+        [Required(ErrorMessage = "{0} es un campo requerido")]
+        public virtual TipoMovimiento TipoMovimiento { get; set; }
 
         [Display(Name = "Total")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
@@ -30,17 +38,13 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public Nullable<double> iva { get; set; }
 
-        [Display(Name = "Tienda")]
+        [Display(Name = "Tienda:")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual tienda tienda { get; set; }
 
         [Display(Name = "Usuario")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual usuario usuario { get; set; }
-
-        [Display(Name = "Tipo de movimiento")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
-        public virtual TipoMovimiento TipoMovimiento { get; set; }
     }
 
     internal partial class TipoMovimientoMetadata
@@ -102,7 +106,7 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public string nombre { get; set; }
 
-        [Display(Name = "Total de stock")]
+        [Display(Name = "Total de existencia")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
         [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
         public int totalStock { get; set; }
@@ -119,7 +123,7 @@ namespace Infraestructure.Models
 
         public int cantMinima { get; set; }
 
-        [Display(Name = "Costo unitario")]
+        [Display(Name = "Costo")]
         [Required(ErrorMessage = "{0} es un campo requerido")]
         public double costoUnitario { get; set; }
 

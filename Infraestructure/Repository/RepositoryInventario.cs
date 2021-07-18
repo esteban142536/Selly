@@ -54,7 +54,6 @@ namespace Infraestructure.Repository
 
         public void crearInventario(inventario inve)
         {
-
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
@@ -73,9 +72,5 @@ namespace Infraestructure.Repository
                 }
             }
         }
-
-
-
-
     }
 }

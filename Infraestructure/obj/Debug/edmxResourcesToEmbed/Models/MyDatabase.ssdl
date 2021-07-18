@@ -93,16 +93,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <Property Name="idProveedor" Type="int" Nullable="false" />
     <Property Name="idProducto" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="tienda">
     <Key>
       <PropertyRef Name="id" />
@@ -334,7 +324,6 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <EntitySet Name="productoEstante" EntityType="Self.productoEstante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proveedorProducto" EntityType="Self.proveedorProducto" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tienda" EntityType="Self.tienda" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoCategoria" EntityType="Self.TipoCategoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />

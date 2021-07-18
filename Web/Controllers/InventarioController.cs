@@ -16,44 +16,12 @@ namespace proyecto.Controllers
         IServiseTipoMovimiento serviseMovi = new ServiseTipoMovimiento();
         IServiseTienda serviseTienda = new ServiseTienda();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
-
-        public ActionResult EntradaSalida()
-        {
-            return View(serviseInventa.listadoInventario());
-        }
-
-      
-        public ActionResult DetalleInventario(int id)
-        {
-            return View(serviseInventa.obtenerInventarioID(id));
-        }
-
-        private SelectList listaTiendas(int idTienda= 0)
-        {
-
-            IEnumerable<tienda> listaTiendas = serviseTienda.GetListaTiendas();
-           
-            return new SelectList(listaTiendas, "id", "nombre", idTienda);
-        }
-
-        public ActionResult CrearInventario()
-        {
-            ViewBag.idTienda = listaTiendas();
-            return View();
-        }
-
-       // [CustomAuthorize((int)TipoUsuario.Administrador)]
-        public ActionResult AgregarInventario(string tipodir)
-        {
-            ViewBag.DetalleCarrito = Carrito.Instancia.Items;
-            ViewBag.idProveedores = listaproveedor(null);
-            return View();
-        }
+        IServiseEstante serviseEstante = new ServiseEstante();
 
         [HttpPost]
-        public ActionResult Save(inventario inventario,TipoMovimiento tipoMovimiento, String[] proveedor)
+        public ActionResult Save(inventario inventario, TipoMovimiento tipoMovimiento, String[] proveedor, String[] estante)
         {
-            if (tipoMovimiento.tipoEntrada==null)
+            if (tipoMovimiento.tipoEntrada == null)
             {
                 tipoMovimiento.tipoEntrada = "No aplica";
             }
@@ -61,15 +29,40 @@ namespace proyecto.Controllers
             {
                 tipoMovimiento.tipoSalida = "No aplica";
             }
-            if (inventario == null || tipoMovimiento == null || proveedor==null)
+            if (inventario == null || tipoMovimiento == null || proveedor == null || estante == null)
             {
-                ViewBag.idProveedores = listaproveedor(null);
-                return View("AgregarInventario",inventario);
+                ViewBag.idProveedores = listaproveedor();
+                ViewBag.idEstante = listaEstante();
+                return View("AgregarInventario", inventario);
             }
-                inventario.idTienda = int.Parse(proveedor[0]);
+            inventario.idTienda = int.Parse(proveedor[0]);
 
             //primero es asignar el tipo de movimeinto, luego la tienda y luego guardar el inventario
             serviseInventa.crearInventario(inventario);
+            return View();
+        }
+
+        public ActionResult Index()
+        {
+            return View(serviseInventa.listadoInventario());
+        }
+
+        public ActionResult ReporteEntradaSalida()
+        {
+            return View(serviseInventa.listadoInventario());
+        }
+
+        public ActionResult DetalleInventario(int id)
+        {
+            return View(serviseInventa.obtenerInventarioID(id));
+        }
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        public ActionResult AgregarInventario(string tipodir)
+        {
+            ViewBag.DetalleCarrito = Carrito.Instancia.Items;
+            ViewBag.idProveedores = listaproveedor();
+            ViewBag.idEstante = listaEstante();
             return View();
         }
 
@@ -78,9 +71,11 @@ namespace proyecto.Controllers
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             TempData["NotiCarrito"] = Carrito.Instancia.SetItemCantidad(idproducto, cantidad);
             TempData.Keep();
+            ViewBag.idEstante = listaEstante();
             return PartialView("_ListadoInventario", Carrito.Instancia.Items);
 
         }
+
         public ActionResult actualizarOrdenCantidad()
         {
             if (TempData.ContainsKey("NotiCarrito"))
@@ -92,30 +87,7 @@ namespace proyecto.Controllers
 
         }
 
-
-        private MultiSelectList listaproveedor(ICollection<proveedor> proveedores)
-        {
-            IEnumerable<proveedor> listaProveedores = serviseProveedor.listadoProveedor();
-            int[] listaEstantesSelect = null;
-
-            if (proveedores != null)
-            {
-
-                listaEstantesSelect = proveedores.Select(c => c.id).ToArray();
-            }
-
-            return new MultiSelectList(listaProveedores, "id", "nombreEmpresa", listaEstantesSelect);
-
-        }
-
-        /*   private SelectList listaEntradas(int? id) {
-               IServiceAutor _ServiceAutor = new ServiceAutor();
-               IEnumerable<Autor> listaAutores = _ServiceAutor.GetAutor();
-               //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-               return new SelectList(listaAutores, "IdAutor", "Nombre", idAutor);
-           }
-        */
-
+        //PartialView
         public ActionResult appearEntrada()
         {
             return PartialView("_MovimientoEntrada");
@@ -125,5 +97,25 @@ namespace proyecto.Controllers
             return PartialView("_MovimientoSalida");
         }
 
+        //Listas
+        private SelectList listaTiendas(int idTienda = 0)
+        {
+
+            IEnumerable<tienda> listaTiendas = serviseTienda.GetListaTiendas();
+
+            return new SelectList(listaTiendas, "id", "nombre", idTienda);
+        }
+
+        private SelectList listaproveedor(int idProveedor = 0)
+        {
+            IEnumerable<proveedor> listaProveedor = serviseProveedor.listadoProveedor();
+            return new SelectList(listaProveedor, "id", "nombreEmpresa", idProveedor);
+        }
+
+        private SelectList listaEstante(int idEstante = 0)
+        {
+            IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
+            return new SelectList(listaEstante, "id", "nombre", idEstante);
+        }
     }
 }

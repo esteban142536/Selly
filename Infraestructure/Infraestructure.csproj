@@ -96,9 +96,6 @@
     <Compile Include="Models\proveedor.cs">
       <DependentUpon>MyDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>MyDataBase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tienda.cs">
       <DependentUpon>MyDataBase.tt</DependentUpon>
     </Compile>

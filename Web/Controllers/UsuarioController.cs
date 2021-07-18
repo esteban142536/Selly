@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using Web.Util;
 using Web.Utils;
+using Web.ViewModel;
 
 namespace proyecto.Controllers
 {
@@ -72,7 +73,9 @@ namespace proyecto.Controllers
             try
             {
                 Session["Usuario"] = null;
-            }catch(Exception ex)
+                Carrito.Instancia.eliminarCarrito();
+            }
+            catch(Exception ex)
             {
                 Log.Error(ex, MethodBase.GetCurrentMethod());
             }

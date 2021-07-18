@@ -58,7 +58,6 @@ namespace Web.ViewModel
                     Items.Add(nuevoItem);
                 }
                 mensaje = SweetAlertHelper.Mensaje("Orden producto", "Producto agregado a la orden", SweetAlertMessageType.success);
-
             }
             else
             {
@@ -66,7 +65,6 @@ namespace Web.ViewModel
             }
             return mensaje;
         }
-
 
         /**
          * SetItemCantidad(): cambia la Cantidad de un artículo en el carrito
@@ -79,7 +77,6 @@ namespace Web.ViewModel
             {
                 EliminarItem(idProducto);
                 mensaje = SweetAlertHelper.Mensaje("Inventario producto", "Producto eliminado", SweetAlertMessageType.success);
-
             }
             else
             {
@@ -94,9 +91,7 @@ namespace Web.ViewModel
                 }
             }
             return mensaje;
-
         }
-
 
         public String EliminarItem(int idProducto)
         {
@@ -108,29 +103,33 @@ namespace Web.ViewModel
                 mensaje = SweetAlertHelper.Mensaje("Orden producto", "producto eliminado", SweetAlertMessageType.success);
             }
             return mensaje;
-
         }
-
 
         public double GetTotal()
         {
             double total = 0;
             total = Items.Sum(x => x.SubTotal);
+            return total;
+        }
+
+        public double GetIva()
+        {
+            double total = 0;
+            total = Items.Sum(x => x.Precio);
 
             return total;
         }
+
         public int GetCountItems()
         {
             int total = 0;
             total = Items.Sum(x => x.totalStock);
-
             return total;
         }
 
         public void eliminarCarrito()
         {
             Items.Clear();
-
         }
     }
 }

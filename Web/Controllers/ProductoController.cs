@@ -29,27 +29,25 @@ namespace proyecto.Controllers
             produ.idCategoria = int.Parse(categoria[0]);
 
             //Valida si existe una imagen
-            if (produ.imagen == null)
+            if (ImageFile != null)
             {
-                if (ImageFile != null)
-                {
-                    ImageFile.InputStream.CopyTo(target);
-                    produ.imagen = target.ToArray();
-                    ModelState.Remove("Imagen");
-                }
+                ImageFile.InputStream.CopyTo(target);
+                produ.imagen = target.ToArray();
+                ModelState.Remove("Imagen");
             }
-               if (produ.nombre==null||produ.descripcion == null||
-                produ.costoUnitario <= 0 ||
-                produ.totalStock <= 0 ||  produ.totalStock >= 99 ||
-                produ.cantMaxima <= 0 || produ.cantMaxima >= 99 ||
-                produ.cantMinima <= 0|| produ.cantMinima >= 99)
+
+            if (produ.nombre == null || produ.descripcion == null ||
+             produ.costoUnitario <= 0 ||
+             produ.totalStock <= 0 || produ.totalStock >= 99 ||
+             produ.cantMaxima <= 0 || produ.cantMaxima >= 99 ||
+             produ.cantMinima <= 0 || produ.cantMinima >= 99)
             {
                 ViewBag.idCategoria = listaTipoCategoria(produ.idCategoria);
                 ViewBag.idProveedores = listaproveedor(null);
                 ViewBag.idEstantes = listaEstantes(null);
                 return View("AgregarProducto", produ);
             }
-          
+
             serviseProducto.guardarProducto(produ, proveedor, estante);
             return RedirectToAction("Index");
         }

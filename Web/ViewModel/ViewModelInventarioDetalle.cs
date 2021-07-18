@@ -19,11 +19,12 @@ namespace Web.ViewModel
         public string descripcion { get; set; }
         public byte[] imagen { get; set; }
         public virtual producto Producto { get; set; }
+        
         public double Precio
         {
             get { return Producto.costoUnitario; }
-
         }
+
         public double SubTotal
         {
             get
@@ -31,11 +32,11 @@ namespace Web.ViewModel
                 return calculoSubtotal();
             }
         }
+
         private double calculoSubtotal()
         {
-            return this.Precio * this.totalStock;
+            return ((this.Precio * this.totalStock) * 0.13) + this.Precio;
         }
-
 
         public ViewModelInventarioDetalle(int idProducto)
         {
