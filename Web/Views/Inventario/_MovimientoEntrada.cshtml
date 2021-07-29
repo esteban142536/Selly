@@ -2,7 +2,9 @@
 
 <div>
     <p>Tipo de entrada</p>
-    @Html.EditorFor(x=>x.TipoMovimiento.tipoEntrada)
+    @Html.EditorFor(x => x.TipoMovimiento.tipoEntrada)
+    @Html.ValidationMessageFor(model => Model.TipoMovimiento.tipoEntrada, "", new { @class = "text-danger" })
+
 </div>
 
 

@@ -3,6 +3,8 @@
 <div>
     <p>Tipo de salida</p>
     @Html.EditorFor(x => x.TipoMovimiento.tipoSalida)
+    @Html.ValidationMessageFor(model => Model.TipoMovimiento.tipoSalida, "", new { @class = "text-danger" })
+
 </div>
 
 

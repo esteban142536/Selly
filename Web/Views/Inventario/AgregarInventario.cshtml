@@ -89,31 +89,55 @@
                                 null,
                                 new { htmlAttributes = new { @class = "form-control" } })
                             </p>
+                            <br />
+
+                            <p>
+                                Estante:
+                                <br />
+                                @Html.DropDownList("estante",
+                                            (SelectList)ViewBag.idEstante,
+                                            null,
+                                            new { htmlAttributes = new { @class = "form-control" } })
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="resultadoDetalle">
-                @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
-                {
-                    @Html.Partial("~/Views/Inventario/_ListadoInventario.cshtml", (List<Web.ViewModel.ViewModelInventarioDetalle>)ViewBag.DetalleCarrito)
-                }
-                else
-                {
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
-                        No hay productos en la orden
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                }
+                <div id="resultadoDetalle">
+                    @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
+                    {
+                        @Html.Partial("~/Views/Inventario/_ListadoInventario.cshtml", (List<Web.ViewModel.ViewModelInventarioDetalle>)ViewBag.DetalleCarrito)
+
+
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
+                            No hay productos en la orden
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+
+                <div class="col">
+                    <p>
+                        Comentario:
+                        <div class="form-group">
+                            @Html.TextAreaFor(modelItem => Model.comentario, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.comentario, "", new { @class = "text-danger" })
+
+                        </div>
+                    </p>
+                </div>
+            
+                </div>
+                <div class="boton" style="margin-left:43%">
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success">Cancelar</button>
+                </div>
             </div>
-            <div class="boton" style="margin-left:43%">
-                <button type="submit" class="btn btn-success">Agregar</button>
-                <button type="button" class="btn btn-success">Cancelar</button>
-            </div>
-        </div>
     </div>
 }
 
@@ -186,5 +210,13 @@
                 },
             });
         }
+
+        //bloquea la tecla enter de ser usada, realizar pruebas
+        $(document).keypress(function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+        });
+
     </script>
 }

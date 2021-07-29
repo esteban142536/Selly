@@ -23,7 +23,6 @@ namespace Infraestructure.Models
         public string fecha { get; set; }
 
         [Display(Name = "Tipo de movimiento:")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual TipoMovimiento TipoMovimiento { get; set; }
 
         [Display(Name = "Total")]
@@ -39,11 +38,10 @@ namespace Infraestructure.Models
         public Nullable<double> iva { get; set; }
 
         [Display(Name = "Tienda:")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
         public virtual tienda tienda { get; set; }
 
         [Display(Name = "Usuario")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+
         public virtual usuario usuario { get; set; }
     }
 
@@ -53,11 +51,11 @@ namespace Infraestructure.Models
         public virtual ICollection<inventario> inventario { get; set; }
 
         [Display(Name = "Tipo de salida")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+
         public string tipoSalida { get; set; }
 
         [Display(Name = "Tipo de entrada")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+
         public string tipoEntrada { get; set; }
     }
 

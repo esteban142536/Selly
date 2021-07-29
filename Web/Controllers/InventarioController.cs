@@ -17,6 +17,7 @@ namespace proyecto.Controllers
         IServiseTienda serviseTienda = new ServiseTienda();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
         IServiseEstante serviseEstante = new ServiseEstante();
+        double iva = 0.13;
 
         [HttpPost]
         public ActionResult Save(inventario inventario, TipoMovimiento tipoMovimiento, String[] proveedor, String[] estante)
@@ -29,17 +30,46 @@ namespace proyecto.Controllers
             {
                 tipoMovimiento.tipoSalida = "No aplica";
             }
-            if (inventario == null || tipoMovimiento == null || proveedor == null || estante == null)
+            if (inventario == null || tipoMovimiento.tipoEntrada == null || tipoMovimiento.tipoSalida == null || proveedor == null || estante == null)
             {
+                ViewBag.DetalleCarrito = Carrito.Instancia.Items;
                 ViewBag.idProveedores = listaproveedor();
                 ViewBag.idEstante = listaEstante();
                 return View("AgregarInventario", inventario);
             }
-            inventario.idTienda = int.Parse(proveedor[0]);
 
-            //primero es asignar el tipo de movimeinto, luego la tienda y luego guardar el inventario
-            serviseInventa.crearInventario(inventario);
-            return View();
+        int tipoMoviID= serviseMovi.agregarTipoMovimiento(tipoMovimiento);
+
+            List<producto> carritoProducto= new List<producto>();
+            foreach (var item in Carrito.Instancia.Items)
+            {
+                producto pro=new producto();
+                pro.id = item.Producto.id;
+                pro.nombre = item.Producto.nombre;
+                pro.costoUnitario = item.Producto.costoUnitario;
+                pro.idCategoria = item.Producto.idCategoria;
+                pro.totalStock = item.totalStock;
+                pro.descripcion = item.Producto.descripcion;
+                pro.imagen = item.Producto.imagen;
+
+                carritoProducto.Add(pro);
+            }
+            usuario user = (usuario)Session["Usuario"];
+            inventario.idUsuario = user.id;
+            inventario.fecha = DateTime.Now.ToString();
+            inventario.idTienda = int.Parse(proveedor[0]);
+            inventario.idTipoMovimiento = tipoMoviID;
+            inventario.TipoMovimiento = tipoMovimiento;
+            inventario.totalPagado = Carrito.Instancia.GetTotal();
+            inventario.iva = iva;
+
+
+            serviseInventa.crearInventario(carritoProducto, inventario, estante);
+
+            ViewBag.DetalleCarrito = Carrito.Instancia.Items;
+            ViewBag.idProveedores = listaproveedor();
+            ViewBag.idEstante = listaEstante();
+            return View("AgregarInventario");
         }
 
         public ActionResult Index()
@@ -57,7 +87,7 @@ namespace proyecto.Controllers
             return View(serviseInventa.obtenerInventarioID(id));
         }
 
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+      //  [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult AgregarInventario(string tipodir)
         {
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;

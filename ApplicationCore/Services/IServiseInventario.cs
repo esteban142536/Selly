@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ApplicationCore.Services
 {
@@ -13,6 +14,6 @@ namespace ApplicationCore.Services
 
         inventario obtenerInventarioID(int id);
 
-        void crearInventario(inventario inve);
+        void crearInventario(List<producto> inve, inventario inventa, String[] estante);
     }
 }
