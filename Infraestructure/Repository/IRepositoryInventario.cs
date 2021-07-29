@@ -13,6 +13,6 @@ namespace Infraestructure.Repository
 
         inventario obtenerInventarioID(int id);
 
-        void crearInventario(List<producto> inve, inventario inventa,String[] estante);
+        void crearInventario(List<producto> inve, inventario inventa,String[] estante, String[] prove);
     }
 }

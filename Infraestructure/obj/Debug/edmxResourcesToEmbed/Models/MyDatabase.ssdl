@@ -10,21 +10,17 @@
     <Property Name="idProveedor" Type="int" Nullable="false" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="detalleFactura">
     <Key>
-      <PropertyRef Name="idProducto" />
-      <PropertyRef Name="idInventario" />
-      <PropertyRef Name="precio" />
-      <PropertyRef Name="cantidadComprada" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="idProducto" Type="int" Nullable="false" />
     <Property Name="idInventario" Type="int" Nullable="false" />
     <Property Name="precio" Type="float" Nullable="false" />
     <Property Name="cantidadComprada" Type="int" Nullable="false" />
-    <Property Name="idEstante" Type="int" />
-    <Property Name="idProveedor" Type="int" />
+    <Property Name="idEstante" Type="int" Nullable="false" />
+    <Property Name="idProveedor" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="estante">
     <Key>
@@ -93,6 +89,16 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <Property Name="idProveedor" Type="int" Nullable="false" />
     <Property Name="idProducto" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="tienda">
     <Key>
       <PropertyRef Name="id" />
@@ -148,7 +154,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_detalleFactura_estante">
-    <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
+    <End Role="estante" Type="Self.estante" Multiplicity="1" />
     <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="estante">
@@ -160,7 +166,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_detalleFactura_proveedor">
-    <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
     <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="proveedor">
@@ -317,6 +323,7 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
   </Association>
   <EntityContainer Name="sellyModelStoreContainer">
     <EntitySet Name="contactos" EntityType="Self.contactos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="estante" EntityType="Self.estante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inventario" EntityType="Self.inventario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
@@ -324,21 +331,12 @@ advertencia 6002: La tabla o vista 'selly.dbo.detalleFactura' no tiene definida 
     <EntitySet Name="productoEstante" EntityType="Self.productoEstante" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proveedorProducto" EntityType="Self.proveedorProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tienda" EntityType="Self.tienda" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoCategoria" EntityType="Self.TipoCategoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipoUsuario" EntityType="Self.tipoUsuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [detalleFactura].[idProducto] AS [idProducto], 
-    [detalleFactura].[idInventario] AS [idInventario], 
-    [detalleFactura].[precio] AS [precio], 
-    [detalleFactura].[cantidadComprada] AS [cantidadComprada], 
-    [detalleFactura].[idEstante] AS [idEstante], 
-    [detalleFactura].[idProveedor] AS [idProveedor]
-    FROM [dbo].[detalleFactura] AS [detalleFactura]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_contactos_proveedor1" Association="Self.FK_contactos_proveedor1">
       <End Role="proveedor" EntitySet="proveedor" />
       <End Role="contactos" EntitySet="contactos" />

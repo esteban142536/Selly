@@ -54,7 +54,7 @@ namespace Infraestructure.Repository
             }
         }
 
-        public void crearInventario(List<producto> produc, inventario inventa, String[] estante)
+        public void crearInventario(List<producto> produc, inventario inventa, String[] estante, String[] prove)
         {
             using (contextData cdt = new contextData())
             {
@@ -65,8 +65,6 @@ namespace Infraestructure.Repository
 
                     //salvar primero el inventario, luego los productos
                       cdt.inventario.Add(inventa);
-                    cdt.SaveChanges();
-
 
                     //llenar estante, producto, inventario y proveedor
                     foreach (var productoItem in produc)
@@ -74,16 +72,10 @@ namespace Infraestructure.Repository
                         detalleFactura df = new detalleFactura();
                         df.idInventario = inventa.id;
                         df.idProducto = productoItem.id;
-                        df.idProveedor = inventa.idTienda;
+                        df.idProveedor = int.Parse(prove[0]);
                         df.idEstante =int.Parse(estante[0]);
                         df.precio = productoItem.costoUnitario;
                         df.cantidadComprada = productoItem.totalStock;
-                        /*
-                        df.estante= repoEsta.obtenerEstantePorID(int.Parse(estante[0]));
-                        df.producto = repoProdu.obtenerProductoID(productoItem.id);
-                        df.inventario= inventa;
-                        df.proveedor = repoProve.obtenerProveedorID(inventa.idTienda);
-                        */
                         
                         cdt.detalleFactura.Add(df);
                     }

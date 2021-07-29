@@ -11,9 +11,7 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    [MetadataType(typeof(InventarioMetadata))]
+    
     public partial class inventario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,10 +29,10 @@ namespace Infraestructure.Models
         public Nullable<double> iva { get; set; }
         public int idTipoMovimiento { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalleFactura> detalleFactura { get; set; }
         public virtual tienda tienda { get; set; }
         public virtual usuario usuario { get; set; }
         public virtual TipoMovimiento TipoMovimiento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<detalleFactura> detalleFactura { get; set; }
     }
 }

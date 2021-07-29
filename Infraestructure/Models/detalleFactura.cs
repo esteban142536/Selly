@@ -18,12 +18,13 @@ namespace Infraestructure.Models
         public int idInventario { get; set; }
         public double precio { get; set; }
         public int cantidadComprada { get; set; }
-        public Nullable<int> idEstante { get; set; }
-        public Nullable<int> idProveedor { get; set; }
+        public int idEstante { get; set; }
+        public int idProveedor { get; set; }
+        public int id { get; set; }
     
         public virtual estante estante { get; set; }
+        public virtual proveedor proveedor { get; set; }
         public virtual inventario inventario { get; set; }
         public virtual producto producto { get; set; }
-        public virtual proveedor proveedor { get; set; }
     }
 }

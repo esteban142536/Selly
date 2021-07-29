@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Security;
+using Web.Util;
 using Web.ViewModel;
 
 namespace proyecto.Controllers
@@ -20,7 +21,7 @@ namespace proyecto.Controllers
         double iva = 0.13;
 
         [HttpPost]
-        public ActionResult Save(inventario inventario, TipoMovimiento tipoMovimiento, String[] proveedor, String[] estante)
+        public ActionResult Save(inventario inventario, TipoMovimiento tipoMovimiento, String[] proveedor, String[] estante, String[] tienda)
         {
             if (tipoMovimiento.tipoEntrada == null)
             {
@@ -30,7 +31,7 @@ namespace proyecto.Controllers
             {
                 tipoMovimiento.tipoSalida = "No aplica";
             }
-            if (inventario == null || tipoMovimiento.tipoEntrada == null || tipoMovimiento.tipoSalida == null || proveedor == null || estante == null)
+            if (inventario == null || tipoMovimiento.tipoEntrada == null || tipoMovimiento.tipoSalida == null)
             {
                 ViewBag.DetalleCarrito = Carrito.Instancia.Items;
                 ViewBag.idProveedores = listaproveedor();
@@ -57,17 +58,19 @@ namespace proyecto.Controllers
             usuario user = (usuario)Session["Usuario"];
             inventario.idUsuario = user.id;
             inventario.fecha = DateTime.Now.ToString();
-            inventario.idTienda = int.Parse(proveedor[0]);
+            inventario.idTienda = int.Parse(tienda[0]);
             inventario.idTipoMovimiento = tipoMoviID;
             inventario.TipoMovimiento = tipoMovimiento;
             inventario.totalPagado = Carrito.Instancia.GetTotal();
             inventario.iva = iva;
 
 
-            serviseInventa.crearInventario(carritoProducto, inventario, estante);
+            serviseInventa.crearInventario(carritoProducto, inventario, estante, proveedor);
 
+            Carrito.Instancia.eliminarCarrito();
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             ViewBag.idProveedores = listaproveedor();
+            ViewBag.idTienda = listaTiendas();
             ViewBag.idEstante = listaEstante();
             return View("AgregarInventario");
         }
@@ -92,6 +95,7 @@ namespace proyecto.Controllers
         {
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             ViewBag.idProveedores = listaproveedor();
+            ViewBag.idTienda = listaTiendas();
             ViewBag.idEstante = listaEstante();
             return View();
         }

@@ -12,9 +12,9 @@ namespace ApplicationCore.Services
     {
         IRepositoryInventario repo = new RepositoryInventario();
 
-        public void crearInventario(List<producto> inve, inventario inventa, String[] estante)
+        public void crearInventario(List<producto> inve, inventario inventa, String[] estante, String[] Proveedor)
         {
-            repo.crearInventario(inve, inventa, estante);
+            repo.crearInventario(inve, inventa, estante, Proveedor);
         }
 
         public IEnumerable<inventario> listadoInventario()

@@ -12,6 +12,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="detalleFactura">
+      <EntityTypeMapping TypeName="sellyModel.detalleFactura">
+        <MappingFragment StoreEntitySet="detalleFactura">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="idInventario" ColumnName="idInventario" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidadComprada" ColumnName="cantidadComprada" />
+          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="estante">
       <EntityTypeMapping TypeName="sellyModel.estante">
         <MappingFragment StoreEntitySet="estante">
@@ -76,6 +89,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="sellyModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tienda">
       <EntityTypeMapping TypeName="sellyModel.tienda">
         <MappingFragment StoreEntitySet="tienda">
@@ -120,18 +144,6 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="esActivo" ColumnName="esActivo" />
           <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="detalleFactura">
-      <EntityTypeMapping TypeName="sellyModel.detalleFactura">
-        <MappingFragment StoreEntitySet="detalleFactura">
-          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-          <ScalarProperty Name="idInventario" ColumnName="idInventario" />
-          <ScalarProperty Name="precio" ColumnName="precio" />
-          <ScalarProperty Name="cantidadComprada" ColumnName="cantidadComprada" />
-          <ScalarProperty Name="idEstante" ColumnName="idEstante" />
-          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

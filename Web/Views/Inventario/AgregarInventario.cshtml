@@ -73,6 +73,16 @@
                             <br />
                             <input type="button" onclick="appearEntrada()" value="Entrada" class="btn btn-success" />
                             <input type="button" onclick="appearSalida()" value="Salida" class="btn btn-success" />
+                            <br />
+
+                            <p>
+                                Tienda donde se esta realizando el cobro:
+                                <br />
+                                @Html.DropDownList("tienda",
+                                            (SelectList)ViewBag.idTienda,
+                                            null,
+                                            new { htmlAttributes = new { @class = "form-control" } })
+                            </p>
                         </div>
 
                         <div class="col">
@@ -99,6 +109,7 @@
                                             null,
                                             new { htmlAttributes = new { @class = "form-control" } })
                             </p>
+                           
                         </div>
                     </div>
                 </div>
@@ -114,10 +125,7 @@
                     else
                     {
                         <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
-                            No hay productos en la orden
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            No hay productos en el carrito
                         </div>
                     }
 
@@ -134,7 +142,7 @@
             
                 </div>
                 <div class="boton" style="margin-left:43%">
-                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <button type="submit" class="btn btn-success" onclick="updateCantProduct()">Agregar</button>
                     <button type="button" class="btn btn-success">Cancelar</button>
                 </div>
             </div>
@@ -148,7 +156,7 @@
 
     <script type="text/javascript">
 
-        //Actualizar cantidad de libros en el carrito y cambio de cantidad en caja de texto
+
         function updateCantidad(ctr) {
             var txtCantidad = $(ctr);
             var cantidad = txtCantidad.val();
@@ -161,15 +169,15 @@
                 success: function (data) {
                     $("#resultadoDetalle").html('');
                     $("#resultadoDetalle").html(data);
-                    updateCantLibros();
+                    updateCantProduct();
                 }, error: function (xhr, status, error) {
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
             });
         }
 
-        //Actualizar cantidad de libros en el menú
-        function updateCantLibros() {
+
+        function updateCantProduct() {
             $.ajax({
                 type: "GET",
                 dataType: 'text',
@@ -211,7 +219,9 @@
             });
         }
 
-        //bloquea la tecla enter de ser usada, realizar pruebas
+
+
+        //bloquea la tecla enter de ser usada
         $(document).keypress(function (e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
