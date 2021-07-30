@@ -12,6 +12,8 @@ namespace Infraestructure.Repository
         IRepositoryProveedor repoPro = new RepositoryProveedor();
         IRepositoryEstante repoEsta = new RepositoryEstante();
 
+
+
         public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
             proveedor pro;

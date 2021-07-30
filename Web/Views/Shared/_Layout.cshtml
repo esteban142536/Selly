@@ -79,7 +79,8 @@
                                         @Html.ActionLink("Producto", "Index", "Producto", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Proveedor", "Index", "Proveedor", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Entrada/Salida", "Index", "Inventario", null, new { @class = "dropdown-item" })
-                                        <a class="dropdown-item" href="#">Usuario</a>
+                                        @Html.ActionLink("Usuario", "habilitarUsuario", "Usuario", null, new { @class = "dropdown-item" })
+
 
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#"><strong>Reporte</strong></a>
@@ -88,7 +89,6 @@
                                         @Html.ActionLink("Producto", "ReporteProducto", "Producto", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Proveedores", "ReporteProveedores", "Proveedor", null, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Entrada/Salida", "ReporteEntradaSalida", "Inventario", null, new { @class = "dropdown-item" })
-                                        <a class="dropdown-item" href="#">Usuario</a>
                                     </div>
                             </div>
 

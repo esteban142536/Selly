@@ -52,6 +52,8 @@ namespace proyecto.Controllers
             return RedirectToAction("Index");
         }
 
+
+
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult AgregarProducto()
         {

@@ -12,7 +12,17 @@ namespace ApplicationCore.Services
    public class ServiceUsuario : IServiceUsuario
     {
             IRepositoryUsuario reposi = new RepositoryUsuario();
-      
+
+        public void cambiarEstado(int id)
+        {
+             reposi.cambiarEstado(id);
+        }
+
+        public IEnumerable<usuario> listadoUsuario()
+        {
+            return reposi.listadoUsuario();
+        }
+
         public usuario logIn(string email, string clave)
         {
             String encript = Cryptography.EncrypthAES(clave);

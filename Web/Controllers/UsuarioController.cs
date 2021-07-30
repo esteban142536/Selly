@@ -11,8 +11,8 @@ namespace proyecto.Controllers
 {
     public class UsuarioController : Controller
     {
-        IServiceUsuario iserviseUsuario = new ServiceUsuario();
-        IServiceTipoUsuario iserviseTipoUsuario = new ServiceTipoUsuario();
+        IServiceUsuario repoUsua = new ServiceUsuario();
+        IServiceTipoUsuario repoTipoUsua = new ServiceTipoUsuario();
 
         // GET: Usuario
         public ActionResult Index(String email, String clave)
@@ -26,7 +26,7 @@ namespace proyecto.Controllers
 
             if (ModelState.IsValid)
             {
-            user = iserviseUsuario.logIn(email, clave);
+            user = repoUsua.logIn(email, clave);
 
             if (user==null)
             {
@@ -60,9 +60,9 @@ namespace proyecto.Controllers
             }
 
 
-         tipoUsuario tu=  iserviseTipoUsuario.asignarPermisos(usu.idTipoUsuario);
+         tipoUsuario tu=  repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
             usu.idTipoUsuario = tu.id;
-            iserviseUsuario.SignIn(usu);
+            repoUsua.SignIn(usu);
 
            return View();
         }
@@ -85,8 +85,16 @@ namespace proyecto.Controllers
 
         public ActionResult sinPermisos()
         {
-
             return View();
+        }
+
+        public ActionResult habilitarUsuario(String idUsuario)
+        {
+            if (idUsuario!=null)
+            {
+            repoUsua.cambiarEstado(int.Parse(idUsuario));
+            }
+            return View(repoUsua.listadoUsuario());
         }
 
     }

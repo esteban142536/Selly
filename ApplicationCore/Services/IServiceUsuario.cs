@@ -12,5 +12,8 @@ namespace ApplicationCore.Services
         usuario logIn(String email, String clave);
 
         void SignIn(usuario usuario);
+        IEnumerable<usuario> listadoUsuario();
+        void cambiarEstado(int id);
+
     }
 }

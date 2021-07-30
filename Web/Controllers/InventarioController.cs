@@ -90,7 +90,7 @@ namespace proyecto.Controllers
             return View(serviseInventa.obtenerInventarioID(id));
         }
 
-      //  [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult AgregarInventario(string tipodir)
         {
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;

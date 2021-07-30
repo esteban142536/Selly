@@ -14,5 +14,7 @@ namespace Infraestructure.Repository
         IEnumerable<producto> listadoProducto();
 
         producto obtenerProductoID(int id);
+
+
     }
 }
