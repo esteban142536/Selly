@@ -27,27 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.esActivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipoUsuario.permisoUsuario)
-        </td>
-        <td>
-            @Html.ActionLink("Desabilitar usuario", "habilitarUsuario", "Usuario", new { idUsuario = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.esActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoUsuario.permisoUsuario)
+            </td>
+            <td>
+                @Html.ActionLink("Desabilitar usuario", "habilitarUsuario", "Usuario", new { idUsuario = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </td>
+        </tr>
+    }
 
 </table>

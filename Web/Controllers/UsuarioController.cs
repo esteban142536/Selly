@@ -18,7 +18,8 @@ namespace proyecto.Controllers
         public ActionResult Index(String email, String clave)
         {
 
-            if(email == null || clave == null){ 
+            if (email == null || clave == null)
+            {
                 return View();
             }
 
@@ -26,17 +27,17 @@ namespace proyecto.Controllers
 
             if (ModelState.IsValid)
             {
-            user = repoUsua.logIn(email, clave);
+                user = repoUsua.logIn(email, clave);
 
-            if (user==null)
-            {
-                return View();
-            }
+                if (user == null)
+                {
+                    return View();
+                }
 
-            Session.Add("Usuario", user);
+                Session.Add("Usuario", user);
 
-         
-            return RedirectToAction("Index", "Home");
+
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -45,7 +46,7 @@ namespace proyecto.Controllers
             return View("Index");
         }
 
-        
+
         public ActionResult PrevalenceData(usuario usu)
         {
             return View(usu);
@@ -53,18 +54,20 @@ namespace proyecto.Controllers
 
 
         //insert hacia usuario
-        public ActionResult registro(usuario usu) {
+        public ActionResult registro(usuario usu)
+        {
 
-            if (usu.nombre == null) {
+            if (usu.nombre == null)
+            {
                 return View();
             }
 
 
-         tipoUsuario tu=  repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
+            tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
             usu.idTipoUsuario = tu.id;
             repoUsua.SignIn(usu);
 
-           return View();
+            return View();
         }
 
         //cerrar sesion
@@ -75,7 +78,7 @@ namespace proyecto.Controllers
                 Session["Usuario"] = null;
                 Carrito.Instancia.eliminarCarrito();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex, MethodBase.GetCurrentMethod());
             }
@@ -90,9 +93,9 @@ namespace proyecto.Controllers
 
         public ActionResult habilitarUsuario(String idUsuario)
         {
-            if (idUsuario!=null)
+            if (idUsuario != null)
             {
-            repoUsua.cambiarEstado(int.Parse(idUsuario));
+                repoUsua.cambiarEstado(int.Parse(idUsuario));
             }
             return View(repoUsua.listadoUsuario());
         }
