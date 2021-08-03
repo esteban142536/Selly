@@ -18,14 +18,18 @@ namespace proyecto.Controllers
         IServiseTienda serviseTienda = new ServiseTienda();
         IServiseProveedor serviseProveedor = new ServiseProveedor();
         IServiseEstante serviseEstante = new ServiseEstante();
+        IServiseProducto serviseProdu = new ServiseProducto();
         double iva = 0.13;
 
         [HttpPost]
         public ActionResult Save(inventario inventario, TipoMovimiento tipoMovimiento, String[] proveedor, String[] estante, String[] tienda)
         {
+
+            bool esSalida = false;
             if (tipoMovimiento.tipoEntrada == null)
             {
                 tipoMovimiento.tipoEntrada = "No aplica";
+                esSalida = true;
             }
             else
             {
@@ -54,6 +58,8 @@ namespace proyecto.Controllers
                 pro.imagen = item.Producto.imagen;
 
                 carritoProducto.Add(pro);
+
+                serviseProdu.restarExistencia(item.id,item.totalStock, esSalida);
             }
             usuario user = (usuario)Session["Usuario"];
             inventario.idUsuario = user.id;
@@ -67,12 +73,16 @@ namespace proyecto.Controllers
 
             serviseInventa.crearInventario(carritoProducto, inventario, estante, proveedor);
 
+
             Carrito.Instancia.eliminarCarrito();
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             ViewBag.idProveedores = listaproveedor();
             ViewBag.idTienda = listaTiendas();
             ViewBag.idEstante = listaEstante();
-            return View("AgregarInventario");
+
+            //muestra las notificaciones
+            TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Productos agregado al inventario", SweetAlertMessageType.success);
+            return RedirectToAction("AgregarInventario");
         }
 
         public ActionResult Index()
@@ -93,6 +103,11 @@ namespace proyecto.Controllers
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult AgregarInventario(string tipodir)
         {
+            if (TempData.ContainsKey("NotificationMessage"))
+            {
+                ViewBag.NotificationMessage = TempData["NotificationMessage"];
+            }
+
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             ViewBag.idProveedores = listaproveedor();
             ViewBag.idTienda = listaTiendas();
@@ -103,8 +118,7 @@ namespace proyecto.Controllers
         public ActionResult actualizarCantidad(int idproducto, int cantidad)
         {
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
-            TempData["NotiCarrito"] = Carrito.Instancia.SetItemCantidad(idproducto, cantidad);
-            TempData.Keep();
+            Carrito.Instancia.SetItemCantidad(idproducto, cantidad);
             ViewBag.idEstante = listaEstante();
             return PartialView("_ListadoInventario", Carrito.Instancia.Items);
 

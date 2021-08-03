@@ -69,7 +69,7 @@ namespace Web.ViewModel
         /**
          * SetItemCantidad(): cambia la Cantidad de un artículo en el carrito
          */
-        public String SetItemCantidad(int idProducto, int Cantidad)
+        public void SetItemCantidad(int idProducto, int Cantidad)
         {
             String mensaje = "";
             // Si estamos configurando la Cantidad a 0, elimine el artículo por completo
@@ -86,11 +86,11 @@ namespace Web.ViewModel
                 {
                     ViewModelInventarioDetalle item = Items.Find(x => x.id == idProducto);
                     item.totalStock = Cantidad;
-                    mensaje = SweetAlertHelper.Mensaje("Orden producto", "Cantidad actualizada", SweetAlertMessageType.success);
+                 //   mensaje = SweetAlertHelper.Mensaje("Orden producto", "Cantidad actualizada", SweetAlertMessageType.success);
 
                 }
             }
-            return mensaje;
+         //   return mensaje;
         }
 
         public String EliminarItem(int idProducto)

@@ -106,14 +106,35 @@ namespace proyecto.Controllers
             }
         }
 
+        public ActionResult buscarProductoxNombre(string filtro)
+        {
+            IEnumerable<producto> lista = null;
+
+
+            // Error porque viene en blanco 
+            if (string.IsNullOrEmpty(filtro))
+            {
+                lista = serviseProducto.listadoProducto();
+            }
+            else
+            {
+                  lista = serviseProducto.buscarProductoxNombre(filtro);
+            }
+
+
+            // Retorna un Partial View
+            return PartialView("_ListadoProductoBusqueda", lista);
+        }
 
         public ActionResult listaProductos()
         {
             return View(serviseProducto.listadoProducto());
         }
 
+
         public ActionResult Index()
         {
+            ViewBag.listaNombres = serviseProducto.nombreProductos();
             return View(serviseProducto.listadoProducto());
         }
 

@@ -14,17 +14,30 @@
             @Html.ActionLink("Agregar Producto", "AgregarProducto", "Producto", new { style = "text-decoration:none", @class = "btn-success" })
         </button>
     </div>
-    <div class="col">
-        <div class="row">
-            <input class="form-control me-2" type="search" placeholder="Buscar proveedor..." aria-label="Buscar proveedor....">
+
+    <div class="col-md-4">
+        <div class="card my-4">
+            <h5 class="card-header">Buscar producto</h5>
+            @using (Ajax.BeginForm("buscarProductoxNombre", "Producto", new AjaxOptions
+            {
+                UpdateTargetId = "resultado",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                LoadingElementId = "ajaxLoader"
+            }))
+            {
+                <div class="card-body">
+                    <div class="input-group">
+                        @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Nombre producto" })
+
+                        <button type="submit" class="btn btn-default">Buscar</button>
+
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
-    <div class="col-1">
-        <div class="row">
-            <button class="btn btn-outline-success" type="button">Buscar</button>
-        </div>
-    </div>
-</div>
 
 <table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
     <thead class="table-success">
@@ -32,12 +45,12 @@
             <th scope="col">Nombre</th>
             <th style="text-align:center" scope="col">Categor&#237;a</th>
             <th style="text-align:center" scope="col">Costo Unitario</th>
-            <th style="text-align:center" scope="col" >Total de existencia</th>
+            <th style="text-align:center" scope="col">Total de existencia</th>
             <th scope="col"></th>
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="resultado">
         @foreach (var item in Model)
         {
             <tr>
@@ -52,12 +65,53 @@
                     <button type="button" class="btn btn-outline-success">
                         @Html.ActionLink("Editar", "EditarProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
                     </button>
-                    <button type="button" class="btn btn-outline-success">
-                        @Html.ActionLink("Eliminar", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-                    </button>
+                    @*  <button type="button" class="btn btn-outline-success">
+            @Html.ActionLink("Eliminar", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+        </button>*@
                 </th>
             </tr>
         }
     </tbody>
 </table>
+
+</div>
+@* Modal *@
+<input type="hidden" id="campoOculto" />
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">Detalle Libro</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal-body" class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@* Modal *@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+    <script type="text/javascript">
+    function mostrarModal(id) {
+        $("#campoOculto").val(id);
+        //$("#myModal").attr('data-toggle', 'modal');
+        $('#myModal').modal('show');
+    }
+    $(function () {
+        var lista = @Html.Raw(Json.Encode(ViewBag.listaNombres));
+        $("#filtro").autocomplete({
+            source: lista
+        });
+    });
+    </script>
+}
 

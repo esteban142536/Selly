@@ -135,5 +135,52 @@ namespace Infraestructure.Repository
             }
             return producto;
             }
+
+
+        public void restarExistencia(int id, int cantUsu, bool esSalida) {
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+                try
+                {
+                    producto oldProd = obtenerProductoID(id);
+                    oldProd.TipoCategoria = null;
+
+                    if (esSalida)
+                    {
+                    oldProd.totalStock -= cantUsu;
+
+                    }
+                    else
+                    {
+                        oldProd.totalStock += cantUsu;
+
+                    }
+
+                    cdt.producto.Add(oldProd);
+                        cdt.Entry(oldProd).State = EntityState.Modified;
+                    cdt.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    string mensaje = "";
+                    Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
+        }
+
+        public IEnumerable<producto> buscarProductoxNombre(string nombre) {
+            IEnumerable<producto> lista = null;
+            using (contextData ctx = new contextData())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                lista = ctx.producto.ToList().
+                    FindAll(l => l.nombre.ToLower().Contains(nombre.ToLower()));
+            }
+            return lista;
+        }
+
     }
 }

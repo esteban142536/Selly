@@ -17,6 +17,7 @@ using Infraestructure;
 using System.Reflection;
 using Infraestructure.Models;
 using ApplicationCore.Services;
+using Web.Security;
 
 namespace Web.Controllers
 {
@@ -25,6 +26,7 @@ namespace Web.Controllers
 
         IServiseProducto serviseProducto = new ServiseProducto();
 
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult CrearPDFProductos()
         {
             //Ejemplos IText7 https://kb.itextpdf.com/home/it7kb/examples
@@ -44,7 +46,7 @@ namespace Web.Controllers
                 PdfDocument pdfDoc = new PdfDocument(writer);
                 Document doc = new Document(pdfDoc);
 
-                Paragraph header = new Paragraph("Catálogo de Libros")
+                Paragraph header = new Paragraph("Listado de productos")
                                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA))
                                    .SetFontSize(14)
                                    .SetFontColor(ColorConstants.BLUE);

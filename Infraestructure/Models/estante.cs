@@ -11,7 +11,6 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Generic;
 
     public partial class estante
     {

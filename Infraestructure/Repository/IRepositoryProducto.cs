@@ -14,7 +14,8 @@ namespace Infraestructure.Repository
         IEnumerable<producto> listadoProducto();
 
         producto obtenerProductoID(int id);
-
+        void restarExistencia(int id, int cantUsu, bool esSalida);
+        IEnumerable<producto> buscarProductoxNombre(string nombre);
 
     }
 }

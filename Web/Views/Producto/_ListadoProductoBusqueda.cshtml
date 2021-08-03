@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Infraestructure.Models.producto>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+        <td style="text-align:center">@Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</td>
+        <td style="text-align:center">&#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</td>
+        <td style="text-align:center">@Html.DisplayFor(modelItem => item.totalStock)</td>
+        <th scope="col">
+            <button type="button" class="btn btn-outline-success">
+                @Html.ActionLink("Detalle", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </button>
+            <button type="button" class="btn btn-outline-success">
+                @Html.ActionLink("Editar", "EditarProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </button>
+            <button type="button" class="btn btn-outline-success">
+                @Html.ActionLink("Eliminar", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </button>
+        </th>
+    </tr>
+}

@@ -111,7 +111,7 @@
                             {
                                 @Html.ActionLink("Cerrar sesion", "cerrarSesion", "Usuario", null, new { @class = "nav-link" })
 
-                           }
+                            }
                         }
                     </button>
                 </form>
@@ -149,18 +149,20 @@
 
     @RenderSection("footer", false)
 
-    @if (ViewBag.NotificationMessage != null)
-                                {
-        <script>
-            @Html.Raw(@ViewBag.NotificationMessage);
-        </script>
-    }
 
-                                @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
 
     @Scripts.Render("~/bundles/sweetalert")
     <script src="~/Scripts/bootstrap.js"></script>
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
+
+
+    @if (ViewBag.NotificationMessage != null)
+    {
+        <script>
+            @Html.Raw(@ViewBag.NotificationMessage);
+        </script>
+    }
 </body>
 </html>

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Infraestructure.Models;
 using Infraestructure.Repository;
 
 namespace ApplicationCore.Services
@@ -13,6 +12,11 @@ namespace ApplicationCore.Services
     {
 
         IRepositoryProducto repo=new RepositoryProducto();
+
+        public IEnumerable<producto> buscarProductoxNombre(string nombre)
+        {
+            return repo.buscarProductoxNombre(nombre);
+        }
 
         public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
@@ -27,6 +31,15 @@ namespace ApplicationCore.Services
         public producto obtenerProductoID(int id)
         {
             return repo.obtenerProductoID(id);
+        }
+
+        public void restarExistencia(int id, int cantUsu, bool esSalida)
+        {
+            repo.restarExistencia(id,cantUsu, esSalida);
+        }
+        public IEnumerable<string> nombreProductos()
+        {
+            return repo.listadoProducto().Select(x => x.nombre);
         }
     }
 }

@@ -12,5 +12,8 @@ namespace ApplicationCore.Services
         void guardarProducto(producto producto, String[] idProveedor, String[] idEstante);
         IEnumerable<producto> listadoProducto();
         producto obtenerProductoID(int id);
+        void restarExistencia(int id, int cantUsu, bool esSalida);
+        IEnumerable<producto> buscarProductoxNombre(string nombre);
+        IEnumerable<string> nombreProductos();
     }
 }
