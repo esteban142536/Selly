@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody id="resultado">
+                                <tbody>
                                     @foreach (var pro in Model)
                                     {
                                         if (pro.contactos != null)
@@ -117,7 +117,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="resultado">
         @foreach (var item in Model)
         {
             <tr>

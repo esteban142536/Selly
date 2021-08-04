@@ -32,5 +32,9 @@ namespace ApplicationCore.Services
         {
             return repo.obtenerProveedorID(id);
         }
+        public IEnumerable<string> nombreProveedor()
+        {
+            return repo.listadoProveedor().Select(x => x.nombreEmpresa);
+        }
     }
 }

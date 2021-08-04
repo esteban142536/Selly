@@ -73,6 +73,7 @@ namespace proyecto.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.listaNombres = serviseProveedor.nombreProveedor();
             return View(serviseProveedor.listadoProveedor());
         }
 

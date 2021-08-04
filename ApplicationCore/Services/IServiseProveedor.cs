@@ -13,5 +13,6 @@ namespace ApplicationCore.Services
         IEnumerable<proveedor> listadoProveedor();
         proveedor obtenerProveedorID(int id);
         IEnumerable<proveedor> buscarProveedorxNombre(string nombre);
+        IEnumerable<string> nombreProveedor();
     }
 }
