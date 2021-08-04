@@ -388,6 +388,7 @@
     <Content Include="Views\Inventario\Index.cshtml" />
     <Content Include="Views\Usuario\habilitarUsuario.cshtml" />
     <Content Include="Views\Producto\_ListadoProductoBusqueda.cshtml" />
+    <Content Include="Views\Proveedor\_ListadoProveedorBusqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

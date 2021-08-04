@@ -82,6 +82,21 @@ namespace proyecto.Controllers
             return View(serviseProveedor.listadoProveedor());
         }
 
+        public ActionResult buscarProveedorxNombre(string filtro)
+        {
+            IEnumerable<proveedor> lista = null;
+
+            if (string.IsNullOrEmpty(filtro))
+            {
+                lista = serviseProveedor.listadoProveedor();
+            }
+            else
+            {
+                lista = serviseProveedor.buscarProveedorxNombre(filtro);
+            }
+            return PartialView("_ListadoProveedorBusqueda", lista);
+        }
+
         //Listas para llenar los combos
         private SelectList listaPais(int idPais = 0)
         {

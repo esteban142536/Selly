@@ -137,7 +137,7 @@ namespace Infraestructure.Repository
             }
 
 
-        public void restarExistencia(int id, int cantUsu, bool esSalida) {
+        public void actualizarExistDB(int id, int cantUsu, bool esSalida) {
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;

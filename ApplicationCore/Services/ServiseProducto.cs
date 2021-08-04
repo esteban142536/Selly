@@ -33,9 +33,9 @@ namespace ApplicationCore.Services
             return repo.obtenerProductoID(id);
         }
 
-        public void restarExistencia(int id, int cantUsu, bool esSalida)
+        public void actualizarExistDB(int id, int cantUsu, bool esSalida)
         {
-            repo.restarExistencia(id,cantUsu, esSalida);
+            repo.actualizarExistDB(id,cantUsu, esSalida);
         }
         public IEnumerable<string> nombreProductos()
         {

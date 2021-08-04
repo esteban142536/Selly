@@ -13,6 +13,11 @@ namespace ApplicationCore.Services
     {
         IRepositoryProveedor repo = new RepositoryProveedor();
 
+        public IEnumerable<proveedor> buscarProveedorxNombre(string nombre)
+        {
+            return repo.buscarProveedorxNombre(nombre);
+        }
+
         public void guardarProveedor(proveedor proveedor)
         {
             repo.guardarProveedor(proveedor);

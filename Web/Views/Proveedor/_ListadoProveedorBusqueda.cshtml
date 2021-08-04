@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Infraestructure.Models.proveedor>
+@foreach (var pro in Model)
+{
+    if (pro.contactos != null)
+    {
+        foreach (var prov in pro.contactos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => prov.proveedor.nombreEmpresa)</td>
+                <td>@Html.DisplayFor(model => prov.nombre)</td>
+                <td>@Html.DisplayFor(model => prov.numero)</td>
+                <td>@Html.DisplayFor(model => prov.correo)</td>
+                <td>
+                    <button type="button" class="btn btn-outline-success">
+                        @Html.ActionLink("Editar", "EditarContacto", "Contacto", new { id = prov.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>No contiene contactos</td>
+        </tr>
+    }
+}

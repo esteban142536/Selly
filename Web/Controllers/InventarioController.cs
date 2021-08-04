@@ -59,7 +59,7 @@ namespace proyecto.Controllers
 
                 carritoProducto.Add(pro);
 
-                serviseProdu.restarExistencia(item.id,item.totalStock, esSalida);
+                serviseProdu.actualizarExistDB(item.id,item.totalStock, esSalida);
             }
             usuario user = (usuario)Session["Usuario"];
             inventario.idUsuario = user.id;

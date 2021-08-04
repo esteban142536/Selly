@@ -41,13 +41,13 @@
 
     <div class="row">
         <div class="col">
-            IVA:
-            <p style="margin-left:8%">13%</p>
-            <p style="margin-left:8%">@((((Double)Web.ViewModel.Carrito.Instancia.GetIva())*0.13).ToString("C2"))</p>
+         
+            <p style="margin-left:8%">IVA: 13%</p>
+            <p style="margin-left:8%">Costo con IVA: @((((Double)Web.ViewModel.Carrito.Instancia.GetIva())*0.13).ToString("C2"))</p>
             <br />
-            Total:
+            Total a pagar:
             @((((Double)Web.ViewModel.Carrito.Instancia.GetTotal())).ToString("C2"))
-            </p>
+            <p/>
         </div>
     </div>
 </div>
