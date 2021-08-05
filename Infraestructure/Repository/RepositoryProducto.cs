@@ -11,8 +11,7 @@ namespace Infraestructure.Repository
 
         IRepositoryProveedor repoPro = new RepositoryProveedor();
         IRepositoryEstante repoEsta = new RepositoryEstante();
-
-
+        private int count;
 
         public void guardarProducto(producto producto, String[] idProveedor, String[] idEstante)
         {
@@ -182,14 +181,23 @@ namespace Infraestructure.Repository
             return lista;
         }
 
-        public IEnumerable<producto> listadoProductoMayorSalidas()
+        public List<IGrouping<int, detalleFactura>> listadoProductoMayorSalidas()
         {
-            IEnumerable<producto> lista = null;
-            using (contextData ctx = new contextData())
-            {
-                ctx.Configuration.LazyLoadingEnabled = false;
+            List<IGrouping<int,detalleFactura>> lista = null;
 
-               
+            try {
+                using (contextData ctx = new contextData())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+
+                  lista = ctx.detalleFactura.GroupBy(x => x.idProducto).OrderByDescending(x=>x.Count()).Take(3).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "";
+                Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw;
             }
             return lista;
         }

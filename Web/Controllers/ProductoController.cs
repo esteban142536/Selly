@@ -2,6 +2,7 @@
 using Infraestructure;
 using Infraestructure.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -129,6 +130,7 @@ namespace proyecto.Controllers
 
         public ActionResult Index()
         {
+            serviseProducto.listadoProductoMayorSalidas();
             ViewBag.listaNombres = serviseProducto.nombreProductos();
             return View(serviseProducto.listadoProducto());
         }
@@ -143,6 +145,20 @@ namespace proyecto.Controllers
             ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem((int)idProducto);
             return PartialView("_cantidadCarrito");
 
+        }
+
+        //obtiene la lista de los 3 productos mas vendidos
+        public ActionResult listadoPorVenta()
+        {
+            List<IGrouping<int, detalleFactura>> listaPopular = serviseProducto.listadoProductoMayorSalidas();
+
+            List<producto> lista=new List<producto>();
+
+            foreach(var pro in listaPopular)
+            {
+                lista.Add(serviseProducto.obtenerProductoID(pro.Key));
+            }
+            return PartialView("_ListadoProductoBusqueda", lista);
         }
 
 

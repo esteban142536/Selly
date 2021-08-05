@@ -16,6 +16,6 @@ namespace Infraestructure.Repository
         producto obtenerProductoID(int id);
         void actualizarExistDB(int id, int cantUsu, bool esSalida);
         IEnumerable<producto> buscarProductoxNombre(string nombre);
-        IEnumerable<producto> listadoProductoMayorSalidas();
+        List<IGrouping<int, detalleFactura>> listadoProductoMayorSalidas();
     }
 }
