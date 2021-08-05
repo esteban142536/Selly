@@ -11,9 +11,7 @@ namespace ApplicationCore.Services
    public interface IServiseInventario
     {
         IEnumerable<inventario> listadoInventario();
-
         inventario obtenerInventarioID(int id);
-
         void crearInventario(List<producto> inve, inventario inventa, String[] estante, String[] prove);
     }
 }

@@ -98,7 +98,7 @@ namespace Web.Controllers
                 //Close document
                 doc.Close();
                 // Retorna un File
-                return File(ms.ToArray(), "application/pdf", "reporte.pdf");
+                return File(ms.ToArray(), "application/pdf", "reporteProducto.pdf");
 
             }
             catch (Exception ex)
@@ -112,6 +112,9 @@ namespace Web.Controllers
             }
 
         }
+
+
+        
 
 
 

@@ -11,7 +11,7 @@
 
 <div class="detalle" style="margin-left:12%">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <strong>@Html.DisplayNameFor(model => model.fecha)</strong>
             <br />
             @Html.DisplayFor(model => model.fecha)
@@ -32,7 +32,7 @@
             @Html.DisplayFor(model => model.comentario)
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <strong>@Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)</strong>
             <br />
             @Html.DisplayFor(model => model.TipoMovimiento.tipoEntrada)
@@ -51,6 +51,36 @@
             <strong>@Html.DisplayNameFor(model => model.iva)</strong>
             <br />
             %@Html.DisplayFor(model => model.iva)
+        </div>
+
+        <div class="col-sm-4">
+            <h4>Productos asociados al inventario</h4>
+            <hr />
+            @foreach (var product in Model.detalleFactura)
+            {
+                <strong>@Html.DisplayNameFor(model => product.producto.nombre)</strong>
+                <br />
+                @Html.DisplayFor(model => product.producto.nombre)
+                <br /><br />
+
+                <strong>@Html.DisplayNameFor(model => product.producto.TipoCategoria.Descripcion)</strong>
+                <br />
+                @Html.DisplayFor(model => product.producto.TipoCategoria.Descripcion)
+                <br /><br />
+
+                <strong>@Html.DisplayNameFor(model => product.producto.descripcion)</strong>
+                <br />
+                @Html.DisplayFor(model => product.producto.descripcion)
+                <br /><br />
+
+                <strong>@Html.DisplayNameFor(model => product.cantidadComprada)</strong>
+                <br />
+                @Html.DisplayFor(model => product.cantidadComprada)
+                <br /><br />
+
+                <hr />
+            }
+
         </div>
     </div>
 </div>

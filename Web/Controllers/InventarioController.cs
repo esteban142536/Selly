@@ -63,7 +63,7 @@ namespace proyecto.Controllers
             }
             usuario user = (usuario)Session["Usuario"];
             inventario.idUsuario = user.id;
-            inventario.fecha = DateTime.Now.ToString();
+            inventario.fecha = DateTime.Now.ToString("dd/MM/yyyy");
             inventario.idTienda = int.Parse(tienda[0]);
             inventario.idTipoMovimiento = tipoMoviID;
             inventario.TipoMovimiento = tipoMovimiento;
@@ -84,7 +84,7 @@ namespace proyecto.Controllers
             TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Productos agregado al inventario", SweetAlertMessageType.success);
             return RedirectToAction("AgregarInventario");
         }
-
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult Index()
         {
             return View(serviseInventa.listadoInventario());
@@ -94,6 +94,8 @@ namespace proyecto.Controllers
         {
             return View(serviseInventa.listadoInventario());
         }
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
 
         public ActionResult DetalleInventario(int id)
         {
@@ -133,6 +135,24 @@ namespace proyecto.Controllers
             int cantidadLibros = Carrito.Instancia.Items.Count();
             return PartialView("_cantidadCarrito");
 
+        }
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        public ActionResult buscarInventarioxFecha(DateTime fechaInicio, DateTime fechaFinal)
+        {
+            IEnumerable<inventario> lista = null;
+
+            if (string.IsNullOrEmpty(fechaInicio.ToString())||string.IsNullOrEmpty(fechaFinal.ToString()))
+            {
+
+                lista = serviseInventa.listadoInventario();
+                TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Una de las fechas esta vacia", SweetAlertMessageType.error);
+            }
+            else
+            {
+                   lista = serviseInventa.listadoInventario().Where(x => DateTime.Parse(x.fecha).CompareTo(fechaFinal) == -1 && DateTime.Parse(x.fecha).CompareTo(fechaInicio) == 1).ToList();
+            }
+            return PartialView("_InformeInventario", lista);
         }
 
         //PartialView

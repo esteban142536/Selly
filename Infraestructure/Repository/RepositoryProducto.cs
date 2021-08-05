@@ -182,5 +182,17 @@ namespace Infraestructure.Repository
             return lista;
         }
 
+        public IEnumerable<producto> listadoProductoMayorSalidas()
+        {
+            IEnumerable<producto> lista = null;
+            using (contextData ctx = new contextData())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+
+               
+            }
+            return lista;
+        }
+
     }
 }

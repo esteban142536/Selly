@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Infraestructure.Models.inventario>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoEntrada)</td>
+        <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoSalida)</td>
+        <td>@Html.DisplayFor(modelItem => item.fecha)</td>
+        <td>&#8353;@Html.DisplayFor(modelItem => item.totalPagado)</td>
+        <th scope="col">
+            <button type="button" class="btn btn-outline-success">
+                @Html.ActionLink("Detalle", "DetalleInventario", "Inventario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </button>
+        </th>
+    </tr>
+}

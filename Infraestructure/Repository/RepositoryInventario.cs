@@ -42,7 +42,7 @@ namespace Infraestructure.Repository
 
                 try
                 {
-                    return cdt.inventario.Include(x => x.TipoMovimiento).Include(x => x.usuario).Include(x => x.tienda).Where(x=>x.id==id).FirstOrDefault();
+                    return cdt.inventario.Include(x => x.TipoMovimiento).Include(x => x.usuario).Include(x => x.tienda).Include("detalleFactura.Producto").Include("detalleFactura.Producto.TipoCategoria").Where(x=>x.id==id).FirstOrDefault();
                     
                 }
                 catch (Exception ex)
@@ -91,5 +91,7 @@ namespace Infraestructure.Repository
                 }
             }
         }
+
+
     }
 }

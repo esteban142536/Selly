@@ -14,17 +14,37 @@
             @Html.ActionLink("Agregar inventario", "AgregarInventario", "Inventario", new { style = "text-decoration:none", @class = "btn-success" })
         </button>
     </div>
-    <div class="col">
-        <div class="row">
-            <input class="form-control me-2" type="search" placeholder="Buscar inventario..." aria-label="Buscar inventario....">
-        </div>
-    </div>
-    <div class="col-1">
-        <div class="row">
-            <button class="btn btn-outline-success" type="button">Buscar</button>
+
+    <div class="col-md-6">
+        <div class="card my-6">
+            <h5 class="card-header">Buscar inventario por fecha</h5>
+            @using (Ajax.BeginForm("buscarInventarioxFecha", "Inventario", new AjaxOptions
+            {
+                UpdateTargetId = "resultado",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                LoadingElementId = "ajaxLoader"
+            }))
+            {
+                <div class="card-body">
+                    <div class="input-group">
+                        @*@Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor" })*@
+                        <p>Fecha inicial</p>
+                        <input type="date" name="fechaInicio" />
+                        <br>
+                        <p>Fecha final</p>
+                        <input type="date" name="fechaFinal" />
+                        <br>
+                        <button type="submit" class="btn btn-default">Buscar</button>
+
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
 </div>
+
 
 <table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
     <thead class="table-success">
@@ -37,7 +57,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="resultado">
         @foreach (var item in Model)
         {
             <tr>
@@ -54,3 +74,38 @@
         }
     </tbody>
 </table>
+
+@* Modal *@
+<input type="hidden" id="campoOculto" />
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">Detalle proveedor</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal-body" class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@* Modal *@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+<script type="text/javascript">
+    function mostrarModal(id) {
+        $("#campoOculto").val(id);
+        //$("#myModal").attr('data-toggle', 'modal');
+        $('#myModal').modal('show');
+    }
+
+</script>
+}

@@ -41,5 +41,10 @@ namespace ApplicationCore.Services
         {
             return repo.listadoProducto().Select(x => x.nombre);
         }
+
+        public IEnumerable<producto> listadoProductoMayorSalidas()
+        {
+            return repo.listadoProductoMayorSalidas();
+        }
     }
 }

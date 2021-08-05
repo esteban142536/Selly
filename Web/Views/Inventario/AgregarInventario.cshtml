@@ -109,7 +109,17 @@
                                             null,
                                             new { htmlAttributes = new { @class = "form-control" } })
                             </p>
-                           
+
+                        </div>
+                        <div class="col">
+                            <p>
+                                Comentario:
+                                <div class="form-group">
+                                    @Html.TextAreaFor(modelItem => Model.comentario, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.comentario, "", new { @class = "text-danger" })
+
+                                </div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -128,17 +138,6 @@
                             No hay productos en el carrito
                         </div>
                     }
-
-                <div class="col">
-                    <p>
-                        Comentario:
-                        <div class="form-group">
-                            @Html.TextAreaFor(modelItem => Model.comentario, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.comentario, "", new { @class = "text-danger" })
-
-                        </div>
-                    </p>
-                </div>
             
                 </div>
                 <div class="boton" style="margin-left:43%">

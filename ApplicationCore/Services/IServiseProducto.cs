@@ -15,5 +15,6 @@ namespace ApplicationCore.Services
         void actualizarExistDB(int id, int cantUsu, bool esSalida);
         IEnumerable<producto> buscarProductoxNombre(string nombre);
         IEnumerable<string> nombreProductos();
+        IEnumerable<producto> listadoProductoMayorSalidas();
     }
 }
