@@ -10,17 +10,22 @@ namespace ApplicationCore.Services
 {
    public class ServiceTipoUsuario : IServiceTipoUsuario
     {
+            IRepositoryTipoUsuario reposi = new RepositoryTipoUsuario();
         public tipoUsuario asignarPermisos(int tu)
         {
-            IRepositoryTipoUsuario reposi = new RepositoryTipoUsuario();
             tipoUsuario tius = new tipoUsuario();
             tius.id = tu;
             return reposi.asignarPermisos(tius);
         }
 
+        public IEnumerable<tipoUsuario> listadoPermisos()
+        {
+            return reposi.listadoPermisos();
+        }
+
         public int obtenerPermisos(int id)
         {
-            IRepositoryTipoUsuario reposi = new RepositoryTipoUsuario();
+        
             return reposi.obtenerPermisos(id);
         }
     }

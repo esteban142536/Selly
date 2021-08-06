@@ -13,9 +13,9 @@ namespace ApplicationCore.Services
     {
             IRepositoryUsuario reposi = new RepositoryUsuario();
 
-        public void cambiarEstado(int id)
+        public void editarUsuario(usuario usuarioEdicion)
         {
-             reposi.cambiarEstado(id);
+             reposi.editarUsuario(usuarioEdicion);
         }
 
         public IEnumerable<usuario> listadoUsuario()
@@ -27,6 +27,11 @@ namespace ApplicationCore.Services
         {
             String encript = Cryptography.EncrypthAES(clave);
             return reposi.logIn(email, encript);
+        }
+
+        public usuario obtenerUsuarioxID(int id)
+        {
+            return reposi.obtenerUsuarioxID(id);
         }
 
         public void SignIn(usuario usuario)

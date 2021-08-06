@@ -1,6 +1,7 @@
 ﻿using Infraestructure.Models;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace Infraestructure.Repository
 {
@@ -9,8 +10,6 @@ namespace Infraestructure.Repository
 
         public tipoUsuario asignarPermisos(tipoUsuario tu)
         {
-        
-
             using (contextData cdt = new contextData())
             {
 
@@ -20,6 +19,24 @@ namespace Infraestructure.Repository
 
             }
             return tu;
+        }
+
+        public IEnumerable<tipoUsuario> listadoPermisos()
+        {
+            try {
+                using (contextData cdt = new contextData())
+                {
+
+                    return cdt.tipoUsuario.ToList();
+
+                }
+                }
+            catch (Exception ex)
+            {
+                string mensaje = "";
+                Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw;
+            }
         }
 
         public int obtenerPermisos(int id)

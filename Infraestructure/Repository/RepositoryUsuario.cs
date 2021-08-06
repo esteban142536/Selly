@@ -8,7 +8,7 @@ namespace Infraestructure.Repository
 {
     public class RepositoryUsuario : IRepositoryUsuario
     {
-        public void cambiarEstado(int id)
+        public void editarUsuario(usuario usuarioEdicion)
         {
             using (contextData cdt = new contextData())
             {
@@ -16,11 +16,9 @@ namespace Infraestructure.Repository
 
                 try
                 {
-                    usuario usu = cdt.usuario.Where(x => x.id == id).FirstOrDefault();
-                    usu.esActivo = !usu.esActivo;
-                    cdt.usuario.Add(usu);
-
-                    cdt.Entry(usu).State = EntityState.Modified;
+                    usuarioEdicion.tipoUsuario = null;
+                    cdt.usuario.Add(usuarioEdicion);
+                    cdt.Entry(usuarioEdicion).State = EntityState.Modified;
                     cdt.SaveChanges();
 
                 }
@@ -62,6 +60,27 @@ namespace Infraestructure.Repository
 
 
             return user;
+        }
+
+        public usuario obtenerUsuarioxID(int id)
+        {
+         
+            using (contextData cdt = new contextData())
+            {
+                cdt.Configuration.LazyLoadingEnabled = false;
+
+                try
+                {
+                  return cdt.usuario.Where(x=>x.id==id).FirstOrDefault();
+                  
+                }
+                catch (Exception e)
+                {
+                    string mensaje = "";
+                    Log.Error(e, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                    throw;
+                }
+            }
         }
 
         public void SignIn(usuario usuario)

@@ -144,6 +144,8 @@ namespace Infraestructure.Repository
                 {
                     producto oldProd = obtenerProductoID(id);
                     oldProd.TipoCategoria = null;
+                    oldProd.productoEstante = null;
+                    oldProd.proveedor = null;
 
                     if (esSalida)
                     {

@@ -386,10 +386,11 @@
     <Content Include="Views\Inventario\_MovimientoEntrada.cshtml" />
     <Content Include="Views\Inventario\_MovimientoSalida.cshtml" />
     <Content Include="Views\Inventario\Index.cshtml" />
-    <Content Include="Views\Usuario\habilitarUsuario.cshtml" />
     <Content Include="Views\Producto\_ListadoProductoBusqueda.cshtml" />
     <Content Include="Views\Proveedor\_ListadoProveedorBusqueda.cshtml" />
     <Content Include="Views\Inventario\_InformeInventario.cshtml" />
+    <Content Include="Views\Usuario\listaUsuario.cshtml" />
+    <Content Include="Views\Usuario\EditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

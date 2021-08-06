@@ -13,7 +13,8 @@ namespace ApplicationCore.Services
 
         void SignIn(usuario usuario);
         IEnumerable<usuario> listadoUsuario();
-        void cambiarEstado(int id);
+        void editarUsuario(usuario usuarioEdicion);
+        usuario obtenerUsuarioxID(int id);
 
     }
 }

@@ -11,5 +11,6 @@ namespace ApplicationCore.Services
     {
         tipoUsuario asignarPermisos(int tu);
         int obtenerPermisos(int id);
+        IEnumerable<tipoUsuario> listadoPermisos();
     }
 }

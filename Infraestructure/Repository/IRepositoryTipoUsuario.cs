@@ -11,5 +11,6 @@ namespace Infraestructure.Repository
     {
         tipoUsuario asignarPermisos(tipoUsuario tu);
         int obtenerPermisos(int id);
+        IEnumerable<tipoUsuario> listadoPermisos();
     }
 }

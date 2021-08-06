@@ -1,0 +1,66 @@
+﻿@model Infraestructure.Models.usuario
+
+@{
+    ViewBag.Title = "EditarUsuario";
+}
+
+<h2>Editar usuario</h2>
+
+@using (Html.BeginForm("edit", "Usuario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>usuario</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.nombre)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.apellidos)
+
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.nombre)
+    @Html.HiddenFor(model => model.apellidos)
+    @Html.HiddenFor(model => model.email)
+    @Html.HiddenFor(model => model.clave)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.esActivo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.esActivo)
+                @Html.ValidationMessageFor(model => model.esActivo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.tipoUsuario.permisoUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("permiso",
+(SelectList)ViewBag.idTipoUsuario,
+new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" style="text-decoration:none" class="btn-outline-success" />
+        </div>
+    </div>
+</div>
+}
+
+

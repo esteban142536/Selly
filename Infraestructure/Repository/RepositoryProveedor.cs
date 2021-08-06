@@ -39,7 +39,7 @@ namespace Infraestructure.Repository
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
-                proveedor = cdt.proveedor.Include(x => x.contactos).Include(x => x.producto).Where(x => x.id == id).FirstOrDefault();
+                proveedor = cdt.proveedor.Include(x => x.contactos).Include(x => x.producto).Include(x=>x.pais).Where(x => x.id == id).FirstOrDefault();
             }
             return proveedor;
         }

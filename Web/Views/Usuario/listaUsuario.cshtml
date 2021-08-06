@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Infraestructure.Models.usuario>
+
+@{
+    ViewBag.Title = "Listas de usuarios";
+}
+
+<h2>Listado de usuarios para edicion</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esActivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoUsuario.permisoUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @if (item.esActivo) {
+
+
+            <p>Activo</p>
+                }
+                else
+                {
+                    <p>Desactivado</p>
+                }
+</td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoUsuario.permisoUsuario)
+        </td>
+
+        <td>
+            <button type="button" class="btn btn-outline-success">
+                @Html.ActionLink("Editar usuario", "EditarUsuario", "Usuario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+            </button>
+        </td>
+    </tr>
+}
+</table>

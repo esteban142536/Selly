@@ -1,8 +1,10 @@
 ﻿using ApplicationCore.Services;
 using Infraestructure.Models;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
+using Web.Security;
 using Web.Util;
 using Web.Utils;
 using Web.ViewModel;
@@ -57,14 +59,15 @@ namespace proyecto.Controllers
         public ActionResult registro(usuario usu)
         {
 
-            if (usu.nombre == null)
+            if (string.IsNullOrEmpty(usu.nombre)|| string.IsNullOrEmpty(usu.apellidos)||string.IsNullOrEmpty(usu.clave)|| string.IsNullOrEmpty(usu.email))
             {
-                return View();
+                return View(usu);
             }
+            usu.idTipoUsuario = 3;
+            usu.esActivo = true;
 
-
-            tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
-            usu.idTipoUsuario = tu.id;
+           // tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
+           // usu.idTipoUsuario = tu.id;
             repoUsua.SignIn(usu);
 
             return View();
@@ -91,13 +94,57 @@ namespace proyecto.Controllers
             return View();
         }
 
-        public ActionResult habilitarUsuario(String idUsuario)
+
+
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
+        public ActionResult listaUsuario()
         {
-            if (idUsuario != null)
-            {
-                repoUsua.cambiarEstado(int.Parse(idUsuario));
-            }
+          
             return View(repoUsua.listadoUsuario());
+        }
+
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
+        public ActionResult EditarUsuario(int id)
+        {
+            try
+            {
+                usuario user = repoUsua.obtenerUsuarioxID(id);
+                ViewBag.idTipoUsuario = litadoPermisos(user.idTipoUsuario);
+                return View(user);
+               
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult edit(usuario usu, String[] permiso)
+        {
+            try
+            {
+                usu.idTipoUsuario =int.Parse(permiso[0]);
+                repoUsua.editarUsuario(usu);
+
+            return RedirectToAction("listaUsuario");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Error", "Error al procesar los datos! " + ex.Message, SweetAlertMessageType.error);
+                return RedirectToAction("EditarUsuario",usu.id);
+            }
+        }
+
+
+        //carga los combos
+        public SelectList litadoPermisos(int idPermiso=0)
+        {
+            IEnumerable<tipoUsuario> listaPais = repoTipoUsua.listadoPermisos();
+            return new SelectList(listaPais, "id", "permisoUsuario", idPermiso);
         }
 
     }
