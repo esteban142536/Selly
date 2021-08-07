@@ -104,6 +104,7 @@ namespace proyecto.Controllers
             try
             {
                 usuario user = repoUsua.obtenerUsuarioxID(id);
+                ViewBag.esActivo = litadoEstado(user.esActivo);
                 ViewBag.idTipoUsuario = litadoPermisos(user.idTipoUsuario);
                 return View(user);
 
@@ -117,11 +118,14 @@ namespace proyecto.Controllers
         }
 
         [HttpPost]
-        public ActionResult edit(usuario usu, String[] permiso)
+        public ActionResult edit(usuario usu, String[] permiso, String[] estado)
         {
             try
             {
+
+
                 usu.idTipoUsuario = int.Parse(permiso[0]);
+                usu.esActivo = bool.Parse(estado[0]);
                 repoUsua.editarUsuario(usu);
 
                 return RedirectToAction("listaUsuario");
@@ -140,6 +144,13 @@ namespace proyecto.Controllers
         {
             IEnumerable<tipoUsuario> listaPais = repoTipoUsua.listadoPermisos();
             return new SelectList(listaPais, "id", "permisoUsuario", idPermiso);
+        }
+        public SelectList litadoEstado(bool isActivo = true)
+        {
+            List<SelectListItem> listaEstados = new List<SelectListItem>();
+            listaEstados.Add(new SelectListItem { Text = "Habilitado", Value = "true" });
+            listaEstados.Add(new SelectListItem { Text = "Desabilitado", Value = "false" });
+            return new SelectList(listaEstados, "Value", "Text", isActivo);
         }
     }
 }
