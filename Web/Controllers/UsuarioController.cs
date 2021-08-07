@@ -33,17 +33,12 @@ namespace proyecto.Controllers
 
                 if (user == null)
                 {
+                    ViewBag.NotificationMessage = SweetAlertHelper.Mensaje("Inicio de sesión", "Error al autenticarse", SweetAlertMessageType.warning);
                     return View();
                 }
 
                 Session.Add("Usuario", user);
-
-
                 return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewBag.NotificationMessage = SweetAlertHelper.Mensaje("Login", "Error al autenticarse", SweetAlertMessageType.warning);
             }
             return View("Index");
         }
@@ -59,15 +54,15 @@ namespace proyecto.Controllers
         public ActionResult registro(usuario usu)
         {
 
-            if (string.IsNullOrEmpty(usu.nombre)|| string.IsNullOrEmpty(usu.apellidos)||string.IsNullOrEmpty(usu.clave)|| string.IsNullOrEmpty(usu.email))
+            if (string.IsNullOrEmpty(usu.nombre) || string.IsNullOrEmpty(usu.apellidos) || string.IsNullOrEmpty(usu.clave) || string.IsNullOrEmpty(usu.email))
             {
                 return View(usu);
             }
             usu.idTipoUsuario = 3;
             usu.esActivo = true;
 
-           // tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
-           // usu.idTipoUsuario = tu.id;
+            // tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
+            // usu.idTipoUsuario = tu.id;
             repoUsua.SignIn(usu);
 
             return View();
@@ -96,10 +91,10 @@ namespace proyecto.Controllers
 
 
 
-        [CustomAuthorize((int)TipoUsuario.Administrador)]
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult listaUsuario()
         {
-          
+
             return View(repoUsua.listadoUsuario());
         }
 
@@ -111,7 +106,7 @@ namespace proyecto.Controllers
                 usuario user = repoUsua.obtenerUsuarioxID(id);
                 ViewBag.idTipoUsuario = litadoPermisos(user.idTipoUsuario);
                 return View(user);
-               
+
             }
             catch (Exception ex)
             {
@@ -126,26 +121,25 @@ namespace proyecto.Controllers
         {
             try
             {
-                usu.idTipoUsuario =int.Parse(permiso[0]);
+                usu.idTipoUsuario = int.Parse(permiso[0]);
                 repoUsua.editarUsuario(usu);
 
-            return RedirectToAction("listaUsuario");
+                return RedirectToAction("listaUsuario");
             }
             catch (Exception ex)
             {
                 Log.Error(ex, MethodBase.GetCurrentMethod());
                 TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Error", "Error al procesar los datos! " + ex.Message, SweetAlertMessageType.error);
-                return RedirectToAction("EditarUsuario",usu.id);
+                return RedirectToAction("EditarUsuario", usu.id);
             }
         }
 
 
         //carga los combos
-        public SelectList litadoPermisos(int idPermiso=0)
+        public SelectList litadoPermisos(int idPermiso = 0)
         {
             IEnumerable<tipoUsuario> listaPais = repoTipoUsua.listadoPermisos();
             return new SelectList(listaPais, "id", "permisoUsuario", idPermiso);
         }
-
     }
 }

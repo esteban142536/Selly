@@ -3,11 +3,26 @@
     ViewBag.Title = "Acceso denegado";
 }
 
-<h2>Usted no tiene permisos para entrar a esta pagina</h2>
-<br>
+<div class="sinPermisos" style="text-align:center; margin-top:18%; margin-bottom:18%;">
+    @{
+        string nombre = "";
+        string email = "Perfil";
 
-<input type="button" value="Regresar a pagina anterior" class="btn btn-warning" onclick="goBack()" />
-
+        Infraestructure.Models.usuario usua;
+        if (Session["Usuario"] != null)
+        {
+            usua = (Infraestructure.Models.usuario)Session["Usuario"];
+            if (usua != null)
+            {
+                nombre = $"{usua.nombre} {usua.apellidos}";
+                email = usua.email;
+            }
+        }
+    }
+    <h2>El usuario <strong>@nombre</strong> no tiene permisos para entrar a esta página</h2>
+    <br>
+    <input type="button" value="Página anterior" class="btn btn-warning" onclick="goBack()" />
+</div>
 
 <script>
     function goBack() {

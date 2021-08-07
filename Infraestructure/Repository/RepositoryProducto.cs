@@ -110,7 +110,7 @@ namespace Infraestructure.Repository
                 try
                 {
 
-                    lista = cdt.producto.Include(x=>x.TipoCategoria).ToList();
+                    lista = cdt.producto.Include(x=>x.TipoCategoria).Where(x => x.totalStock > 0).ToList();
                     return lista;
 
                 }
@@ -136,7 +136,7 @@ namespace Infraestructure.Repository
             }
 
 
-        public void actualizarExistDB(int id, int cantUsu, bool esSalida) {
+        public bool actualizarExistDB(int id, int cantUsu, bool esSalida) {
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
@@ -149,18 +149,25 @@ namespace Infraestructure.Repository
 
                     if (esSalida)
                     {
-                    oldProd.totalStock -= cantUsu;
-
+                        oldProd.totalStock -= cantUsu;
+                        if (oldProd.totalStock < oldProd.cantMinima)
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
                         oldProd.totalStock += cantUsu;
-
+                        if (oldProd.totalStock > oldProd.cantMaxima)
+                        {
+                            return false;
+                        }
                     }
 
                     cdt.producto.Add(oldProd);
-                        cdt.Entry(oldProd).State = EntityState.Modified;
+                    cdt.Entry(oldProd).State = EntityState.Modified;
                     cdt.SaveChanges();
+                    return true;
 
                 }
                 catch (Exception ex)
@@ -204,5 +211,26 @@ namespace Infraestructure.Repository
             return lista;
         }
 
+        public IEnumerable<producto> listadoProductoReponer()
+        {
+            IEnumerable<producto> lista = null;
+
+            try
+            {
+                using (contextData cdt = new contextData())
+                {
+                    cdt.Configuration.LazyLoadingEnabled = false;
+
+                    lista = cdt.producto.Include(x => x.TipoCategoria).OrderByDescending(x => x.cantMinima).Take(6).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "";
+                Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw;
+            }
+            return lista;
+        }
     }
 }

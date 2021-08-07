@@ -12,9 +12,10 @@ namespace ApplicationCore.Services
         void guardarProducto(producto producto, String[] idProveedor, String[] idEstante);
         IEnumerable<producto> listadoProducto();
         producto obtenerProductoID(int id);
-        void actualizarExistDB(int id, int cantUsu, bool esSalida);
+        bool actualizarExistDB(int id, int cantUsu, bool esSalida);
         IEnumerable<producto> buscarProductoxNombre(string nombre);
         IEnumerable<string> nombreProductos();
         List<IGrouping<int, detalleFactura>> listadoProductoMayorSalidas();
+        IEnumerable <producto> listadoProductoReponer();
     }
 }

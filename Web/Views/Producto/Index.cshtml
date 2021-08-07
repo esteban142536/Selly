@@ -8,64 +8,52 @@
     <h2> <strong>Lista de productos</strong> </h2>
 </div>
 
-<div class="row" style="display:flex; flex-direction: row; align-items: center">
-    <div class="col" style="margin-right:30%">
+<div class="row" style="margin-top:5%">
+    <div class="col">
         <button type="button" class="btn btn-success">
             @Html.ActionLink("Agregar Producto", "AgregarProducto", "Producto", new { style = "text-decoration:none", @class = "btn-success" })
         </button>
     </div>
 
-    <div class="col-md-4">
-        <div class="card my-4">
-            <h5 class="card-header">Buscar producto</h5>
-            @using (Ajax.BeginForm("buscarProductoxNombre", "Producto", new AjaxOptions
-            {
-                UpdateTargetId = "resultado",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET",
-                LoadingElementId = "ajaxLoader"
-            }))
-            {
-                <div class="card-body">
-                    <div class="input-group">
-                        @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Nombre producto" })
-
-                        <button type="submit" class="btn btn-default">Buscar</button>
-
-                    </div>
-                </div>
-            }
-
-            <h5 class="card-header">Buscar 3 producto mas vendidos</h5>
-            @using (Ajax.BeginForm("listadoPorVenta", "Producto", new AjaxOptions
-            {
-                UpdateTargetId = "resultado",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET",
-                LoadingElementId = "ajaxLoader"
-            }))
-            {
-                <div class="card-body">
-                    <div class="input-group">
-
-                        <button type="submit" class="btn btn-default">Mostrar 3 productos mas vendidos</button>
-
-                    </div>
-                </div>
-            }
-
-        </div>
-        
-       
+    <div class="col">
+        @using (Ajax.BeginForm("listadoPorVenta", "Producto", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <button type="submit" class="btn btn-success">Los 3 productos más vendidos</button>
+        }
     </div>
+
+    <div class="col">
+        @using (Ajax.BeginForm("buscarProductoxNombre", "Producto", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+                <div class="input-group">
+                    @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar producto..." })
+
+                    <button type="submit" class="btn btn-success">Buscar</button>
+
+                </div>
+        }
+    </div>
+</div>
 
 <table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
     <thead class="table-success">
         <tr>
             <th scope="col">Nombre</th>
-            <th style="text-align:center" scope="col">Categor&#237;a</th>
-            <th style="text-align:center" scope="col">Costo Unitario</th>
-            <th style="text-align:center" scope="col">Total de existencia</th>
+            <th scope="col">Categor&#237;a</th>
+            <th scope="col">Costo Unitario</th>
+            <th scope="col">Total de existencia</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -75,9 +63,9 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.nombre)</td>
-                <td style="text-align:center">@Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</td>
-                <td style="text-align:center">&#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</td>
-                <td style="text-align:center">@Html.DisplayFor(modelItem => item.totalStock)</td>
+                <td>@Html.DisplayFor(modelItem => item.TipoCategoria.Descripcion)</td>
+                <td>&#8353;@Html.DisplayFor(modelItem => item.costoUnitario)</td>
+                <td>@Html.DisplayFor(modelItem => item.totalStock)</td>
                 <th scope="col">
                     <button type="button" class="btn btn-outline-success">
                         @Html.ActionLink("Detalle", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
@@ -86,15 +74,14 @@
                         @Html.ActionLink("Editar", "EditarProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
                     </button>
                     @*  <button type="button" class="btn btn-outline-success">
-            @Html.ActionLink("Eliminar", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-        </button>*@
+                            @Html.ActionLink("Eliminar", "DetalleProducto", "Producto", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                        </button>*@
                 </th>
             </tr>
         }
     </tbody>
 </table>
 
-</div>
 @* Modal *@
 <input type="hidden" id="campoOculto" />
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

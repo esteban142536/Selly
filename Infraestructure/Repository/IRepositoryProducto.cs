@@ -14,8 +14,10 @@ namespace Infraestructure.Repository
         IEnumerable<producto> listadoProducto();
 
         producto obtenerProductoID(int id);
-        void actualizarExistDB(int id, int cantUsu, bool esSalida);
+        bool actualizarExistDB(int id, int cantUsu, bool esSalida);
         IEnumerable<producto> buscarProductoxNombre(string nombre);
         List<IGrouping<int, detalleFactura>> listadoProductoMayorSalidas();
+
+        IEnumerable<producto> listadoProductoReponer();
     }
 }

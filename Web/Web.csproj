@@ -227,6 +227,9 @@
     <Content Include="Imagenes\acercaDeFondo.jpg" />
     <Content Include="Imagenes\audifono.jpg" />
     <Content Include="Imagenes\cafetera.jpg" />
+    <Content Include="Imagenes\carrusel1.PNG" />
+    <Content Include="Imagenes\carrusel2.PNG" />
+    <Content Include="Imagenes\carrusel3.PNG" />
     <Content Include="Imagenes\juguete.jpg" />
     <Content Include="Imagenes\Logo.PNG" />
     <Content Include="Imagenes\moda.jpg" />

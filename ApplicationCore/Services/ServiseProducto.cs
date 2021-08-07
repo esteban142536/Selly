@@ -33,9 +33,9 @@ namespace ApplicationCore.Services
             return repo.obtenerProductoID(id);
         }
 
-        public void actualizarExistDB(int id, int cantUsu, bool esSalida)
+        public bool actualizarExistDB(int id, int cantUsu, bool esSalida)
         {
-            repo.actualizarExistDB(id,cantUsu, esSalida);
+           return repo.actualizarExistDB(id,cantUsu, esSalida);
         }
         public IEnumerable<string> nombreProductos()
         {
@@ -45,6 +45,11 @@ namespace ApplicationCore.Services
         public List<IGrouping<int, detalleFactura>> listadoProductoMayorSalidas()
         {
             return repo.listadoProductoMayorSalidas();
+        }
+
+        public IEnumerable<producto> listadoProductoReponer()
+        {
+            return repo.listadoProductoReponer();
         }
     }
 }

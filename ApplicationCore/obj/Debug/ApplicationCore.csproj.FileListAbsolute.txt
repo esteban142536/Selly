@@ -110,3 +110,17 @@ C:\Users\Adriana\Desktop\Proyecto\Avance_6\Selly-main\ApplicationCore\obj\Debug\
 C:\Users\Adriana\Desktop\Proyecto\Avance_6\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
 C:\Users\Adriana\Desktop\Proyecto\Avance_6\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.dll
 C:\Users\Adriana\Desktop\Proyecto\Avance_6\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Adriana\Desktop\Proyecto\1\Selly-main\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete

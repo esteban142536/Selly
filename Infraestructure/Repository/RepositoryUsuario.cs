@@ -57,8 +57,6 @@ namespace Infraestructure.Repository
                 cdt.Configuration.LazyLoadingEnabled = false;
                 user = cdt.usuario.Where(u=>u.email==email && u.clave==clave &&u.esActivo).FirstOrDefault<usuario>();
             }
-
-
             return user;
         }
 

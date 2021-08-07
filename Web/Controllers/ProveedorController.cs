@@ -31,6 +31,7 @@ namespace proyecto.Controllers
             serviseProveedor.guardarProveedor(prooveedor);
             return RedirectToAction("index");
         }
+
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult AgregarProveedor()
         {
@@ -71,6 +72,7 @@ namespace proyecto.Controllers
             }
         }
 
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult Index()
         {
             ViewBag.listaNombres = serviseProveedor.nombreProveedor();

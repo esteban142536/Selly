@@ -37,13 +37,15 @@ namespace proyecto.Controllers
             }
             if (inventario == null || tipoMovimiento.tipoEntrada == null || tipoMovimiento.tipoSalida == null)
             {
+
+                ViewBag.idTienda = listaTiendas();
                 ViewBag.DetalleCarrito = Carrito.Instancia.Items;
                 ViewBag.idProveedores = listaproveedor();
                 ViewBag.idEstante = listaEstante();
+                TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Hay campos que estan vacios", SweetAlertMessageType.error);
                 return View("AgregarInventario", inventario);
             }
 
-        int tipoMoviID= serviseMovi.agregarTipoMovimiento(tipoMovimiento);
 
             List<producto> carritoProducto= new List<producto>();
             foreach (var item in Carrito.Instancia.Items)
@@ -60,7 +62,23 @@ namespace proyecto.Controllers
                 carritoProducto.Add(pro);
 
                 serviseProdu.actualizarExistDB(item.id,item.totalStock, esSalida);
+
+                bool rest = serviseProdu.actualizarExistDB(item.id, item.totalStock, esSalida);
+
+                if (!rest)
+                {
+                    ViewBag.DetalleCarrito = Carrito.Instancia.Items;
+                    ViewBag.idProveedores = listaproveedor();
+                    ViewBag.idTienda = listaTiendas();
+                    ViewBag.idEstante = listaEstante();
+                    TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "La cantidad ingresada excede el limite maximo", SweetAlertMessageType.warning);
+                    return View("AgregarInventario", inventario);
+
+                }
             }
+
+        int tipoMoviID= serviseMovi.agregarTipoMovimiento(tipoMovimiento);
+
             usuario user = (usuario)Session["Usuario"];
             inventario.idUsuario = user.id;
             inventario.fecha = DateTime.Now.ToString("dd/MM/yyyy");
@@ -84,7 +102,7 @@ namespace proyecto.Controllers
             TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Productos agregado al inventario", SweetAlertMessageType.success);
             return RedirectToAction("AgregarInventario");
         }
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult Index()
         {
             return View(serviseInventa.listadoInventario());
@@ -102,7 +120,7 @@ namespace proyecto.Controllers
             return View(serviseInventa.obtenerInventarioID(id));
         }
 
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult AgregarInventario(string tipodir)
         {
             if (TempData.ContainsKey("NotificationMessage"))

@@ -4,60 +4,75 @@
     ViewBag.Title = "Listas de usuarios";
 }
 
-<h2>Listado de usuarios para edicion</h2>
+<div class="titulo">
+    <h2> <strong>Lista de usuarios</strong> </h2>
+</div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellidos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.esActivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipoUsuario.permisoUsuario)
-        </th>
-        <th></th>
-    </tr>
+<div class="row" style="margin-top:5%">
+    <div class="col">
+        <button type="button" class="btn btn-success">
+            @Html.ActionLink("Agregar usuario", "registro", "Usuario", new { style = "text-decoration:none", @class = "btn-success" })
+        </button>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @if (item.esActivo) {
+    @*<div class="col">
+        @using (Ajax.BeginForm("buscarProductoxNombre", "Producto", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <div class="input-group">
+                @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar usuario..." })
+
+                <button type="submit" class="btn btn-success">Buscar</button>
+
+            </div>
+        }
+    </div>*@
+</div>
+
+<table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
+    <thead class="table-success">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Activo</th>
+            <th scope="col">Tipo de usuario</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+            <td>@Html.DisplayFor(modelItem => item.apellidos)</td>
+            <td>@Html.DisplayFor(modelItem => item.email)</td>
+            <td>
+                @if (item.esActivo)
+                {
 
 
-            <p>Activo</p>
+                    <p>Activo</p>
                 }
                 else
                 {
                     <p>Desactivado</p>
                 }
-</td>
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.tipoUsuario.permisoUsuario)</td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.tipoUsuario.permisoUsuario)
-        </td>
-
-        <td>
-            <button type="button" class="btn btn-outline-success">
-                @Html.ActionLink("Editar usuario", "EditarUsuario", "Usuario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-            </button>
-        </td>
-    </tr>
-}
+            <th scope="col">
+                <button type="button" class="btn btn-outline-success">
+                    @Html.ActionLink("Editar usuario", "EditarUsuario", "Usuario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                </button>
+            </th>
+        </tr>
+        }
+    </tbody>
 </table>

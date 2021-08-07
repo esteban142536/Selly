@@ -15,26 +15,26 @@ namespace Infraestructure.Models
         public virtual ICollection<detalleFactura> detalleFactura { get; set; }
 
         [Display(Name = "Usuario:")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public int idUsuario { get; set; }
 
         [Display(Name = "Fecha de emisión:")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string fecha { get; set; }
 
         [Display(Name = "Tipo de movimiento:")]
         public virtual TipoMovimiento TipoMovimiento { get; set; }
 
         [Display(Name = "Total")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public Nullable<double> totalPagado { get; set; }
 
         [Display(Name = "Comentario")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string comentario { get; set; }
 
         [Display(Name = "IVA")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public Nullable<double> iva { get; set; }
 
         [Display(Name = "Tienda:")]
@@ -68,13 +68,13 @@ namespace Infraestructure.Models
         public virtual ICollection<producto> producto { get; set; }
 
         [Display(Name = "Nombre del proveedor")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
-        [DataType(DataType.Text, ErrorMessage = "{0} no tiene formato válido")]
+        [Required(ErrorMessage = "Obligatorio")]
+        [DataType(DataType.Text, ErrorMessage = "Obligatorio")]
         public string nombreEmpresa { get; set; }
 
         [Display(Name = "Dirección")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
-        [DataType(DataType.Text, ErrorMessage = "{0} no tiene formato válido")]
+        [Required(ErrorMessage = "Obligatorio")]
+        [DataType(DataType.Text, ErrorMessage = "Obligatorio")]
         public string direccion { get; set; }
 
         [Display(Name = "País")]
@@ -87,7 +87,7 @@ namespace Infraestructure.Models
         public virtual ICollection<proveedor> proveedor { get; set; }
 
         [Display(Name = "País")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string nombre { get; set; }
     }
 
@@ -101,36 +101,36 @@ namespace Infraestructure.Models
         public virtual ICollection<proveedor> proveedor { get; set; }
 
         [Display(Name = "Nombre del producto")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string nombre { get; set; }
 
         [Display(Name = "Total de existencia")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
         public int totalStock { get; set; }
 
         [Display(Name = "Cantidad máxima")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
 
         public int cantMaxima { get; set; }
 
         [Display(Name = "Cantidad mínima")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [Range(1, 99, ErrorMessage = "{0} debe ser mayor a 1 y menor a 99")]
 
         public int cantMinima { get; set; }
 
         [Display(Name = "Costo")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public double costoUnitario { get; set; }
 
         [Display(Name = "Descripción")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string descripcion { get; set; }
 
         [Display(Name = "Imagen")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public byte[] imagen { get; set; }
     }
 
@@ -140,7 +140,7 @@ namespace Infraestructure.Models
         public virtual ICollection<producto> producto { get; set; }
 
         [Display(Name = "Categoría")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string Descripcion { get; set; }
     }
 
@@ -158,12 +158,12 @@ namespace Infraestructure.Models
         public string apellidos { get; set; }
 
         [Display(Name = "Correo electrónico")]
-        [Required(ErrorMessage ="{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [DataType(DataType.EmailAddress, ErrorMessage = "{0} no tiene formato válido")]
         public string email { get; set; }
 
         [Display(Name = "Contraseña")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string clave { get; set; }
 
         [Display(Name = "Estado de la cuenta")]
@@ -177,16 +177,16 @@ namespace Infraestructure.Models
         public virtual proveedor proveedor { get; set; }
 
         [Display(Name = "Nombre del contacto")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         public string nombre { get; set; }
 
         [Display(Name = "Número de teléfono")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [DataType(DataType.PhoneNumber, ErrorMessage = "{0} no tiene formato válido")]
         public int numero { get; set; }
 
         [Display(Name = "Correo electrónico")]
-        [Required(ErrorMessage = "{0} es un campo requerido")]
+        [Required(ErrorMessage = "Obligatorio")]
         [DataType(DataType.EmailAddress, ErrorMessage = "{0} no tiene formato válido")]
         public string correo { get; set; }
     }

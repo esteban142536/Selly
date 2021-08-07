@@ -73,24 +73,28 @@ namespace Web.ViewModel
         {
             String mensaje = "";
             // Si estamos configurando la Cantidad a 0, elimine el artículo por completo
-            if (Cantidad == 0)
+            ViewModelInventarioDetalle actualizarItem = new ViewModelInventarioDetalle(idProducto);
+            if (Cantidad <= actualizarItem.Producto.totalStock)
             {
-                EliminarItem(idProducto);
-                mensaje = SweetAlertHelper.Mensaje("Inventario producto", "Producto eliminado", SweetAlertMessageType.success);
-            }
-            else
-            {
-                // Encuentra el artículo y actualiza la Cantidad
-                ViewModelInventarioDetalle actualizarItem = new ViewModelInventarioDetalle(idProducto);
-                if (Items.Exists(x => x.id == idProducto))
-                {
-                    ViewModelInventarioDetalle item = Items.Find(x => x.id == idProducto);
-                    item.totalStock = Cantidad;
-                 //   mensaje = SweetAlertHelper.Mensaje("Orden producto", "Cantidad actualizada", SweetAlertMessageType.success);
 
+                if (Cantidad == 0)
+                {
+                    EliminarItem(idProducto);
                 }
+                else
+                {
+                    // Encuentra el artículo y actualiza la Cantidad
+                    if (Items.Exists(x => x.id == idProducto))
+                    {
+                        ViewModelInventarioDetalle item = Items.Find(x => x.id == idProducto);
+                        item.totalStock = Cantidad;
+
+
+                    }
+                }
+
             }
-         //   return mensaje;
+
         }
 
         public String EliminarItem(int idProducto)

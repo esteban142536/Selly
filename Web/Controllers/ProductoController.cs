@@ -127,7 +127,7 @@ namespace proyecto.Controllers
             return View(serviseProducto.listadoProducto());
         }
 
-
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult Index()
         {
             serviseProducto.listadoProductoMayorSalidas();

@@ -8,40 +8,33 @@
     <h2> <strong>Inventario</strong> </h2>
 </div>
 
-<div class="row" style="display:flex; flex-direction: row; align-items: center">
-    <div class="col" style="margin-right:30%">
+<div class="row" style="margin-top:5%">
+    <div class="col">
         <button type="button" class="btn btn-success">
             @Html.ActionLink("Agregar inventario", "AgregarInventario", "Inventario", new { style = "text-decoration:none", @class = "btn-success" })
         </button>
     </div>
 
-    <div class="col-md-6">
-        <div class="card my-6">
-            <h5 class="card-header">Buscar inventario por fecha</h5>
-            @using (Ajax.BeginForm("buscarInventarioxFecha", "Inventario", new AjaxOptions
-            {
-                UpdateTargetId = "resultado",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET",
-                LoadingElementId = "ajaxLoader"
-            }))
-            {
-                <div class="card-body">
-                    <div class="input-group">
-                        @*@Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor" })*@
-                        <p>Fecha inicial</p>
-                        <input type="date" name="fechaInicio" />
-                        <br>
-                        <p>Fecha final</p>
-                        <input type="date" name="fechaFinal" />
-                        <br>
-                        <button type="submit" class="btn btn-default">Buscar</button>
+    <div class="col">
+        @using (Ajax.BeginForm("buscarInventarioxFecha", "Inventario", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <div class="filtro">
+                @*@Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor" })*@
+                Fecha inicial:
+                <input type="date" name="fechaInicio" style="margin-right:2%; margin-left:2%" />
 
-                    </div>
-                </div>
-            }
+                Fecha final:
+                <input type="date" name="fechaFinal" style="margin-right:2%; margin-left:2%"/>
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+        }
 
-        </div>
     </div>
 </div>
 

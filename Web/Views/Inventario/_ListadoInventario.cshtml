@@ -1,8 +1,8 @@
 ﻿@model List<Web.ViewModel.ViewModelInventarioDetalle>
 
-<div class="content-body" style="margin-left:7%; margin-right:6%; margin-top:3%;">
+<div class="content-body" style="margin-left:7%">
 
-    <table class="table table-hover" style="margin-top:3%">
+    <table class="table table-hover">
         <thead class="table-success">
             <tr>
                 <th scope="col" style="text-align:center;">Código</th>
@@ -14,40 +14,37 @@
         </thead>
 
         @foreach (var produc in Model)
-        { 
-        <tbody>
-            <tr>
-                <td style="width: 5em; text-align: center;">
-                    @Html.HiddenFor(modelItem => produc.Producto.id)
-                    @produc.Producto.id
-                </td>
-                <td>
-                    @Html.HiddenFor(modelItem => produc.Producto.id)
-                    @produc.Producto.nombre
-                </td>
+        {
+            <tbody>
+                <tr>
+                    <td style="width: 5em; text-align: center;">
+                        @Html.HiddenFor(modelItem => produc.Producto.id)
+                        @produc.Producto.id
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => produc.Producto.id)
+                        @produc.Producto.nombre
+                    </td>
 
-                <td style="width:10em;">
-                    @Html.EditorFor(modelItem => produc.totalStock, new { htmlAttributes = new { @class = "form-control changeCantidad", data_libroid = produc.Producto.id, onchange = "updateCantidad(this)" } })
-                </td>
+                    <td style="width:10em;">
+                        @Html.EditorFor(modelItem => produc.totalStock, new { htmlAttributes = new { @class = "form-control changeCantidad", data_libroid = produc.Producto.id, onchange = "updateCantidad(this)" } })
+                    </td>
 
-                <td style="width: 13em; text-align: center;">&#8353;@Html.DisplayFor(modelItem => produc.Producto.costoUnitario)</td>
+                    <td style="width: 13em; text-align: center;">&#8353;@Html.DisplayFor(modelItem => produc.Producto.costoUnitario)</td>
 
-                <td style="width: 13em; text-align: center;">&#8353;@Html.DisplayFor(modelItem => produc.SubTotal)</td>
-            </tr>
-        </tbody>
+                    <td style="width: 13em; text-align: center;">&#8353;@Html.DisplayFor(modelItem => produc.SubTotal)</td>
+                </tr>
+            </tbody>
         }
 
     </table>
 
-    <div class="row">
-        <div class="col">
-         
-            <p style="margin-left:8%">IVA: 13%</p>
-            <p style="margin-left:8%">Costo con IVA: @((((Double)Web.ViewModel.Carrito.Instancia.GetIva())*0.13).ToString("C2"))</p>
-            <br />
-            Total a pagar:
-            @((((Double)Web.ViewModel.Carrito.Instancia.GetTotal())).ToString("C2"))
-            <p/>
-        </div>
+    <div class="calculo">
+        <p style="margin-left:8%">IVA: 13%</p>
+        <p style="margin-left:8%">Costo con IVA: @((((Double)Web.ViewModel.Carrito.Instancia.GetIva())*0.13).ToString("C2"))</p>
+        <br />
+        Total a pagar:
+        @((((Double)Web.ViewModel.Carrito.Instancia.GetTotal())).ToString("C2"))
+        <p />
     </div>
 </div>

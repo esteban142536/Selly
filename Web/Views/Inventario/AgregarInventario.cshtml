@@ -79,9 +79,9 @@
                                 Tienda donde se esta realizando el cobro:
                                 <br />
                                 @Html.DropDownList("tienda",
-                                            (SelectList)ViewBag.idTienda,
-                                            null,
-                                            new { htmlAttributes = new { @class = "form-control" } })
+                                                     (SelectList)ViewBag.idTienda,
+                                                     null,
+                                                     new { htmlAttributes = new { @class = "form-control" } })
                             </p>
                         </div>
 
@@ -95,9 +95,9 @@
                                 Proveedor:
                                 <br />
                                 @Html.DropDownList("proveedor",
-                                (SelectList)ViewBag.idProveedores,
-                                null,
-                                new { htmlAttributes = new { @class = "form-control" } })
+                                         (SelectList)ViewBag.idProveedores,
+                                         null,
+                                         new { htmlAttributes = new { @class = "form-control" } })
                             </p>
                             <br />
 
@@ -105,49 +105,54 @@
                                 Estante:
                                 <br />
                                 @Html.DropDownList("estante",
-                                            (SelectList)ViewBag.idEstante,
-                                            null,
-                                            new { htmlAttributes = new { @class = "form-control" } })
+                                                     (SelectList)ViewBag.idEstante,
+                                                     null,
+                                                     new { htmlAttributes = new { @class = "form-control" } })
                             </p>
 
-                        </div>
-                        <div class="col">
-                            <p>
-                                Comentario:
-                                <div class="form-group">
-                                    @Html.TextAreaFor(modelItem => Model.comentario, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => Model.comentario, "", new { @class = "text-danger" })
-
-                                </div>
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-                <div id="resultadoDetalle">
-                    @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
-                    {
-                        @Html.Partial("~/Views/Inventario/_ListadoInventario.cshtml", (List<Web.ViewModel.ViewModelInventarioDetalle>)ViewBag.DetalleCarrito)
+            <div class="row" style="margin-left:1%; margin-right:1%; margin-top:3%">
+                <div class="col-9">
+                    <div id="resultadoDetalle">
+                        @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
+                        {
+                            @Html.Partial("~/Views/Inventario/_ListadoInventario.cshtml", (List<Web.ViewModel.ViewModelInventarioDetalle>)ViewBag.DetalleCarrito)
 
 
-                    }
-                    else
-                    {
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
-                            No hay productos en el carrito
-                        </div>
-                    }
-            
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left:7%; margin-right:6.5%">
+                                No hay productos en el carrito
+                            </div>
+                        }
+                    </div>
                 </div>
-                <div class="boton" style="margin-left:43%">
-                    <button type="submit" class="btn btn-success">Agregar</button>
-                    <button type="button" class="btn btn-success">Cancelar</button>
+
+                <div class="col">
+                    <div class="comentario">
+                        <p>
+                            Comentario:
+                            <div class="form-group">
+                                @Html.TextAreaFor(modelItem => Model.comentario, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => Model.comentario, "", new { @class = "text-danger" })
+                            </div>
+                        </p>
+                    </div>
                 </div>
             </div>
-    </div>
-}
 
+            <div class="boton" style="margin-left:43%">
+                <button type="submit" class="btn btn-success">Agregar</button>
+                <button type="button" class="btn btn-success">Cancelar</button>
+            </div>
+        </div>
+    </div>
+                                } 
 @section Scripts {
 
     @Scripts.Render("~/bundles/jqueryval")

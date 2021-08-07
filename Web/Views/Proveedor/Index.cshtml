@@ -8,7 +8,7 @@
     <h2> <strong>Lista de proveedores</strong> </h2>
 </div>
 
-<div class="row" style="display:flex; flex-direction: row; align-items: center">
+<div class="row" style="margin-top:5%">
     <div class="col" style="margin-right:30%">
         <button type="button" class="btn btn-success">
             @Html.ActionLink("Agregar proveedor", "AgregarProveedor", "Proveedor", new { style = "text-decoration:none", @class = "btn-success" })
@@ -82,61 +82,24 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="card my-4">
-            <h5 class="card-header">Buscar producto</h5>
-            @using (Ajax.BeginForm("buscarProveedorxNombre", "Proveedor", new AjaxOptions
-            {
-                UpdateTargetId = "resultado",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET",
-                LoadingElementId = "ajaxLoader"
-            }))
-            {
-                <div class="card-body">
-                    <div class="input-group">
-                        @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor" })
+    <div class="col">
+        @using (Ajax.BeginForm("buscarProveedorxNombre", "Proveedor", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <div class="input-group">
+                @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor..." })
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+        }
 
-                        <button type="submit" class="btn btn-default">Buscar</button>
-
-                    </div>
-                </div>
-            }
-
-        </div>
     </div>
 </div>
 
-<table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
-    <thead class="table-success">
-        <tr>
-            <th scope="col">Nombre de la empresa</th>
-            <th style="text-align:center" scope="col">Direcci&#243;n</th>
-            <th style="text-align:center" scope="col">Pa&#237;s</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-
-    <tbody id="resultado">
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.nombreEmpresa)</td>
-                <td style="text-align:center">@Html.DisplayFor(modelItem => item.direccion)</td>
-                <td style="text-align:center">@Html.DisplayFor(modelItem => item.pais.nombre)</td>
-
-                <th scope="col" style="display:flex; align-items: center">
-                    <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
-                        @Html.ActionLink("Detalle", "DetalleProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-                    </button>
-                    <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
-                        @Html.ActionLink("Editar", "EditarProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-                    </button>
-                </th>
-            </tr>
-        }
-    </tbody>
-</table>
 @* Modal *@
 <input type="hidden" id="campoOculto" />
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -158,7 +121,37 @@
         </div>
     </div>
 </div>
-@* Modal *@
+
+<table class="table table-hover" style="margin-top:2%; margin-bottom:4%">
+    <thead class="table-success">
+        <tr>
+            <th scope="col">Nombre de la empresa</th>
+            <th scope="col">Direcci&#243;n</th>
+            <th style="text-align:center" scope="col">Pa&#237;s</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody id="resultado">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.nombreEmpresa)</td>
+                <td >@Html.DisplayFor(modelItem => item.direccion)</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => item.pais.nombre)</td>
+
+                <th scope="col" style="display:flex; align-items: center">
+                    <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
+                        @Html.ActionLink("Detalle", "DetalleProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                    </button>
+                    <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
+                        @Html.ActionLink("Editar", "EditarProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryajax")
