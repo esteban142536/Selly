@@ -13,7 +13,20 @@
     </div>
 
     <div class="form-group" style="margin-left:30%; margin-right:30%; margin-top:2%">
-        Tipo de usuario:
+
+        @{
+            Infraestructure.Models.usuario user = (Infraestructure.Models.usuario)Session["Usuario"];
+                if (user!=null && user.idTipoUsuario==1)
+                {
+        <p>
+            Tipo de usuario:
+            @Html.DropDownList("permiso",
+(SelectList)ViewBag.idTipoUsuario,
+new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+                }
+
+         }
 
         <p>
             Nombre:
@@ -35,7 +48,7 @@
 
         <p>
             Contraseña:
-            @Html.EditorFor(model => model.clave, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.clave, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.clave, "", new { @class = "text-danger" })
         </p>
 

@@ -94,9 +94,11 @@ namespace proyecto.Controllers
                     return RedirectToAction("Index");
                 }
                 
+                ViewBag.idProveedores = listaproveedor(pro.proveedor);
                 ViewBag.idCategoria = listaTipoCategoria(pro.idCategoria);
-                ViewBag.idProveedores = listaproveedor(null);
-                ViewBag.idEstantes = listaEstantes(null);
+                ViewBag.idEstantes = listaEstantes(pro.productoEstante);
+
+
                 return View(pro);
             }
         catch (Exception ex)
@@ -185,15 +187,14 @@ namespace proyecto.Controllers
             return new MultiSelectList(listaProveedores, "id", "nombreEmpresa", listaEstantesSelect);
 
         }
-        private MultiSelectList listaEstantes(ICollection<proveedor> proveedores)
+        private MultiSelectList listaEstantes(ICollection<productoEstante> estante)
         {
             IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
             int[] listaEstanteSelect = null;
 
-            if (proveedores != null)
+            if (estante != null)
             {
-
-                listaEstanteSelect = proveedores.Select(c => c.id).ToArray();
+                listaEstanteSelect = estante.Select(c => c.idEstante).ToArray();
             }
 
             return new MultiSelectList(listaEstante, "id", "nombre", listaEstanteSelect);

@@ -102,16 +102,38 @@ namespace proyecto.Controllers
             TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "Productos agregado al inventario", SweetAlertMessageType.success);
             return RedirectToAction("AgregarInventario");
         }
-        [CustomAuthorize((int)TipoUsuario.Administrador)]
+
+
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult Index()
         {
+            usuario user = (usuario)Session["Usuario"];
+            if (user.id != 1) { 
+            return View(serviseInventa.listadoInventario().Where(x=>x.idUsuario==user.id).ToList());
+            
+            }
             return View(serviseInventa.listadoInventario());
+
         }
+
+
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
 
         public ActionResult ReporteEntradaSalida()
         {
+            usuario user = (usuario)Session["Usuario"];
+            if (user.id != 1)
+            {
+                return View(serviseInventa.listadoInventario().Where(x => x.idUsuario == user.id).ToList());
+
+            }
             return View(serviseInventa.listadoInventario());
         }
+
+
+
 
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
 
@@ -120,7 +142,11 @@ namespace proyecto.Controllers
             return View(serviseInventa.obtenerInventarioID(id));
         }
 
-        [CustomAuthorize((int)TipoUsuario.Administrador)]
+
+
+
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+
         public ActionResult AgregarInventario(string tipodir)
         {
             if (TempData.ContainsKey("NotificationMessage"))
@@ -135,6 +161,9 @@ namespace proyecto.Controllers
             return View();
         }
 
+
+
+
         public ActionResult actualizarCantidad(int idproducto, int cantidad)
         {
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
@@ -143,6 +172,9 @@ namespace proyecto.Controllers
             return PartialView("_ListadoInventario", Carrito.Instancia.Items);
 
         }
+
+
+
 
         public ActionResult actualizarOrdenCantidad()
         {
@@ -154,6 +186,9 @@ namespace proyecto.Controllers
             return PartialView("_cantidadCarrito");
 
         }
+
+
+
 
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult buscarInventarioxFecha(DateTime fechaInicio, DateTime fechaFinal)

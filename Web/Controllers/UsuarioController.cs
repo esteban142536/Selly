@@ -51,8 +51,9 @@ namespace proyecto.Controllers
 
 
         //insert hacia usuario
-        public ActionResult registro(usuario usu)
+        public ActionResult registro(usuario usu, String[] permiso)
         {
+            ViewBag.idTipoUsuario = litadoPermisos();
 
             if (string.IsNullOrEmpty(usu.nombre) || string.IsNullOrEmpty(usu.apellidos) || string.IsNullOrEmpty(usu.clave) || string.IsNullOrEmpty(usu.email))
             {
@@ -60,12 +61,16 @@ namespace proyecto.Controllers
             }
             usu.idTipoUsuario = 3;
             usu.esActivo = true;
+            usu.idTipoUsuario =int.Parse(permiso[0]);
 
             // tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
-            // usu.idTipoUsuario = tu.id;
+             usu.idTipoUsuario =3;
+
+
             repoUsua.SignIn(usu);
 
-            return View();
+            TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Usuario", "Usuario creado", SweetAlertMessageType.success);
+            return RedirectToAction("Index");
         }
 
         //cerrar sesion

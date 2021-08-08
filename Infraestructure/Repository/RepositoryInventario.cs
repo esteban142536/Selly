@@ -18,7 +18,7 @@ namespace Infraestructure.Repository
             using (contextData cdt = new contextData())
             {
                 cdt.Configuration.LazyLoadingEnabled = false;
-
+                
                 try
                 {
                     lista = cdt.inventario.Include(x => x.TipoMovimiento).ToList();
