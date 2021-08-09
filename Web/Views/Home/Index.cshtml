@@ -25,6 +25,62 @@
     </button>
 </div>
 
+<!-- Datos de entradas -->
+<div class="titulo">
+    <h2><strong>Datos de tienda</strong></h2>
+</div>
+
+<div class="card-group" style="margin-bottom:5%;">
+    <div class="card">
+        <img src="~/Imagenes/salida.jpg" class="card-img-top" alt="..." style="height:200px; width:200px; margin-left:110px">
+        <div class="card-body" style="text-align:center">
+            <h5 class="card-title"><strong>Cantidad de salidas</strong></h5>
+            <hr />
+            <p class="card-text">
+                @* Fecha de actual, forma corta *@
+                @{
+                    var date = DateTime.Now.ToShortDateString();
+                }
+                Fecha: @date
+            </p>
+            <p class="card-text">
+                Ha habido <strong>@ViewBag.countEntrada</strong> salidas de productos
+            </p>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="~/Imagenes/producto.jpg" class="card-img-top" alt="..." style="height:200px;">
+        <div class="card-body" style="text-align:center">
+            <h5 class="card-title"><strong>Cantidad de productos en nuestra tienda</strong></h5>
+            <hr/>
+            <p class="card-text">
+                Fecha: @date
+            </p>
+            <p class="card-text">
+                Poseemos un total de <strong>@ViewBag.countProducto</strong> productos en nuestra pagina
+            </p>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="~/Imagenes/entrada.png" class="card-img-top" alt="..." style="height:200px; width:200px; margin-left:120px">
+        <div class="card-body" style="text-align:center">
+            <h5 class="card-title"><strong>Cantidad de entradas</strong></h5>
+            <hr />
+            <p class="card-text">
+                Fecha: @date
+            </p>
+            <p class="card-text">
+                Ha habido <strong>@ViewBag.countSalida</strong> entradas de productos
+            </p>
+
+        </div>
+    </div>
+</div>
+
 <!-- Cartas de productos especiales -->
 <div class="titulo">
     <h2><strong>Productos especiales</strong></h2>
@@ -62,46 +118,6 @@
     </div>
 </div>
 
-<!-- Datos de entradas -->
-<div class="titulo">
-    <h2><strong>Datos de tienda</strong></h2>
-</div>
-
-<div class="card-group" style="margin-bottom:5%;">
-    <div class="card">
-        <img src="~/Imagenes/salida.jpg" class="card-img-top" alt="..." style="height:200px; width:200px; margin-left:110px">
-        <div class="card-body" style="text-align:center">
-            <h5 class="card-title"><strong>Cantidad de salidas</strong></h5>
-            <p class="card-text">
-                Ha habido @ViewBag.countEntrada salidas de productos
-            </p>
-
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="~/Imagenes/producto.jpg" class="card-img-top" alt="..." style="height:200px;">
-        <div class="card-body" style="text-align:center">
-            <h5 class="card-title"><strong>Cantidad de productos en nuestra tienda</strong></h5>
-            <p class="card-text">
-                Poseemos un total de @ViewBag.countProducto productos en nuestra pagina
-            </p>
-
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="~/Imagenes/entrada.png" class="card-img-top" alt="..." style="height:200px; width:200px; margin-left:120px">
-        <div class="card-body" style="text-align:center">
-            <h5 class="card-title"><strong>Cantidad de entradas</strong></h5>
-            <p class="card-text">
-                Ha habido @ViewBag.countSalida entradas de productos
-            </p>
-
-        </div>
-    </div>
-</div>
-
 <!-- Acerca de -->
 <div class="content-AcercaDe">
     <div class="card bg-dark text-white">
@@ -113,7 +129,7 @@
             <p class="card-text" style="font-size: 1.3em;">
                 Esperamos que con nuestra empresa podemos dar facilitar y calidad para traer la
                 felicidad a tu familia. ¡Hogar feliz,
-                vida feliz! Conozcanos más con nuestra historia y esperiencia
+                vida feliz!
             </p>
             <p class="card-text" style="font-size: 1.3em;">Conozcanos más con nuestra historia y esperiencia</p>
 

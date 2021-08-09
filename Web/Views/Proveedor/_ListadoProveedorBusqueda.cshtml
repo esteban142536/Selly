@@ -3,18 +3,15 @@
 {
     <tr>
         <td>@Html.DisplayFor(modelItem => item.nombreEmpresa)</td>
-        <td style="text-align:center">@Html.DisplayFor(modelItem => item.direccion)</td>
-        <td style="text-align:center">@Html.DisplayFor(modelItem => item.pais.nombre)</td>
+        <td>@Html.DisplayFor(modelItem => item.direccion)</td>
+        <td>@Html.DisplayFor(modelItem => item.pais.nombre)</td>
 
-        <th scope="col" style="display:flex; align-items: center">
+        <th scope="col" style="align-items: center">
             <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
                 @Html.ActionLink("Detalle", "DetalleProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
             </button>
             <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
                 @Html.ActionLink("Editar", "EditarProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-            </button>
-            <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
-                @Html.ActionLink("Eliminar", "Index", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
             </button>
         </th>
     </tr>

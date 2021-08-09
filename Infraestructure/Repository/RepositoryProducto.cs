@@ -221,7 +221,7 @@ namespace Infraestructure.Repository
                 {
                     cdt.Configuration.LazyLoadingEnabled = false;
 
-                    lista = cdt.producto.Include(x => x.TipoCategoria).OrderByDescending(x => x.cantMinima).Take(6).ToList();
+                    lista = cdt.producto.Include(x => x.TipoCategoria).OrderBy(x => x.cantMinima).Take(6).ToList();
                 }
             }
             catch (Exception ex)

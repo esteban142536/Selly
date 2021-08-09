@@ -33,12 +33,21 @@ namespace proyecto.Controllers
 
                 if (user == null)
                 {
-                    ViewBag.NotificationMessage = SweetAlertHelper.Mensaje("Inicio de sesión", "Error al autenticarse", SweetAlertMessageType.warning);
+                    ViewBag.NotificationMessage = SweetAlertHelper.Mensaje("Inicio de sesión", "Error al autenticarse o usuario deshabilitado", SweetAlertMessageType.warning);
                     return View();
                 }
 
-                Session.Add("Usuario", user);
-                return RedirectToAction("Index", "Home");
+                if (user.idTipoUsuario == 1)
+                {
+                    Session.Add("Usuario", user);
+                    return RedirectToAction("MenuAdministrador", "Home");
+                }
+                else
+                {
+                    Session.Add("Usuario", user);
+                    return RedirectToAction("Index", "Home");
+                }
+                
             }
             return View("Index");
         }
@@ -59,18 +68,24 @@ namespace proyecto.Controllers
             {
                 return View(usu);
             }
-            usu.idTipoUsuario = 3;
+
             usu.esActivo = true;
-            usu.idTipoUsuario =int.Parse(permiso[0]);
 
-            // tipoUsuario tu = repoTipoUsua.asignarPermisos(usu.idTipoUsuario);
-             usu.idTipoUsuario =3;
+            if (permiso == null)
+            {
+                usu.idTipoUsuario = 2;
+                repoUsua.SignIn(usu);
+                repoUsua.logIn(usu.email, usu.clave);
 
-
-            repoUsua.SignIn(usu);
-
-            TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Usuario", "Usuario creado", SweetAlertMessageType.success);
-            return RedirectToAction("Index");
+            }
+            else
+            {
+                usu.idTipoUsuario = int.Parse(permiso[0]);
+                repoUsua.SignIn(usu);
+                repoUsua.logIn(usu.email, usu.clave);
+            }
+                Session.Add("Usuario", usu);
+                return RedirectToAction("Index", "Home");
         }
 
         //cerrar sesion
@@ -93,8 +108,6 @@ namespace proyecto.Controllers
         {
             return View();
         }
-
-
 
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult listaUsuario()
@@ -127,8 +140,6 @@ namespace proyecto.Controllers
         {
             try
             {
-
-
                 usu.idTipoUsuario = int.Parse(permiso[0]);
                 usu.esActivo = bool.Parse(estado[0]);
                 repoUsua.editarUsuario(usu);
@@ -142,7 +153,6 @@ namespace proyecto.Controllers
                 return RedirectToAction("EditarUsuario", usu.id);
             }
         }
-
 
         //carga los combos
         public SelectList litadoPermisos(int idPermiso = 0)

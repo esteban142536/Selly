@@ -32,7 +32,7 @@ namespace proyecto.Controllers
             return RedirectToAction("index");
         }
 
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult AgregarProveedor()
         {
             ViewBag.idPais = listaPais();
@@ -44,7 +44,7 @@ namespace proyecto.Controllers
             ViewBag.Title = "Datos del proveedor";
             return View(serviseProveedor.obtenerProveedorID(id));
         }
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult EditarProveedor(int? id)
         {
             try

@@ -4,66 +4,62 @@
     ViewBag.Title = "EditarUsuario";
 }
 
-<h2>Editar usuario</h2>
-
 @using (Html.BeginForm("edit", "Usuario", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>usuario</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.nombre)
-        </div>
+
+    <div class="titulo">
+        <h2> <strong>Editar usuario @Html.DisplayFor(model => model.nombre) </strong> </h2>
+        <hr />
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.apellidos)
+    <div class="form-group" style="margin-left:30%; margin-right:30%; margin-top:2%">
 
-        </div>
-    </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @Html.HiddenFor(model => model.id)
-    @Html.HiddenFor(model => model.nombre)
-    @Html.HiddenFor(model => model.apellidos)
-    @Html.HiddenFor(model => model.email)
-    @Html.HiddenFor(model => model.clave)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.esActivo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-              
-                @Html.DropDownList("estado",
-    (SelectList)ViewBag.esActivo,
-    new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.esActivo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.tipoUsuario.permisoUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <p>
+            Tipo de usuario:
             @Html.DropDownList("permiso",
-(SelectList)ViewBag.idTipoUsuario,
-new { htmlAttributes = new { @class = "form-control" } })
+            (SelectList)ViewBag.idTipoUsuario,
+            new { htmlAttributes = new { @class = "form-control" } })
+        </p>
 
-        </div>
-    </div>
+        <p>
+            Activo de usuario:
+            @Html.DropDownList("estado",
+            (SelectList)ViewBag.esActivo,
+            new { htmlAttributes = new { @class = "form-control" } })
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" style="text-decoration:none" class="btn-outline-success" />
-        </div>
+            @Html.ValidationMessageFor(model => model.esActivo, "", new { @class = "text-danger" })
+        </p>
+
+        <p>
+            Nombre:
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+        </p>
+
+        <p>
+            Apellidos:
+            @Html.EditorFor(model => model.apellidos, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+        </p>
+
+        <p>
+            Correo electrónico:
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+        </p>
+
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.nombre)
+        @Html.HiddenFor(model => model.apellidos)
+        @Html.HiddenFor(model => model.email)
+        @Html.HiddenFor(model => model.clave)
+
+        <button type="submit" value="Save" style="text-decoration:none; margin-left:30%" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-success">
+            @Html.ActionLink("Cancelar", "listaUsuario", "Usuario", new { style = "text-decoration:none", @class = "btn-success" })
+        </button>
     </div>
-</div>
 }
-
-

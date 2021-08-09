@@ -55,7 +55,7 @@ namespace proyecto.Controllers
 
 
 
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult AgregarProducto()
         {
             ViewBag.idCategoria = listaTipoCategoria();
@@ -76,7 +76,7 @@ namespace proyecto.Controllers
         }
 
         //Para editar productos
-        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
+        [CustomAuthorize((int)TipoUsuario.Administrador)]
         public ActionResult EditarProducto(int? id)
         {
         try
@@ -129,7 +129,7 @@ namespace proyecto.Controllers
             return View(serviseProducto.listadoProducto());
         }
 
-        [CustomAuthorize((int)TipoUsuario.Administrador)]
+        [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult Index()
         {
             serviseProducto.listadoProductoMayorSalidas();

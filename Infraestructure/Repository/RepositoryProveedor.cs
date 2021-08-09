@@ -82,13 +82,17 @@ namespace Infraestructure.Repository
             throw new NotImplementedException();
         }
 
+
+
+
+
         public IEnumerable<proveedor> buscarProveedorxNombre(string nombre)
         {
             IEnumerable<proveedor> lista = null;
             using (contextData ctx = new contextData())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
-                lista = ctx.proveedor.ToList().
+                lista = ctx.proveedor.Include(x => x.contactos).Include(x => x.pais).ToList().
                     FindAll(l => l.nombreEmpresa.ToLower().Contains(nombre.ToLower()));
             }
             return lista;

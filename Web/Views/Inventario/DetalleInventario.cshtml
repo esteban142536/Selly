@@ -9,30 +9,20 @@
     <hr />
 </div>
 
-<div class="detalle" style="margin-left:12%">
+<div class="detalle" style="margin-left:10%">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col">
             <strong>@Html.DisplayNameFor(model => model.fecha)</strong>
             <br />
             @Html.DisplayFor(model => model.fecha)
             <br /><br />
 
-            <strong>@Html.DisplayNameFor(model => model.usuario.nombre)</strong>
+            <strong>@Html.DisplayNameFor(model => model.usuario.nombre): </strong>
             <br />
-            @Html.DisplayFor(model => model.usuario.nombre)
-            <br /><br />
-
-            <strong>@Html.DisplayNameFor(model => model.usuario.apellidos)</strong>
-            <br />
-            @Html.DisplayFor(model => model.usuario.apellidos)
-            <br /><br />
-
-            <strong>@Html.DisplayNameFor(model => model.comentario)</strong>
-            <br />
-            @Html.DisplayFor(model => model.comentario)
+            @Html.DisplayFor(model => model.usuario.nombre) @Html.DisplayFor(model => model.usuario.apellidos)
         </div>
 
-        <div class="col-sm-4">
+        <div class="col">
             <strong>@Html.DisplayNameFor(model => model.TipoMovimiento.tipoEntrada)</strong>
             <br />
             @Html.DisplayFor(model => model.TipoMovimiento.tipoEntrada)
@@ -41,46 +31,51 @@
             <strong>@Html.DisplayNameFor(model => model.TipoMovimiento.tipoSalida)</strong>
             <br />
             @Html.DisplayFor(model => model.TipoMovimiento.tipoSalida)
-            <br /><br />
-
-            <strong>@Html.DisplayNameFor(model => model.totalPagado)</strong>
             <br />
-            &#8353;@Html.DisplayFor(model => model.totalPagado)
-            <br /><br />
-
-            <strong>@Html.DisplayNameFor(model => model.iva)</strong>
-            <br />
-            %@Html.DisplayFor(model => model.iva)
         </div>
 
-        <div class="col-sm-4">
-            <h4>Productos asociados al inventario</h4>
-            <hr />
-            @foreach (var product in Model.detalleFactura)
-            {
-                <strong>@Html.DisplayNameFor(model => product.producto.nombre)</strong>
-                <br />
-                @Html.DisplayFor(model => product.producto.nombre)
-                <br /><br />
-
-                <strong>@Html.DisplayNameFor(model => product.producto.TipoCategoria.Descripcion)</strong>
-                <br />
-                @Html.DisplayFor(model => product.producto.TipoCategoria.Descripcion)
-                <br /><br />
-
-                <strong>@Html.DisplayNameFor(model => product.producto.descripcion)</strong>
-                <br />
-                @Html.DisplayFor(model => product.producto.descripcion)
-                <br /><br />
-
-                <strong>@Html.DisplayNameFor(model => product.cantidadComprada)</strong>
-                <br />
-                @Html.DisplayFor(model => product.cantidadComprada)
-                <br /><br />
-
-                <hr />
-            }
-
+        <div class="col">
+            <strong>@Html.DisplayNameFor(model => model.comentario)</strong>
+            <br />
+            @Html.DisplayFor(model => model.comentario)
         </div>
     </div>
 </div>
+
+<div class="inventario" style="margin-top:4%; margin-right:2%; margin-left:2%">
+    <div class="titulo">
+        <h3>Productos</h3>
+    </div>
+
+    <table class="table table-hover">
+        <thead class="table-success">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Costo unitario</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var product in Model.detalleFactura)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => product.producto.nombre)</td>
+                    <td>@Html.DisplayFor(model => product.producto.descripcion)</td>
+                    <td>@Html.DisplayFor(model => product.cantidadComprada)</td>
+                    <td>@Html.DisplayFor(model => product.producto.costoUnitario)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <div class="total" style="margin-left:70%; margin-top:3%; text-align:right">
+        <hr />
+        <strong>@Html.DisplayNameFor(model => model.totalPagado)</strong>
+
+        <br />
+        &#8353;@Html.DisplayFor(model => model.totalPagado)
+        <br /><br />
+    </div>

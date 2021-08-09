@@ -71,7 +71,7 @@ namespace proyecto.Controllers
                     ViewBag.idProveedores = listaproveedor();
                     ViewBag.idTienda = listaTiendas();
                     ViewBag.idEstante = listaEstante();
-                    TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "La cantidad ingresada excede el limite maximo", SweetAlertMessageType.warning);
+                    TempData["NotificationMessage"] = Web.Util.SweetAlertHelper.Mensaje("Inventario", "La cantidad ingresada excede el limite máximo", SweetAlertMessageType.warning);
                     return View("AgregarInventario", inventario);
 
                 }
@@ -117,8 +117,6 @@ namespace proyecto.Controllers
 
         }
 
-
-
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
 
         public ActionResult ReporteEntradaSalida()
@@ -149,6 +147,9 @@ namespace proyecto.Controllers
 
         public ActionResult AgregarInventario(string tipodir)
         {
+            List<estante> produEsta = new List<estante>();
+            estante esta = null;
+
             if (TempData.ContainsKey("NotificationMessage"))
             {
                 ViewBag.NotificationMessage = TempData["NotificationMessage"];
@@ -157,12 +158,26 @@ namespace proyecto.Controllers
             ViewBag.DetalleCarrito = Carrito.Instancia.Items;
             ViewBag.idProveedores = listaproveedor();
             ViewBag.idTienda = listaTiendas();
-            ViewBag.idEstante = listaEstante();
+
+            foreach (var producto in Carrito.Instancia.Items)
+            {
+                foreach (var estante in producto.Producto.productoEstante)
+                {
+                    esta = serviseEstante.obtenerEstantePorID(estante.idEstante);
+
+                    if (!produEsta.Where(x => x.id == esta.id).Any())
+                    {
+                        produEsta.Add(serviseEstante.obtenerEstantePorID(estante.idEstante));
+                    }
+
+
+                }
+            }
+
+            ViewBag.idEstante = listaEstantePersonal(produEsta);
+
             return View();
         }
-
-
-
 
         public ActionResult actualizarCantidad(int idproducto, int cantidad)
         {
@@ -172,9 +187,6 @@ namespace proyecto.Controllers
             return PartialView("_ListadoInventario", Carrito.Instancia.Items);
 
         }
-
-
-
 
         public ActionResult actualizarOrdenCantidad()
         {
@@ -186,9 +198,6 @@ namespace proyecto.Controllers
             return PartialView("_cantidadCarrito");
 
         }
-
-
-
 
         [CustomAuthorize((int)TipoUsuario.Administrador, (int)TipoUsuario.Empleado)]
         public ActionResult buscarInventarioxFecha(DateTime fechaInicio, DateTime fechaFinal)
@@ -203,7 +212,8 @@ namespace proyecto.Controllers
             }
             else
             {
-                   lista = serviseInventa.listadoInventario().Where(x => DateTime.Parse(x.fecha).CompareTo(fechaFinal) == -1 && DateTime.Parse(x.fecha).CompareTo(fechaInicio) == 1).ToList();
+                lista = serviseInventa.listadoInventario().Where(x => DateTime.Parse(x.fecha).CompareTo(fechaFinal) == -1 &&
+                DateTime.Parse(x.fecha).CompareTo(fechaInicio) == 1 ).ToList();
             }
             return PartialView("_InformeInventario", lista);
         }
@@ -237,6 +247,11 @@ namespace proyecto.Controllers
         {
             IEnumerable<estante> listaEstante = serviseEstante.GetListaEstante();
             return new SelectList(listaEstante, "id", "nombre", idEstante);
+        }
+
+        private SelectList listaEstantePersonal(List<estante> idEstante)
+        {
+            return new SelectList(idEstante, "id", "nombre");
         }
     }
 }

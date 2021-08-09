@@ -127,7 +127,7 @@
         <tr>
             <th scope="col">Nombre de la empresa</th>
             <th scope="col">Direcci&#243;n</th>
-            <th style="text-align:center" scope="col">Pa&#237;s</th>
+            <th scope="col">Pa&#237;s</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -138,9 +138,9 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.nombreEmpresa)</td>
                 <td >@Html.DisplayFor(modelItem => item.direccion)</td>
-                <td style="text-align:center">@Html.DisplayFor(modelItem => item.pais.nombre)</td>
+                <td >@Html.DisplayFor(modelItem => item.pais.nombre)</td>
 
-                <th scope="col" style="display:flex; align-items: center">
+                <th scope="col" style="align-items: center">
                     <button type="button" class="btn btn-outline-success" style="margin-right:2%;">
                         @Html.ActionLink("Detalle", "DetalleProveedor", "Proveedor", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
                     </button>

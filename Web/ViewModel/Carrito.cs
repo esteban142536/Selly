@@ -77,7 +77,7 @@ namespace Web.ViewModel
             if (Cantidad <= actualizarItem.Producto.totalStock)
             {
 
-                if (Cantidad == 0)
+                if (Cantidad <= 0)
                 {
                     EliminarItem(idProducto);
                 }

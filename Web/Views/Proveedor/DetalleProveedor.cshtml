@@ -37,7 +37,6 @@
                     <li type="circle">Este proveedor no tiene registrado contactos aun</li>
                 </b>
             }
-            <hr />
 
             @foreach (var pro in Model.contactos)
             {
@@ -54,8 +53,6 @@
                 <br />
                 @Html.DisplayFor(model => pro.numero)
                 <br /><br />
-                <hr />
-
             }
         </div>
 
@@ -68,7 +65,6 @@
                     <li type="circle">Este proveedor no tiene productos registrados aun</li>
                 </b>
             }
-            <hr />
 
             @foreach (var pro in Model.producto)
             {
@@ -81,7 +77,6 @@
                 <br />
                 @Html.DisplayFor(model => pro.totalStock)
                 <br /><br />
-                <hr />
 
             }
         </div>

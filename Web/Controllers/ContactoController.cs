@@ -27,7 +27,6 @@ namespace Web.Controllers
                 return View("Index", contactos);
             }
 
-
             serviceContacto.GuardarContactos(contactos);
             return RedirectToAction("Index");
         }

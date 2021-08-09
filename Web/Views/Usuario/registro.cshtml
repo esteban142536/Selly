@@ -16,17 +16,16 @@
 
         @{
             Infraestructure.Models.usuario user = (Infraestructure.Models.usuario)Session["Usuario"];
-                if (user!=null && user.idTipoUsuario==1)
-                {
-        <p>
-            Tipo de usuario:
-            @Html.DropDownList("permiso",
-(SelectList)ViewBag.idTipoUsuario,
-new { htmlAttributes = new { @class = "form-control" } })
-        </p>
-                }
-
-         }
+            if (user != null && user.idTipoUsuario == 1)
+            {
+                <p>
+                    Tipo de usuario:
+                    @Html.DropDownList("permiso",
+        (SelectList)ViewBag.idTipoUsuario,
+        new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+            }
+        }
 
         <p>
             Nombre:
@@ -49,10 +48,11 @@ new { htmlAttributes = new { @class = "form-control" } })
         <p>
             Contraseña:
             @Html.PasswordFor(model => model.clave, new { htmlAttributes = new { @class = "form-control" } })
+            <br />
             @Html.ValidationMessageFor(model => model.clave, "", new { @class = "text-danger" })
         </p>
 
-        <div class="boton" style="margin-left:35%">
+        <div class="boton" style="margin-left:35%; margin-top:5%;">
             <button type="submit" class="btn btn-success">Crear</button>
             <button type="button" class="btn btn-success">
                 @Html.ActionLink("Cancelar", "Index", "Home", new { style = "text-decoration:none", @class = "btn-success" })

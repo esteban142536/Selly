@@ -25,7 +25,6 @@
         }))
         {
             <div class="filtro">
-                @*@Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Buscar proveedor" })*@
                 Fecha inicial:
                 <input type="date" name="fechaInicio" style="margin-right:2%; margin-left:2%" />
 
@@ -53,17 +52,17 @@
     <tbody id="resultado">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoEntrada)</td>
-                <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoSalida)</td>
-                <td>@Html.DisplayFor(modelItem => item.fecha)</td>
-                <td>&#8353;@Html.DisplayFor(modelItem => item.totalPagado)</td>
-                <th scope="col">
-                    <button type="button" class="btn btn-outline-success">
-                        @Html.ActionLink("Detalle", "DetalleInventario", "Inventario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
-                    </button>
-                </th>
-            </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoEntrada)</td>
+            <td>@Html.DisplayFor(modelItem => item.TipoMovimiento.tipoSalida)</td>
+            <td>@Html.DisplayFor(modelItem => item.fecha)</td>
+            <td>&#8353;@Html.DisplayFor(modelItem => item.totalPagado)</td>
+            <th scope="col">
+                <button type="button" class="btn btn-outline-success">
+                    @Html.ActionLink("Detalle", "DetalleInventario", "Inventario", new { id = item.id }, new { style = "text-decoration:none", @class = "btn-outline-success" })
+                </button>
+            </th>
+        </tr>
         }
     </tbody>
 </table>
